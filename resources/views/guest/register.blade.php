@@ -30,7 +30,7 @@
 
       <form action="../../index.html" method="post">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Full name">
+          <input name="name" type="text" class="form-control" placeholder="name">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -38,15 +38,23 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          <input type="text" name="phone" class="form-control" placeholder="phone">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+              <span class="fas fa-phone"></span>
             </div>
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="username" name="username"class="form-control" placeholder="username">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-id-card"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" name="password"class="form-control" placeholder="password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -54,10 +62,18 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Retype password">
+          <input type="address" name="address"class="form-control" placeholder="address">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-lock"></span>
+              <span class="fas fa-home"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="description" name="description"class="form-control" placeholder="description">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-info"></span>
             </div>
           </div>
         </div>
@@ -78,18 +94,7 @@
         </div>
       </form>
 
-      <div class="social-auth-links text-center">
-        <p>- OR -</p>
-        <a href="#" class="btn btn-block btn-primary">
-          <i class="fab fa-facebook mr-2"></i>
-          Sign up using Facebook
-        </a>
-        <a href="#" class="btn btn-block btn-danger">
-          <i class="fab fa-google-plus mr-2"></i>
-          Sign up using Google+
-        </a>
-      </div>
-
+     
       <a href="login.html" class="text-center">I already have a membership</a>
     </div>
     <!-- /.form-box -->
