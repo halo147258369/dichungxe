@@ -27,15 +27,15 @@
                                 {{session('loi')}}
                             </div>
                         @endif
-                        <form action="admin/quanhuyen/them" method="POST" enctype="multipart/form-data" id="myform">
+                        <form action="{{route('district.add.post')}}" method="POST" enctype="multipart/form-data" id="myform">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             
                             <div class="form-group">
                                 <label>Thành phố</label>
-                                <select class="form-control" name="thanhpho">
-                                    @foreach($thanhpho as $tp)
-                                    <option value="{{$tp->id}}">{{$tp->ten}}</option>
-                                    @endforeach
+                                <select class="form-control" name="cities">
+                                     @foreach($city as $ct)
+                                    <option value="{{$ct->id}}">{{$ct->name}}</option>
+                                  @endforeach
                                 </select>
                             </div>
                             <div class="form-group form-group-sm">
@@ -48,7 +48,7 @@
                                 <input class="form-control" name="thongbao" placeholder="Nhập tiêu tên thông báo" />
                             </div> -->
                                 
-                             <a class="btn btn-sm btn-info " href="{{ URL::to('admin/quanhuyen/danhsach') }}"> <i class="glyphicon glyphicon-circle-arrow-left"></i> Quay lại</a>
+                             <a class="btn btn-sm btn-info " href="{{ URL::to('') }}"> <i class="glyphicon glyphicon-circle-arrow-left"></i> Quay lại</a>
                             <button type="reset" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-refresh"></i>Làm mới</button>
                             <button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-floppy-save"></span>Thêm </button>
                         <form>

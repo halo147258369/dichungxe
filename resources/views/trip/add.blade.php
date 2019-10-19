@@ -129,7 +129,7 @@ body {
     <div class="row profile">        
      <div class="col-md-3">          
       <div class="profile-sidebar">                          
-       <div class="profile-userpic">                 <img src="../images/luanvan.jpg" class="img-responsive" alt="Thông tin cá nhân">               
+       <div class="profile-userpic">                 <img src="{{asset('images/luanvan.jpg')}}" class="img-responsive" alt="Thông tin cá nhân">               
        </div>                                            
        <div class="profile-usertitle">                   
         <div class="profile-usertitle-name">

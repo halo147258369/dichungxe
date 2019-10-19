@@ -28,7 +28,7 @@
                                 {{session('loi')}}
                             </div>
                         @endif
-                        <form action="" method="POST" enctype="multipart/form-data" id="myform">
+                        <form action="{{route('vehicle_type.add.post')}}" method="POST" enctype="multipart/form-data" id="myform">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             
                             <div class="form-group form-group-sm">

@@ -18,7 +18,7 @@
                         <thead>
                             <tr align="center">
                                 <td><b>STT</td>
-                                
+                                <td><b>Tên thành phố</td>
                                 <td><b>Tên quận huyện</td>
                                 <td><b>Tên phường</td>
                                 <td><b>Xóa</td>
@@ -31,7 +31,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                
+                                 <td></td>
                                 
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href=""> Xóa</a></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="">Cập nhật</a></td>

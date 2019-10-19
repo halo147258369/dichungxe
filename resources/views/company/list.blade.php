@@ -25,14 +25,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                
+                 @foreach($company as $cp)
                             <tr class="odd gradeX" align="center">
                                
+                             <td>{{$cp->id}}</td>
+                                <td>{{$cp->name}}</td>
                                 
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href=""> Xóa</a></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="">Cập nhật</a></td>
                             </tr>
-                           
+                           @endforeach
                         </tbody>
                     </table>
                 </div>

@@ -27,12 +27,20 @@
                                 {{session('loi')}}
                             </div>
                         @endif
-                        <form action="" method="POST" enctype="multipart/form-data" id="myform">
+                        <form action="{{route('ward.add.post')}}" method="POST" enctype="multipart/form-data" id="myform">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             
                             <div class="form-group">
+                                <label>Thành Phố</label>
+                                <select class="form-control" name="cities">
+                                   
+                                    <option value=""></option>
+                                 
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label>Quận Huyện</label>
-                                <select class="form-control" name="quanhuyen">
+                                <select class="form-control" name="district">
                                    
                                     <option value=""></option>
                                  
@@ -40,7 +48,7 @@
                             </div>
                             <div class="form-group form-group-sm">
                                 <label>Tên phường <span class="error">(*) </span></label>
-                                <input class="form-control" name="ten" placeholder="Nhập tên phường" />
+                                <input class="form-control" name="name" placeholder="Nhập tên phường" />
                             </div>
                             
                            <!--  <div class="form-group form-group-sm">

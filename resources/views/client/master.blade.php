@@ -186,13 +186,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route('company.list.get')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route('company.add.get')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Thêm</p>
                 </a>
@@ -216,13 +216,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route('trip.list.get')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route('trip.add.get')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Thêm</p>
                 </a>
@@ -362,13 +362,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route('city.list.get')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Danh sách</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route('city.add.get')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Thêm</p>
                 </a>

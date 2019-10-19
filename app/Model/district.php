@@ -9,10 +9,10 @@ class district extends Model
     //
     public function city()
     {
-        return $this->belongsto('App\city');
+        return $this->belongsto('App\Model\city');
     }
     public function districts()
 {
-	return $this->hasmany('App\district');
+	return $this->hasmany('App\Model\district');
 }
 }

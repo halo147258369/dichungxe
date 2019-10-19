@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Client;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Model\company;
 class CompanyController extends Controller
 {
     public function getList() {
-    	return view('company.list');
+        $company = company::all();
+    	return view('company.list',['company'=>$company]);
     }
 
 
@@ -21,11 +22,9 @@ class CompanyController extends Controller
         
         $this->validate($request,
             [
-                'name' => 'required|unique:congty,ten'
+               
             ],
             [
-                'name.required'=>'Bạn chưa nhập tên ',
-                'name.unique'=>'Tên đã tồn tại',
                 
             ]);
         $company = new company;
@@ -50,7 +49,7 @@ class CompanyController extends Controller
             ],
             [
                 'name.required'=>'Bạn chưa nhập tên thể loại',
-                'name.required'=>'Tên thể loại đã tồn tại',
+                'name.required'=>'Tên Công ty đã tồn tại',
             ]);
         $company->ten =$request->name;
         

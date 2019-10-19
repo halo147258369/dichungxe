@@ -27,7 +27,7 @@
                                 {{session('loi')}}
                             </div>
                         @endif
-                        <form action="" method="POST">
+                        <form action="{{route('district.edit.post')}}" method="POST">
                             <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                             <div class="form-group">
                                 <label>Thành phố</label>
