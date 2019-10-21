@@ -12,9 +12,9 @@ class booking extends Model
     	//
         return $this->belongsTo('App\Model\trip');
     }
-    public function users()
+    public function user()
     {
     	//
-        return $this->Hasmany('App\Model\User');
+        return $this->belongsTo('App\Model\User');
     }
 }

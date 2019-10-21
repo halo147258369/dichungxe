@@ -6,15 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class rate extends Model
 {
-    //
-     public function rate_types()
+     public function rate_type()
     {
-    	//id 3 là của id_danhgia
         return $this->belongsTo('App\rate_type');
     }
-    public function users()
+    public function user()
     {
-    	//id 3 là của id_danhgia
         return $this->belongsTo('App\User');
     }
 }

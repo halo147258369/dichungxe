@@ -8,14 +8,15 @@ use App\Http\Controllers\Controller;
 class PlaceController extends Controller
 {
     
-   public function getList() {
+    public function getList() {
     	return view('place.list');
     }
 
     public function getAdd() {
     	return view('place.add');
     }
-     public function postAdd(Request $request)
+    
+    public function postAdd(Request $request)
     {
         
         

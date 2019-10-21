@@ -11,6 +11,10 @@ class ward extends Model
     {
         return $this->belongsto('App\Model\district');
     }
+    public function city()
+    {
+        return $this->belongsto('App\Model\city');
+    }
 
     // public function chuyendi()
     // {

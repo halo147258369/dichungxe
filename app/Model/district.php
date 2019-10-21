@@ -11,8 +11,9 @@ class district extends Model
     {
         return $this->belongsto('App\Model\city');
     }
-    public function districts()
-{
-	return $this->hasmany('App\Model\district');
-}
+
+    public function wards()
+    {
+        return $this->hasmany('App\Model\ward');
+    }
 }

@@ -20,12 +20,12 @@
                         @endif
                         @if(session('thongbao'))
                             <div class='alert alert-success'>
-                                {{session('thongbao')}}
+                                {{session('noti')}}
                             </div>
                         @endif
                          @if(session('loi'))
                             <div class='alert alert-success'>
-                                {{session('loi')}}
+                                {{session('error')}}
                             </div>
                         @endif
                         <form action="{{route('vehicle_type.add.post')}}" method="POST" enctype="multipart/form-data" id="myform">
