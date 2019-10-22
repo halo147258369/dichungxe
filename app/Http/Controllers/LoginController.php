@@ -1,90 +1,93 @@
 <?php
-
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use App\Model\User;
-use Validator;
 use Auth;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
-
 class LoginController extends Controller
 {
-   use AuthenticatesUsers, ThrottlesLogins;
-   protected $redirectTo = 'admin/dashboard';
-   public function __construct()
+    public function __construct()
     {
-        // $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->middleware('guest:member')->except('getLogout');
     }
 
-    public function getLogin() {
-    	return view('guest.login');
+    /**
+     * Show the login form.
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function getLogin()
+    {
+        return view('guest.login');
     }
 
+    /**
+     * Login the admin.
+     * 
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postLogin(Request $request)
     {
-        $this->validateLogin($request);
+        //Validation...
+        $this->validator($request);
 
-        $throttles = $this->isUsingThrottlesLoginsTrait();
-
-        if ($throttles && $lockedOut = $this->hasTooManyLoginAttempts($request)) {
-            $this->fireLockoutEvent($request);
-
-            return $this->sendLockoutResponse($request);
+        //
+        //Login ... If Authentication passed redirect to dashboard
+        if(Auth::guard('member')->attempt($request->only('email','password'),$request->filled('remember'))){
+            return redirect()
+                ->intended(route('member.dashboard.view.get'))
+                ->with('status','You are Logged in as Member!');
         }
 
-        $credentials = $this->getCredentials($request);
-
-        if (Auth::attempt($credentials, $request->has('remember'))) {
-            return $this->handleUserWasAuthenticated($request, $throttles);
-        }
-
-        // If the login attempt was unsuccessful we will increment the number of attempts
-        // to login and redirect the user back to the login form. Of course, when this
-        // user surpasses their maximum number of attempts they will get locked out.
-        if ($throttles && ! $lockedOut) {
-            $this->incrementLoginAttempts($request);
-        }
-
-        return $this->sendFailedLoginResponse($request);
+        //Authentication failed...
+        return $this->loginFailed();
     }
 
-    public function getRegister() {
-    	return view('admin.register');
-    }
-
-    public function postRegister(Request $request)
-	{
-	    $validator = $this->validator($request->all());
-
-	    if ($validator->fails()) {
-	        $this->throwValidationException(
-	            $request, $validator
-	        );
-	    }
-
-	    Auth::guard('admin')->login($this->create($request->all()));
-
-	    return redirect($this->redirectPath());
-	}
-    
-    protected function validator(array $data)
+    /**
+     * Logout the admin.
+     * 
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function getLogout()
     {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
+        Auth::guard('member')->logout();
+        return redirect()
+            ->route('guest.login.get')
+            ->with('status','Member has been logged out!');
     }
 
-    
-    protected function create(array $data)
+    /**
+     * Validate the form data.
+     * 
+     * @param \Illuminate\Http\Request $request
+     * @return void
+     */
+    private function validator(Request $request)
     {
-        return Admin::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+      //validation rules.
+        $rules = [
+            'email'    => 'required|email|exists:members|min:5|max:191',
+            'password' => 'required|string|min:4|max:255',
+        ];
+        //custom validation error messages.
+        $messages = [
+            'email.exists' => 'Tài khoản này không tồn tại',
+        ];
+        //validate the request.
+        $request->validate($rules,$messages);
+    }
+
+    /**
+     * Redirect back after a failed login.
+     * 
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    private function loginFailed()
+    {
+        return redirect()
+            ->back()
+            ->withInput()
+            ->with('error','Đăng nhập thất bại!');
     }
 }

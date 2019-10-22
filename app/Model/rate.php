@@ -4,7 +4,7 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class rate extends Model
+class Rate extends Model
 {
      public function rate_type()
     {

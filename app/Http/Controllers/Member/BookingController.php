@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Client;
+namespace App\Http\Controllers\Member;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\city;
-class CityController extends Controller
+use App\Model\booking;
+class BookingController extends Controller
 {
    public function getList() {
-      	$city = city::all();
-    	return view('city.list',['city'=>$city]);
+      	$booking = booking::all();
+    	return view('booking.list',['booking'=>$booking]);
     }
 
   public function getAdd() {
-    	return view('city.add');
+    	return view('booking.add');
     }
      public function postAdd(Request $request)
     {

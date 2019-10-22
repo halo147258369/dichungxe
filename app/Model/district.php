@@ -4,7 +4,7 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class district extends Model
+class District extends Model
 {
     //
     public function city()

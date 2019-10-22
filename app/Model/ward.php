@@ -4,13 +4,14 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ward extends Model
+class Ward extends Model
 {
     //
     public function district()
     {
         return $this->belongsto('App\Model\district');
     }
+    
     public function city()
     {
         return $this->belongsto('App\Model\city');

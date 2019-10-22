@@ -29,8 +29,9 @@
       <p class="login-box-msg">Sign in to start your session</p>
 
       <form action="{{route('guest.login.post')}}" method="post">
+      @csrf
         <div class="input-group mb-3">
-          <input name="username" type="text" class="form-control" placeholder="Email">
+          <input name="email" type="text" class="form-control" placeholder="Email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>

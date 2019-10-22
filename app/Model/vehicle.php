@@ -4,7 +4,7 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class vehicle extends Model
+class Vehicle extends Model
 {
      public function rates()
     {
