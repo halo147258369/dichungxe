@@ -15,19 +15,19 @@ class VehiclesController extends Controller
     public function __construct(Vehicle $model, Vehicle_type $vehicle_type)
     {
         $this->model = $model;
-        $this->view_prefix = 'member.vehicle';
+        $this->view_prefix = 'member.vehicle.';
         $this->vehicle_type = $vehicle_type;
     }
    
     public function getList()
     {
         $data['vehicles'] = $this->model->all();
-        return view($this->view_prefix.'list');
+        return view($this->view_prefix.'list', $data);
     }
 
     public function getAdd()
     {
-        $data['vehicle'] = $this->vehicle->all();
+        $data['vehicle_types'] = $this->vehicle_type->all();
         return view($this->view_prefix.'add', $data);
     }
 

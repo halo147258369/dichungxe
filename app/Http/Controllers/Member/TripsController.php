@@ -15,7 +15,7 @@ class TripsController extends Controller
     public function __construct(Trip $model, Vehicle $vehicle)
     {
         $this->model = $model;
-        $this->view_prefix = 'member.trip';
+        $this->view_prefix = 'member.trip.';
         $this->vehicle = $vehicle;
     }
    

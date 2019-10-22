@@ -1,4 +1,4 @@
-@extends('client.master')
+@extends('member.master')
 @section('main')
  <div id="page-wrapper">
             <div class="container-fluid">
@@ -29,22 +29,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                           
+                           @foreach($vehicles as $vehicle)
                             <tr class="odd gradeX" align="center">
-                                <td></td>
-                                <!-- <td>{{$pt->idLoaiPhuongTien}}</td> -->
-                                <td> </td>
-
-                                <td></td>
-                                <!-- <td>{{$pt->hinh}}</td> -->
-                               <td> <img src="" class="img-responsive" alt="" height="150px" /></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/phuongtien/xoa/{{$pt->id}}"> Xóa</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/phuongtien/sua/{{$pt->id}}">Cập nhật</a></td>
+                                <td>{{$vehicle->name}}</td>
+                                <td>{{$vehicle->vehicle_type->name}}</td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('member.vehicle.delete.get', ['id'=>$vehicle->id])}}"> Xóa</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('member.vehicle.edit.get', ['id'=>$vehicle->id])}}">Cập nhật</a></td>
                             </tr>
-                            
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

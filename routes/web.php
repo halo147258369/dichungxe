@@ -36,12 +36,15 @@ Route::prefix('/member')->middleware('auth:member')->namespace('Member')->name('
     Route::post('/edit/{id}','VehiclesController@postEdit')->name('edit.post');
     Route::get('/delete/{id}','VehiclesController@getDelete')->name('delete.get');
   });
-});
-
-Route::group(['prefix' => 'trips'], function() {
-  Route::get('/','Client\TripController@getList')->name('trip.list.get');
-  Route::get('add','Client\TripController@getAdd')->name('trip.add.get');
-  Route::post('add','Client\TripController@postAdd')->name('trip.add.post');
+  
+  Route::prefix('/trips')->name('trip.')->group(function() {
+    Route::get('/','TripsController@getList')->name('list.get');
+    Route::get('/add','TripsController@getAdd')->name('add.get');
+    Route::post('/add','TripsController@postAdd')->name('add.post');
+    Route::get('/edit/{id}','TripsController@getEdit')->name('edit.get');
+    Route::post('/edit/{id}','TripsController@postEdit')->name('edit.post');
+    Route::get('/delete/{id}','TripsController@getDelete')->name('delete.get');
+  });
 });
 
 Route::group(['prefix' => 'companies'], function() {
