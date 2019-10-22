@@ -26,8 +26,16 @@ Route::post('/register','RegisterController@postRegister')->name('guest.register
 Route::get('/logout', 'LoginController@getLogout')->middleware('auth:member')->name('member.logout.get');
 
 Route::prefix('/member')->middleware('auth:member')->namespace('Member')->name('member.')->group(function() {
-	Route::get('', 'DashboardController@getView')->name('dashboard.view.get');
+	Route::get('/', 'DashboardController@getView')->name('dashboard.view.get');
 
+  Route::prefix('/vehicles')->name('vehicle.')->group(function() {
+    Route::get('/','VehiclesController@getList')->name('list.get');
+    Route::get('/add','VehiclesController@getAdd')->name('add.get');
+    Route::post('/add','VehiclesController@postAdd')->name('add.post');
+    Route::get('/edit/{id}','VehiclesController@getEdit')->name('edit.get');
+    Route::post('/edit/{id}','VehiclesController@postEdit')->name('edit.post');
+    Route::get('/delete/{id}','VehiclesController@getDelete')->name('delete.get');
+  });
 });
 
 Route::group(['prefix' => 'trips'], function() {
