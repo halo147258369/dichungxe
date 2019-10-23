@@ -14,6 +14,7 @@ class DashboardController extends Controller
 
     public function getView() 
     {
+        return redirect()->route('member.trip.list.get');
     	return 'Hello member'; //view('client.dashboard');
     }
 }

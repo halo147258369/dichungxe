@@ -25,6 +25,11 @@ Route::get('/register','RegisterController@getRegister')->name('guest.register.g
 Route::post('/register','RegisterController@postRegister')->name('guest.register.post');
 Route::get('/logout', 'LoginController@getLogout')->middleware('auth:member')->name('member.logout.get');
 
+Route::prefix('/api')->namespace('API')->name('api.')->group(function() {
+  Route::get('/getdistricts/{id}', 'AddressController@getDistricts')->name('district.get');
+  Route::get('/getwards/{id}', 'AddressController@getWards')->name('ward.get');
+});
+
 Route::prefix('/member')->middleware('auth:member')->namespace('Member')->name('member.')->group(function() {
 	Route::get('/', 'DashboardController@getView')->name('dashboard.view.get');
 

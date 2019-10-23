@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Trip extends Model
 {
+    public $fillable = ['user_id', 'vehicle_id', 'price', 'to_id', 'from_id', 'title','day_go', 'day_to'];
      public function user()
     {
         return $this->belongsTo('App\Model\User');

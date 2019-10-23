@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Trip;
 use App\Model\Vehicle;
+use App\Model\City;
+use App\Model\Place;
+use Auth;
+
 
 class TripsController extends Controller
 {
@@ -22,18 +26,31 @@ class TripsController extends Controller
     public function getList()
     {
         $data['vehicles'] = $this->model->all();
-        return view($this->view_prefix.'list');
+        return view($this->view_prefix.'list', $data);
     }
 
     public function getAdd()
     {
-        $data['vehicle'] = $this->vehicle->all();
+        $data['cities'] = City::all();
+        $data['vehicles'] = $this->vehicle->all();
         return view($this->view_prefix.'add', $data);
     }
 
     public function postAdd(Request $req)
     {
-        $vehicle = $this->model->insert($req);
+        for($i=0; $i<2; $i++) {
+            $place[$i] = new Place;
+            $place[$i]->name = $req->name[$i];
+            $place[$i]->ward_id = $req->ward_id[$i];
+            $place[$i]->district_id = $req->district_id[$i];
+            $place[$i]->city_id = $req->city_id[$i];
+            $place[$i]->save();
+        }
+        $data = $req->only($this->model->fillable);
+        $data['user_id'] = Auth::guard('member')->user()->id;
+        $data['from_id'] = $place[0]->id;
+        $data['to_id'] = $place[1]->id;
+        $vehicle = $this->model->insert($data);
         return view($this->view_prefix.'list')->with('status', 'Thêm phương tiện thành công!');
     }
 

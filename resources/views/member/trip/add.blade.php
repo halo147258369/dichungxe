@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" rel="stylesheet">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script src="js/jquery-1.11.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
 <style>
   body {
@@ -126,6 +126,12 @@
     min-height: 460px;
   }
 
+  p {
+    margin-right: 650px;
+    \
+
+  }
+
   /*https://hocwebgiare.com/thiet_ke_web_chuan_demo/bootstrap_user_profile/images/profile_user.jpg*/
 </style>
 
@@ -194,60 +200,51 @@
                 </div>
 
                 @endif
-                @if(session('thongbao'))
+                @if(session('status'))
                 <div class="alert alert-success">
-                  {{session('thongbao')}}
+                  {{session('status')}}
                 </div>
                 @endif
 
-                @if(session('thongbao2'))
+                @if(session('error'))
                 <div class="alert alert-danger">
-                  {{session('thongbao2')}}
+                  {{session('error')}}
                 </div>
                 @endif
               </div>
-
-              <style>
-                p {
-
-                  margin-right: 650px;
-
-
-                }
-              </style>
-              <form action="admin/chuyendi/them" method="POST" enctype="multipart/form-data" id="myform">
+              <form action="{{route('member.trip.add.post')}}" method="POST" enctype="multipart/form-data" id="myform">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
 
                 <div class="form-group">
                   <p align="left"><B> Phương tiện (*)</B></p>
-                  <select class="form-control" name="idPhuongTien">
-
+                  <select class="form-control" name="vehicle_id" required="required">
+                    @foreach($vehicles as $vehicle)
+                    <option value="{{$vehicle->id}}">{{$vehicle->name}}</option>
+                    @endforeach
                   </select>
                 </div>
 
                 <p align="left"><B> Điểm Đi (*)</B></p>
                 <!--   <label> Điểm Đi (*)</label> -->
-                <input class="form-control" type="text" name="DiaChiCuThe" placeholder="Chọn thành phố ,quận huyện, phường" /><br>
+                <input class="form-control" type="text" name="name[]" placeholder="Số nhà, tên đường" required="required"/><br>
                 <br>
                 <div class="form-group form-group-sm">
 
-                  <div class="col-xs-6 col-md-3"><label for="email">Thành Phố:</label>
-                    <select class="form-control" name="cities" id="thanhpho" placeholder="Thành Phố" type="select">
+                  <div class="col-xs-12 col-md-4"><label for="citie_id[]">Thành Phố:</label>
+                    <select class="form-control" name="city_id[]" id="from_city" placeholder="Thành Phố" type="select" onchange="getDistricts('from_city', 'from_district')">
+                    <option value="0">Chọn quận/huyện</option>
+                      @foreach($cities as $city)
+                      <option value="{{$city->id}}">{{$city->name}}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                  <div class="col-xs-12 col-md-4"><label for="district_id[]">Quận Huyên:</label>
+                    <select class="form-control" name="district_id[]" id="from_district" placeholder="Quận Huyên" required="" type="select" onchange="getWards('from_district', 'from_ward')">
 
                     </select>
                   </div>
-                  <div class="col-xs-6 col-md-3"><label for="email">Quận Huyên:</label>
-                    <select class="form-control" name="districts" id="quanhuyen" placeholder="Quận Huyên" required="" type="select">
-
-                    </select>
-                  </div>
-                  <div class="col-xs-6 col-md-3"><label for="email">Phường Xã:</label>
-                    <select class="form-control" name="wards" id="phuong" placeholder="phuongxa" required="" type="select">
-
-                    </select>
-                  </div>
-                  <div class="col-xs-6 col-md-3"><label for="email">Địa Điểm:</label>
-                    <select class="form-control" name="from_id" id="diadiem" placeholder="Điểm Đi" required="" type="select">
+                  <div class="col-xs-12 col-md-4"><label for="ward_id[]">Phường Xã:</label>
+                    <select class="form-control" name="ward_id[]" id="from_ward" placeholder="Phường Xã" required="" type="select">
 
                     </select>
                   </div>
@@ -258,76 +255,88 @@
                 <br>
                 <br>
                 <p align="left"><B> Điểm Đến (*)</B></p>
-                <input class="form-control" name="DiaChiCuThe" placeholder="Chọn thành phố, quận huyện ,phường" /><br>
+                <!--   <label> Điểm Đi (*)</label> -->
+                <input class="form-control" type="text" name="name[]" placeholder="Số nhà, tên đường" required="required"/><br>
                 <br>
                 <div class="form-group form-group-sm">
 
-                  <div class="col-xs-6 col-md-3"><label for="email">Thành Phố:</label>
-                    <select class="form-control" name="cities" id="thanhpho" placeholder="Thành Phố" type="select">
+                  <div class="col-xs-12 col-md-4"><label for="citie_id[]">Thành Phố:</label>
+                    <select class="form-control" name="city_id[]" id="to_city" placeholder="Thành Phố" type="select" onchange="getDistricts('to_city', 'to_district')">
+                    <option value="0">Chọn quận/huyện</option>
+                      @foreach($cities as $city)
+                      <option value="{{$city->id}}">{{$city->name}}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                  <div class="col-xs-12 col-md-4"><label for="district_id[]">Quận Huyên:</label>
+                    <select class="form-control" name="district_id[]" id="to_district" placeholder="Quận Huyên" required="" type="select" onchange="getWards('to_district', 'to_ward')">
 
                     </select>
                   </div>
-                  <div class="col-xs-6 col-md-3"><label for="email">Quận Huyên:</label>
-                    <select class="form-control" name="districts" id="quanhuyen" placeholder="Quận Huyên" required="" type="select">
-
-                    </select>
-                  </div>
-                  <div class="col-xs-6 col-md-3"><label for="email">Phường Xã:</label>
-                    <select class="form-control" name="wards" id="phuong" placeholder="phuongxa" required="" type="select">
-
-                    </select>
-                  </div>
-                  <div class="col-xs-6 col-md-3"><label for="email">Địa Điểm:</label>
-                    <select class="form-control" name="to_id" id="quanhuyen" placeholder="Quận Huyên" required="" type="select">
+                  <div class="col-xs-12 col-md-4"><label for="ward_id[]">Phường Xã:</label>
+                    <select class="form-control" name="ward_id[]" id="to_ward" placeholder="Phường Xã" required="" type="select">
 
                     </select>
                   </div>
                 </div>
-
                 <br>
                 <br>
                 <br>
-
-
                 <div class="form-group form-group-sm">
                   <p align="left"><B>Tiêu Đề (*)</B></p>
-                  <input class="form-control" name="TieuDe" placeholder="Nhập Tiêu Đề" />
+                  <input class="form-control" name="title" placeholder="Nhập Tiêu Đề" required="required"/>
                 </div>
-
-
                 <div class="form-group form-group-sm">
-                  <p align="left"><B> Thời Gian Đi (*)</B></p> <input type="date" class="form-control" name="ThoiGianDi" placeholder="nhập thời gian đi" />
+                  <p align="left"><B> Thời Gian Đi (*)</B></p>
+                  <input type="date" class="form-control" name="day_go" placeholder="nhập thời gian đi" required="required"/>
                 </div>
                 <div class="form-group form-group-sm">
                   <p align="left"><B> Thời Gian Đến (*)</B></p>
-                  <input type="date" class="form-control" name="ThoiGianDen" placeholder="nhập thời gian đến" />
+                  <input type="date" class="form-control" name="day_to" placeholder="nhập thời gian đến" required="required"/>
                 </div>
                 <div class="form-group form-group-sm">
-                  <p align="left"><B> Số Chỗ (*)</B></p>
-                  <input class="form-control" name="SoCho" placeholder="nhập số chỗ trống" />
+                  <p align="left"><B> Số Chỗ Còn Trống (*)</B></p>
+                  <input class="form-control" name="seat" placeholder="nhập số chỗ trống" required="required"/>
                 </div>
                 <div class="form-group form-group-sm">
                   <p align="left"><B> Giá Tiền (*)</B></p>
-                  <input class="form-control" name="GiaTien" placeholder="nhập giá tiền" />
+                  <input class="form-control" name="price" placeholder="nhập giá tiền" required="required"/>
                 </div>
-
-                <!-- <div class="form-group form-group-sm">
-                                <label>Thông báo:</label>
-                                <input class="form-control" name="thongbao" placeholder="Nhập tiêu tên thông báo" />
-                            </div>  -->
-
-                <a class="btn btn-sm btn-info " href="{{ URL::to('') }}"> <i class="glyphicon glyphicon-circle-arrow-left"></i> Quay lại</a>
+                <button class="btn btn-sm btn-info " onclick="history.go(-1);"> <i class="glyphicon glyphicon-circle-arrow-left"></i> Quay lại</button>
                 <button type="reset" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-refresh"></i>Làm mới</button>
                 <button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-floppy-save"></span>Thêm </button>
-                <form>
-                  <div id="bg_footer" style="width: 500px; margin-left: 105px; background: #2267a2">
-                    <div class="container">
-                      <div class="row">
-                        <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="footer">
-                    <p>Bản quyền thuộc team_tttt@vnpt.com</p>              
-                </div>
+              </form>
             </div>
+          </div>
         </div>
-  </div>
-  </body>
+      </div>
+    </div>
+    
+    <script>
+      function getDistricts(id_form, id_to) {
+        var matp = document.getElementById(id_form).value;
+        $.ajax({
+          url: '/api/getdistricts/' + matp
+        }).done(function(data) {
+          $("#"+id_to).html('<option value="0">Chọn quận/huyện</option>');
+          data.forEach(function(element) {
+            $("#"+id_to).append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
+          });
+        });;
+      }
+
+      function getWards(id_form, id_to) {
+        var maqh = document.getElementById(id_form).value;
+        $.ajax({
+          url: '/api/getwards/' + maqh
+        }).done(function(data) {
+          $("#"+id_to).html('<option value="0">Chọn xã/phường/thị trấn</option>');
+          data.forEach(function(element) {
+            $("#"+id_to).append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
+          });
+        });;
+      }
+    </script>
+</body>
+
 </html>

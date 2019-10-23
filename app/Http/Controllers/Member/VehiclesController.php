@@ -33,27 +33,30 @@ class VehiclesController extends Controller
 
     public function postAdd(Request $req)
     {
-        $vehicle = $this->model->insert($req);
-        return view($this->view_prefix.'list')->with('status', 'Thêm phương tiện thành công!');
+        $data = $req->only($this->model->fillable);
+        $vehicle = $this->model->insert($data);
+        return redirect()->route('member.vehicle.list.get')->with('status', 'Thêm phương tiện thành công!');
     }
 
     public function getEdit($vehicle_id)
     {
         $data['vehicle'] = $this->model->findOrFail($vehicle_id);
+        $data['vehicle_types'] = $this->vehicle_type->all();
         return view($this->view_prefix.'edit', $data);
     }
 
     public function postEdit($vehicle_id, Request $req)
     {
         $vehicle = $this->model->findOrFail($vehicle_id);
-        $vehicle->update($req);
-        return view($this->view_prefix.'list')->with('status', 'Lưu thay đỔi thành công!');
+        $data = $req->only($this->model->fillable);
+        $vehicle->update($data);
+        return redirect()->route('member.vehicle.list.get')->with('status', 'Lưu thay đỔi thành công!');
     }
 
     public function getDelete($vehicle_id)
     {
         $vehicle = $this->model->findOrFail($vehicle_id);
         $vehicle->destroy();
-        return view($this->view_prefix.'list')->with('status', 'Xoá thành công!');
+        return redirect()->route('member.vehicle.list.get')->with('status', 'Xoá thành công!');
     }
 }
