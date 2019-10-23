@@ -15,6 +15,7 @@ class AddColOfTrip extends Migration
     {
         Schema::table('trips', function (Blueprint $table) {
             $table->integer('price')->after('vehicle_id');
+            $table->integer('seat')->after('vehicle_id');
         });
     }
 

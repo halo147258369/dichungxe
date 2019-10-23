@@ -25,7 +25,7 @@ class TripsController extends Controller
    
     public function getList()
     {
-        $data['vehicles'] = $this->model->all();
+        $data['trips'] = $this->model->with('vehicle', 'from.city', 'to.city')->get();
         return view($this->view_prefix.'list', $data);
     }
 
@@ -51,25 +51,36 @@ class TripsController extends Controller
         $data['from_id'] = $place[0]->id;
         $data['to_id'] = $place[1]->id;
         $vehicle = $this->model->insert($data);
-        return view($this->view_prefix.'list')->with('status', 'Thêm phương tiện thành công!');
+        return redirect()->route('member.trip.list.get')->with('status', 'Thêm phương tiện thành công!');
     }
 
-    public function getEdit($vehicle_id)
+    public function getEdit($id)
     {
-        $data['vehicle'] = $this->model->findOrFail($vehicle_id);
+        $data['cities'] = City::all();
+        $data['vehicles'] = $this->vehicle->all();
+        $data['trip'] = $this->model->findOrFail($id);
         return view($this->view_prefix.'edit', $data);
     }
 
-    public function postEdit($vehicle_id, Request $req)
+    public function postEdit($id, Request $req)
     {
-        $vehicle = $this->model->findOrFail($vehicle_id);
-        $vehicle->update($req);
-        return view($this->view_prefix.'list')->with('status', 'Lưu thay đỔi thành công!');
+        for($i=0; $i<2; $i++) {
+            $place[$i] = Place::findOrFail($req->place_id[$i]);
+            $place[$i]->name = $req->name[$i];
+            $place[$i]->ward_id = $req->ward_id[$i];
+            $place[$i]->district_id = $req->district_id[$i];
+            $place[$i]->city_id = $req->city_id[$i];
+            $place[$i]->save();
+        }
+        $data = $req->only($this->model->fillable);
+        $vehicle = $this->model->findOrFail($id);
+        $vehicle->update($data);
+        return redirect()->route('member.trip.list.get')->with('status', 'Thêm phương tiện thành công!');
     }
 
-    public function getDelete($vehicle_id)
+    public function getDelete($id)
     {
-        $vehicle = $this->model->findOrFail($vehicle_id);
+        $vehicle = $this->model->findOrFail($id);
         $vehicle->destroy();
         return view($this->view_prefix.'list')->with('status', 'Xoá thành công!');
     }

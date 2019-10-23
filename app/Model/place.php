@@ -10,27 +10,27 @@ class Place extends Model
 
     public function ward()
     {
-        return $this->belongsto('App\ward');
+        return $this->belongsto('App\Model\ward');
     }
 
     public function district()
     {
-        return $this->ward->district;
+        return $this->belongsto('App\Model\district');
     }
 
     public function city()
     {
-        return $this->district->city;
+        return $this->belongsto('App\Model\city');
     }
 
 
-    public function trip_from()
+    public function trips_from()
     {
-        return $this->hasMany('App\trip', 'from_id');
+        return $this->hasOne('App\trip', 'from_id');
     }
 
-    public function trip_to()
+    public function trips_to()
     {
-        return $this->hasMany('App\trip', 'to_id');
+        return $this->hasOne('App\trip', 'to_id');
     }
 }
