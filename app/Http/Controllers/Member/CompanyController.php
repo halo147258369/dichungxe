@@ -60,7 +60,7 @@ class CompanyController extends Controller
     {
         $company = company::find($id);
         $company->delete();
-        return redirect('company/list')->with('thongbao','Bạn đã xóa thành công');
+        return redirect('company')->with('thongbao','Bạn đã xóa thành công');
     }
     
 }

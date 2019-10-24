@@ -413,26 +413,65 @@
                                     <form>
                                         <div class="row">
 
-                                            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
-                                                <div class="row">
-                                                
-                                                    <div class="col-xs-12 col-sm-6 col-md-6">
-                                                        <div class="form-group left-icon">
-                                                            <input type="text" class="form-control" placeholder="Điểm đi" >
-                                                            <i class="fa fa-map-marker"></i>
-                                                        </div>
-                                                    </div><!-- end columns -->
-                                                    
-                                                    <div class="col-xs-12 col-sm-6 col-md-6">
-                                                        <div class="form-group left-icon">
-                                                            <input type="text" class="form-control" placeholder="Điểm đến" >
-                                                            <i class="fa fa-map-marker"></i>
-                                                        </div>
-                                                    </div><!-- end columns -->
-        
-                                                </div><!-- end row -->								
-                                            </div><!-- end columns -->
-                                            
+                                            <p align="left"><B> Điểm Đi (*)</B></p>
+                <!--   <label> Điểm Đi (*)</label> -->
+                <input class="form-control" type="text" name="name[]" placeholder="Số nhà, tên đường" required="required"/><br>
+                
+                <div class="form-group form-group-sm">
+
+                  <div class="col-xs-12 col-md-4"><label for="citie_id[]">Thành Phố:</label>
+                    <select class="form-control" name="city_id[]" id="from_city" placeholder="Thành Phố" type="select" onchange="getDistricts('from_city', 'from_district')">
+                    <option value="0">Chọn thành phố</option>
+                      @foreach($cities as $city)
+                      <option value="{{$city->id}}">{{$city->name}}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                  <div class="col-xs-12 col-md-4"><label for="district_id[]">Quận Huyên:</label>
+                    <select class="form-control" name="district_id[]" id="from_district" placeholder="Quận Huyên" required="" type="select" onchange="getWards('from_district', 'from_ward')">
+
+                    </select>
+                  </div>
+                  <div class="col-xs-12 col-md-4"><label for="ward_id[]">Phường Xã:</label>
+                    <select class="form-control" name="ward_id[]" id="from_ward" placeholder="Phường Xã" required="" type="select">
+
+                    </select>
+                  </div>
+                </div>
+
+
+                <br>
+                <br>
+                <br>
+                <p align="left"><B> Điểm Đến (*)</B></p>
+                <!--   <label> Điểm Đi (*)</label> -->
+                <input class="form-control" type="text" name="name[]" placeholder="Số nhà, tên đường" required="required"/><br>
+                
+                <div class="form-group form-group-sm">
+
+                  <div class="col-xs-12 col-md-4"><label for="citie_id[]">Thành Phố:</label>
+                    <select class="form-control" name="city_id[]" id="to_city" placeholder="Thành Phố" type="select" onchange="getDistricts('to_city', 'to_district')">
+                    <option value="0">Chọn Thành phố</option>
+                      @foreach($cities as $city)
+                      <option value="{{$city->id}}">{{$city->name}}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                  <div class="col-xs-12 col-md-4"><label for="district_id[]">Quận Huyên:</label>
+                    <select class="form-control" name="district_id[]" id="to_district" placeholder="Quận Huyên" required="" type="select" onchange="getWards('to_district', 'to_ward')">
+
+                    </select>
+                  </div>
+                  <div class="col-xs-12 col-md-4"><label for="ward_id[]">Phường Xã:</label>
+                    <select class="form-control" name="ward_id[]" id="to_ward" placeholder="Phường Xã" required="" type="select">
+
+                    </select>
+                  </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                             
                                             <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
                                                 <div class="row">
                                                 
@@ -450,16 +489,16 @@
                                                         </div>
                                                     </div><!-- end columns -->
         
-                                                </div><!-- end row -->								
+                                                </div><!-- end row -->                              
                                             </div><!-- end columns -->
-                                            
-                                            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
                                                 <div class="form-group right-icon">
                                                     <select class="form-control">
                                                         <option selected>Ghế trống</option>
                                                         <option>1</option>
                                                         <option>2</option>
                                                         <option>3</option>
+                                                         <option>4</option>
                                                     </select>
                                                     <i class="fa fa-angle-down"></i>
                                                 </div>
@@ -468,7 +507,6 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 search-btn">
                                                 <button class="btn btn-orange">Tìm kiếm</button>
                                             </div><!-- end columns -->
-                                            
                                         </div><!-- end row -->
                                     </form>
                                 </div><!-- end flights -->
@@ -485,7 +523,31 @@
         </section><!-- end flexslider-container -->
         
         
-        
+        <script>
+      function getDistricts(id_form, id_to) {
+        var matp = document.getElementById(id_form).value;
+        $.ajax({
+          url: '/api/getdistricts/' + matp
+        }).done(function(data) {
+          $("#"+id_to).html('<option value="0">Chọn quận/huyện</option>');
+          data.forEach(function(element) {
+            $("#"+id_to).append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
+          });
+        });;
+      }
+
+      function getWards(id_form, id_to) {
+        var maqh = document.getElementById(id_form).value;
+        $.ajax({
+          url: '/api/getwards/' + maqh
+        }).done(function(data) {
+          $("#"+id_to).html('<option value="0">Chọn xã/phường/thị trấn</option>');
+          data.forEach(function(element) {
+            $("#"+id_to).append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
+          });
+        });;
+      }
+    </script>
         
         
         <!--======================= BEST FEATURES =====================-->
