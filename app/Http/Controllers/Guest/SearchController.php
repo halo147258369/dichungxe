@@ -10,7 +10,6 @@ use App\Model\Ward;
 
 class SearchController extends Controller
 {
-  
   public function postSearch(Request $request){
     $from_ward = Ward::find($request->from_ward);
     $to_ward = Ward::find($request->to_ward);
@@ -22,5 +21,4 @@ class SearchController extends Controller
     $data['cities'] = city::all();
     return view('guest.index', $data);
   }
-
 }

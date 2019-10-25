@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Index</title>
+    <title>Dichungxe Project</title>
     <base href="{{asset('')}}">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
