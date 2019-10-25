@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', 'Guest\IndexController@getIndex');
-Route::post('search','SearchController@postSearch');
+Route::get('/', 'Guest\IndexController@getIndex')->name('guest.index.view.post');
+Route::post('search','Guest\SearchController@postSearch')->name('guest.index.search.post');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
