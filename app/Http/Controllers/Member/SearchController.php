@@ -11,6 +11,7 @@ class SearchController extends Controller
 {
   
   public function postSearch(Request $request){
+  	
 
 
     }

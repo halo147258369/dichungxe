@@ -49,61 +49,65 @@ Route::prefix('/member')->middleware('auth:member')->namespace('Member')->name('
     Route::get('/delete/{id}','TripsController@getDelete')->name('delete.get');
   });
 
+  Route::prefix('/companies')->name('company.')->group(function() {
+    Route::get('/','CompaniesController@getList')->name('list.get');
+    Route::get('/add','CompaniesController@getAdd')->name('add.get');
+    Route::post('/add','CompaniesController@postAdd')->name('add.post');
+    Route::get('/edit/{id}','CompaniesController@getEdit')->name('edit.get');
+    Route::post('/edit/{id}','CompaniesController@postEdit')->name('edit.post');
+    Route::get('/delete/{id}','CompaniesController@getDelete')->name('delete.get');
+  });
+  
+  Route::prefix('/places')->name('place.')->group(function() {
+    Route::get('/','PlacesController@getList')->name('list.get');
+    Route::get('/add','PlacesController@getAdd')->name('add.get');
+    Route::post('/add','PlacesController@postAdd')->name('add.post');
+    Route::get('/edit/{id}','PlacesController@getEdit')->name('edit.get');
+    Route::post('/edit/{id}','PlacesController@postEdit')->name('edit.post');
+    Route::get('/delete/{id}','PlacesController@getDelete')->name('delete.get');
+  });
+  Route::prefix('/bookings')->name('booking.')->group(function() {
+    Route::get('/','BookingController@getList')->name('list.get');
+    Route::get('/add','BookingController@getAdd')->name('add.get');
+    Route::post('/add','BookingController@postAdd')->name('add.post');
+    Route::get('/edit/{id}','BookingController@getEdit')->name('edit.get');
+    Route::post('/edit/{id}','BookingController@postEdit')->name('edit.post');
+    Route::get('/delete/{id}','BookingController@getDelete')->name('delete.get');
+  });
+
 });
 
-Route::group(['prefix' => 'companies'], function() {
-  Route::get('/','Member\CompanyController@getList')->name('company.list.get');
-  Route::get('add','Member\CompanyController@getAdd')->name('company.add.get');
-  Route::post('add','Member\CompanyController@postAdd')->name('company.add.post');
-  Route::get('edit/{id}','Member\CompanyController@getEdit')->name('company.edit.get');
-  Route::post('edit/{id}','Member\CompanyController@postEdit')->name('company.edit.post');
-	Route::get('delete/{id}','Member\CompanyController@getDelete')->name('delete.get');
+Route::prefix('/admin')->middleware('auth:member')->namespace('Admin')->name('admin.')->group(function() {
+  Route::prefix('/cities')->name('city.')->group(function() {
+    Route::get('/','CitiesController@getList')->name('list.get');
+    Route::get('/add','CitiesController@getAdd')->name('add.get');
+    Route::post('/add','CitiesController@postAdd')->name('add.post');
+    Route::get('/edit/{id}','CitiesController@getEdit')->name('edit.get');
+    Route::post('/edit/{id}','CitiesController@postEdit')->name('edit.post');
+    Route::get('/delete/{id}','CitiesController@getDelete')->name('delete.get');
+  });
+  Route::prefix('/districts')->name('district.')->group(function() {
+    Route::get('/','DistrictsController@getList')->name('list.get');
+    Route::get('/add','DistrictsController@getAdd')->name('add.get');
+    Route::post('/add','DistrictsController@postAdd')->name('add.post');
+    Route::get('/edit/{id}','DistrictsController@getEdit')->name('edit.get');
+    Route::post('/edit/{id}','DistrictsController@postEdit')->name('edit.post');
+    Route::get('/delete/{id}','DistrictsController@getDelete')->name('delete.get');
+  });
+  Route::prefix('/wards')->name('ward.')->group(function() {
+    Route::get('/','WardsController@getList')->name('list.get');
+    Route::get('/add','WardsController@getAdd')->name('add.get');
+    Route::post('/add','WardsController@postAdd')->name('add.post');
+    Route::get('/edit/{id}','WardsController@getEdit')->name('edit.get');
+    Route::post('/edit/{id}','WardsController@postEdit')->name('edit.post');
+    Route::get('/delete/{id}','WardsController@getDelete')->name('delete.get');
+  });
 });
 
-Route::group(['prefix' => 'cities'], function() {
-  Route::get('/','Member\CityController@getList')->name('city.list.get');
-  Route::get('add','Member\CityController@getAdd')->name('city.add.get');
-  Route::post('add','Member\CityController@postAdd')->name('city.add.post');
-  Route::get('edit/{id}','Member\CityController@getEdit')->name('city.edit.get');
-  Route::post('edit/{id}','Member\CityController@postEdit')->name('city.edit.post');
-	Route::get('delete/{id}','Member\CityController@getDelete');
-});
 
-Route::group(['prefix' => 'districts'], function() {
-  Route::get('/','Member\DistrictController@getList')->name('district.list.get');
-  Route::get('add','Member\DistrictController@getAdd')->name('district.add.get');
-  Route::post('add','Member\DistrictController@postAdd')->name('district.add.post');
-  Route::get('edit/{id}','Member\DistrictController@getEdit')->name('district.edit.get');
-  Route::post('edit/{id}','Member\DistrictController@postEdit')->name('district.edit.post');
-	Route::get('delete/{id}','Member\DistrictController@getDelete');
-});
 
-Route::group(['prefix' => 'wards'], function() {
-  Route::get('/','Member\WardController@getList')->name('ward.list.get');
-  Route::get('add','Member\WardController@getAdd')->name('ward.add.get');
-  Route::post('add','Member\WardController@postAdd')->name('ward.add.post');
-  Route::get('edit/{id}','Member\WardController@getEdit')->name('ward.edit.get');
-  Route::post('edit/{id}','Member\WardController@postEdit')->name('ward.edit.post');
-	Route::get('delete/{id}','Member\WardController@getDelete');
-});
 
-Route::group(['prefix' => 'places'], function() {
-  Route::get('/','Member\PlaceController@getList')->name('place.list.get');
-  Route::get('add','Member\PlaceController@getAdd')->name('place.add.get');
-  Route::post('add','Member\PlaceController@postAdd')->name('place.add.post');
-  Route::get('edit/{id}','Member\PlaceController@getEdit')->name('place.edit.get');
-  Route::post('edit/{id}','Member\PlaceController@postEdit')->name('place.edit.post');
-	Route::get('delete/{id}','Member\PlaceController@getDelete');
-});
 
-Route::group(['prefix' => 'bookings'], function() {
-  Route::get('/','Member\BookingController@getList')->name('booking.list.get');
-  Route::get('add','Member\BookingController@getAdd')->name('booking.add.get');
-  Route::post('add','Member\Bookingontroller@postAdd')->name('booking.add.post');
-  Route::get('edit/{id}','Member\BookingController@getEdit')->name('booking.edit.get');
-  Route::post('edit/{id}','Member\BookingController@postEdit')->name('booking.edit.post');
-  Route::get('delete/{id}','Member\BookingController@getDelete');
-});
 
 
 

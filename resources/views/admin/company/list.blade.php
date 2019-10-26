@@ -1,10 +1,10 @@
-@extends('client.master')
+@extends('admin.master')
 @section('main')
-<div id="page-wrapper">
+        <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Thành phố
+                        <h1 class="page-header">Công ty
                             <small>Danh sách</small>
                         </h1>
                     </div>
@@ -16,23 +16,25 @@
                         @endif
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
-
                             <tr align="center">
                                 <td><b>STT</td>
-                                <td><b>Tên thành phố</td>
+                                <td><b>Tên danh sách</td>
+                                
                                 <td><b>Xóa</td>
                                 <td><b>Cập nhật</td>
                             </tr>
                         </thead>
                         <tbody>
-                         @foreach($city as $ct)
+                 @foreach($company as $cp)
                             <tr class="odd gradeX" align="center">
-                                <td>{{$ct->id}}</td>
-                                <td>{{$ct->name}}</td>
+                               
+                             <td>{{$cp->id}}</td>
+                                <td>{{$cp->name}}</td>
+                                
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href=""> Xóa</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('city.edit.get', ['id'=>$ct->id])}}">Cập nhật</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="">Cập nhật</a></td>
                             </tr>
-                          @endforeach
+                           @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -40,4 +42,5 @@
             </div>
             <!-- /.container-fluid -->
         </div>
-        @endsection
+        <!-- /#page-wrapper -->
+@endsection

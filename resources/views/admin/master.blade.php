@@ -214,6 +214,75 @@
                 </li>
               </ul>
             </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-motorcycle"></i>
+                <p>
+                  Thành Phố
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('admin.city.list.get')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Danh sách</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('admin.city.add.get')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Thêm</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-motorcycle"></i>
+                <p>
+                  Quận Huyện
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('admin.district.list.get')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Danh sách</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('admin.district.add.get')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Thêm</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-motorcycle"></i>
+                <p>
+                  Phường Xã 
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('admin.ward.list.get')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Danh sách</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('admin.ward.add.get')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Thêm</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
           </ul>
         </nav>
         <!-- /.sidebar-menu -->

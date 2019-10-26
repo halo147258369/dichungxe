@@ -1,19 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Member;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\city;
-class CityController extends Controller
+class CitiesController extends Controller
 {
    public function getList() {
       	$city = city::all();
-    	return view('city.list',['city'=>$city]);
+    	return view('admin.city.list',['city'=>$city]);
     }
+    //  public function getList()
+    // {
+    //     $data['cities'] = $this->model->with('vehicle', 'from.city', 'to.city')->get();
+    //     return view($this->view_prefix.'list', $data);
+    // }
 
   public function getAdd() {
-    	return view('city.add');
+    	return view('admin.city.add');
     }
      public function postAdd(Request $request)
     {
@@ -31,12 +36,12 @@ class CityController extends Controller
         $city->name= $request->name;
         $city->save();
 
-        return redirect('city/add')->with('thongbao','Thêm thành công');
+        return redirect('admin.city/add')->with('thongbao','Thêm thành công');
     }
     public function getEdit($id)
     {
     	$city = city::find($id);
-        return view('city.edit',['city'=>$city]);
+        return view('admin.city.edit',['city'=>$city]);
 
 
     }
@@ -54,7 +59,7 @@ class CityController extends Controller
         $city->ten =$request->name;
         
       $city->save();
-        return redirect('city/edit/'.$id)->with('thongbao','Bạn đã cập nhật thành công');
+        return redirect('admin.city/edit/'.$id)->with('thongbao','Bạn đã cập nhật thành công');
     }
     public function getXoa($id)
     {

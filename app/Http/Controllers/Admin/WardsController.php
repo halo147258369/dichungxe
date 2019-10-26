@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Member;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\district;
 use App\Model\ward;
 use App\Model\city;
-class WardController extends Controller
+class WardsController extends Controller
 {
     
    public function getList() {
- 
-    return view('ward.list');
+    $data['wards']=ward::with('district', 'district.city')->get();
+    return view('admin.ward.list',$data);
     }
 
 
@@ -20,9 +20,9 @@ class WardController extends Controller
 
     public function getAdd()
     {
-	    	$district = district::all();
-	    	$city=city::all();
-        return view('ward.add',['district'=>$district,'city'=>$city]);
+	    	$districts = district::all();
+	    	$cities=city::all();
+        return view('admin.ward.add',['districts'=>$district,'cities'=>$city]);
     }
 
     public function postAdd(Request $request)
@@ -44,7 +44,7 @@ class WardController extends Controller
         $ward->name = $request->name;
         $ward->save();
 
-        return redirect('ward.add')->with('thongbao','Thêm thành công');
+        return redirect('admin.ward.add')->with('thongbao','Thêm thành công');
     }
     
 
@@ -52,7 +52,7 @@ class WardController extends Controller
     {
     	$district = district::all();
     	$ward = ward::find($id);
-        return view('ward.sua',['ward'=>$ward,'district'=>$district]);
+        return view('admin.ward.sua',['ward'=>$ward,'district'=>$district]);
     }
     public function postEdit(Request $request,$id)
     {

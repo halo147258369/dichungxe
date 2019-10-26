@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Member;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\company;
-class CompanyController extends Controller
+class CompaniesController extends Controller
 {
     public function getList() {
         $company = company::all();
@@ -59,8 +59,8 @@ class CompanyController extends Controller
     public function getXoa($id)
     {
         $company = company::find($id);
-        $company->delete();
-        return redirect('company')->with('thongbao','Bạn đã xóa thành công');
+         $company->delete();
+        return redirect('company/list')->with('thongbao','Bạn đã xóa thành công');
     }
     
 }

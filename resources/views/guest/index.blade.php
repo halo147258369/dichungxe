@@ -623,7 +623,7 @@
                                         	<div class=" main-info cruise-info">
                                                 <div class="main-title cruise-title">
                                                     <a href="{{route('member.trip.list.get')}}">{{$trip->title}}</a>
-                                                    <p>Từ {{$trip->from->city->name}} đến {{$trip->to->city->name}}}</p>
+                                                    <p>Từ {{$trip->from->city->name}} đến {{$trip->to->city->name}}</p>
                                                     <div class="rating">
                                                         <span><i class="fa fa-star orange"></i></span>
                                                         <span><i class="fa fa-star orange"></i></span>

@@ -1,5 +1,5 @@
    
-@extends('client.master')
+@extends('admin.master')
 @section('main')
    <div id="page-wrapper">
             <div class="container-fluid">
