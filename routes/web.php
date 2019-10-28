@@ -102,6 +102,14 @@ Route::prefix('/admin')->middleware('auth:member')->namespace('Admin')->name('ad
     Route::post('/edit/{id}','WardsController@postEdit')->name('edit.post');
     Route::get('/delete/{id}','WardsController@getDelete')->name('delete.get');
   });
+  Route::prefix('/busroutes')->name('busroute.')->group(function() {
+    Route::get('/','BusroutesController@getList')->name('list.get');
+    Route::get('/add','BusroutesController@getAdd')->name('add.get');
+    Route::post('/add','BusroutesController@postAdd')->name('add.post');
+    Route::get('/edit/{id}','BusroutesController@getEdit')->name('edit.get');
+    Route::post('/edit/{id}','BusroutesController@postEdit')->name('edit.post');
+    Route::get('/delete/{id}','BusroutesController@getDelete')->name('delete.get');
+  });
 });
 
 

@@ -7,67 +7,54 @@ use App\Http\Controllers\Controller;
 use App\Model\city;
 class CitiesController extends Controller
 {
-   public function getList() {
-      	$city = city::all();
-    	return view('admin.city.list',['city'=>$city]);
-    }
-    //  public function getList()
-    // {
-    //     $data['cities'] = $this->model->with('vehicle', 'from.city', 'to.city')->get();
-    //     return view($this->view_prefix.'list', $data);
-    // }
-
-  public function getAdd() {
-    	return view('admin.city.add');
-    }
-     public function postAdd(Request $request)
+   protected $model;
+    protected $view_prefix;
+    public function __construct(City $model)
     {
+        $this->model = $model;
+        $this->view_prefix = 'admin.city.';
         
-        
-        $this->validate($request,
-            [
-               
-            ],
-            [
-                
-                
-            ]);
-        $city = new city;
-        $city->name= $request->name;
-        $city->save();
-
-        return redirect('admin.city/add')->with('thongbao','Thêm thành công');
     }
+   
+    public function getList()
+    {
+        $data['cities'] = $this->model->all();
+        return view($this->view_prefix.'list', $data);
+    }
+
+    public function getAdd()
+    {
+     
+        return view($this->view_prefix.'add');
+    }
+
+    public function postAdd(Request $req)
+    {
+        $data = $req->only($this->model->fillable);//only lọc 
+        $city = $this->model->insert($data);
+        return redirect()->route('admin.city.list.get')->with('status', 'Thêm phương tiện thành công!');
+    }
+
     public function getEdit($id)
     {
-    	$city = city::find($id);
-        return view('admin.city.edit',['city'=>$city]);
-
-
-    }
-    public function postEdit(Request $request,$id)
-    {
-        $city =city::find($id);
-        $this->validate($request,
-            [
-                'name' => 'required|unique:thanh pho,name'
-            ],
-            [
-                'name.required'=>'Bạn chưa nhập tên thể loại',
-                'name.required'=>'Tên Thành phố đã tồn tại',
-            ]);
-        $city->ten =$request->name;
+        $data['city'] = $this->model->findOrFail($id);
         
-      $city->save();
-        return redirect('admin.city/edit/'.$id)->with('thongbao','Bạn đã cập nhật thành công');
+        return view($this->view_prefix.'edit',$data);
     }
-    public function getXoa($id)
+
+    public function postEdit($id, Request $req)
     {
-        $city = city::find($id);
-        $city->delete();
-        return redirect('city/list')->with('thongbao','Bạn đã xóa thành công');
+        $city = $this->model->findOrFail($id);
+        $data = $req->only($this->model->fillable);
+        $city->update($data);
+        return redirect()->route('admin.city.list.get')->with('status', 'Lưu thay đỔi thành công!');
     }
-    
 
-
+    public function getDelete($id)
+    {
+        $city = $this->model->findOrFail($id);
+        $city->destroy();
+        return redirect()->route('admin.city.list.get')->with('status', 'Xoá thành công!');
+    }
 }
+

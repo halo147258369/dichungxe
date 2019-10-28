@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">Công ty
-                            <small>{{$congty->ten}}</small>
+                            <small>{{$company->name}}</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -27,7 +27,7 @@
                                 {{session('loi')}}
                             </div>
                         @endif
-                        <form action="company/edit/{{$company->id}}" method="POST">
+                        <form action="{{route('member.company.edit.post',['id' => $company->id])}}" method="POST">
                             <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                             <div class="form-group">
                                 <label>Tên công ty</label>

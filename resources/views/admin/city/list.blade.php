@@ -25,7 +25,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                         @foreach($city as $ct)
+                         @foreach($cities as $ct)
                             <tr class="odd gradeX" align="center">
                                 <td>{{$ct->id}}</td>
                                 <td>{{$ct->name}}</td>

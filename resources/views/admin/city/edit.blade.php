@@ -28,11 +28,11 @@
                                 {{session('loi')}}
                             </div>
                         @endif
-                        <form action="{{route('city.edit.post')}}/{{$city->id}}" method="POST">
+                        <form action="{{route('admin.city.edit.post',['id' => $city->id])}}" method="POST">
                             <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                             <div class="form-group">
-                                <label>Tên công ty</label>
-                                <input class="form-control" name="name" placeholder="Nhập tên thành phố" value ="{{$thanhpho->ten}}" />
+                                <label>Tên Thành Phố</label>
+                                <input class="form-control" name="name" placeholder="Nhập tên thành phố" value ="{{$city->name}}" />
                             </div>
                            <a class="btn btn-sm btn-info " href="{{ URL::to('city.list') }}"> <i class="glyphicon glyphicon-circle-arrow-left"></i> Quay lại</a>
                             

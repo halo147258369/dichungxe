@@ -7,60 +7,54 @@ use App\Http\Controllers\Controller;
 use App\Model\company;
 class CompaniesController extends Controller
 {
-    public function getList() {
-        $company = company::all();
-    	return view('company.list',['company'=>$company]);
-    }
-
-
-    public function getAdd() {
-    	return view('company.add');
-    }
-     public function postAdd(Request $request)
+    protected $model;
+    protected $view_prefix;
+    public function __construct(Company $model)
     {
+        $this->model = $model;
+        $this->view_prefix = 'admin.company.';
         
-        
-        $this->validate($request,
-            [
-               
-            ],
-            [
-                
-            ]);
-        $company = new company;
-        $company->name= $request->name;
-        $company->save();
-
-        return redirect('company.add')->with('thongbao','Thêm thành công');
     }
+   
+    public function getList()
+    {
+        $data['companies'] = $this->model->all();
+        return view($this->view_prefix.'list', $data);
+    }
+
+    public function getAdd()
+    {
+     
+        return view($this->view_prefix.'add');
+    }
+
+    public function postAdd(Request $req)
+    {
+        $data = $req->only($this->model->fillable);//only lọc 
+        $company = $this->model->insert($data);
+        return redirect()->route('member.company.list.get')->with('status', 'Thêm Công ty thành công!');
+    }
+
     public function getEdit($id)
     {
-    	$company = company::find($id);
-        return view('company.edit',['company'=>$company]);
-
-
-    }
-    public function postEdit(Request $request,$id)
-    {
-        $company =company::find($id);
-        $this->validate($request,
-            [
-                'name' => 'required|unique:congty,ten'
-            ],
-            [
-                'name.required'=>'Bạn chưa nhập tên thể loại',
-                'name.required'=>'Tên Công ty đã tồn tại',
-            ]);
-        $company->ten =$request->name;
+        $data['company'] = $this->model->findOrFail($id);
         
-      $company->save();
-        return redirect('company/edit/'.$id)->with('thongbao','Bạn đã cập nhật thành công');
+        return view($this->view_prefix.'edit',$data);
     }
-    public function getXoa($id)
+
+    public function postEdit($id, Request $req)
     {
-        $company = company::find($id);
-         $company->delete();
-        return redirect('company/list')->with('thongbao','Bạn đã xóa thành công');
+        $company = $this->model->findOrFail($id);
+        $data = $req->only($this->model->fillable);
+        $company->update($data);
+        return redirect()->route('member.company.list.get')->with('status', 'Lưu thay đỔi thành công!');
+    }
+
+    public function getDelete($id)
+    {
+        $company = $this->model->findOrFail($id);
+        $company->destroy();
+        return redirect()->route('member.company.list.get')->with('status', 'Xoá thành công!');
     }
     
 }
