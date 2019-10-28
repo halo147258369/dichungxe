@@ -1,10 +1,10 @@
- @extends('client.master')
-@section('main')
- <div id="page-wrapper">
+  @extends('admin.master')
+    @section('main')
+<div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Quận huyện
+                        <h1 class="page-header">Phường
                             <small>Thêm</small>
                         </h1>
                     </div>
@@ -27,20 +27,28 @@
                                 {{session('loi')}}
                             </div>
                         @endif
-                        <form action="{{route('district.add.post')}}" method="POST" enctype="multipart/form-data" id="myform">
+                        <form action="{{route('ward.add.post')}}" method="POST" enctype="multipart/form-data" id="myform">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
-                            
+            
                             <div class="form-group">
-                                <label>Thành phố</label>
+                                <label>Thành Phố</label>
                                 <select class="form-control" name="cities">
-                                     @foreach($city as $ct)
-                                    <option value="{{$ct->id}}">{{$ct->name}}</option>
-                                  @endforeach
+                                   
+                                    <option value=""></option>
+                                 
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Quận Huyện</label>
+                                <select class="form-control" name="district">
+                                   
+                                    <option value=""></option>
+                                 
                                 </select>
                             </div>
                             <div class="form-group form-group-sm">
-                                <label>Tên quận huyện <span class="error">(*) </span></label>
-                                <input class="form-control" name="ten" placeholder="Nhập tên quận huyện" />
+                                <label>Tên phường <span class="error">(*) </span></label>
+                                <input class="form-control" name="name" placeholder="Nhập tên phường" />
                             </div>
                             
                            <!--  <div class="form-group form-group-sm">
@@ -58,4 +66,5 @@
             </div>
             <!-- /.container-fluid -->
         </div>
-         @endsection
+
+@endsection

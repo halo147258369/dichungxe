@@ -1,4 +1,4 @@
-@extends('client.master')
+@extends('admin.master')
 @section('main')
 <div id="page-wrapper">
             <div class="container-fluid">
@@ -25,12 +25,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                         @foreach($city as $ct)
+                         @foreach($cities as $ct)
                             <tr class="odd gradeX" align="center">
                                 <td>{{$ct->id}}</td>
                                 <td>{{$ct->name}}</td>
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href=""> Xóa</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('city.edit.get', ['id'=>$ct->id])}}">Cập nhật</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.city.edit.get', ['id'=>$ct->id])}}">Cập nhật</a></td>
                             </tr>
                           @endforeach
                         </tbody>

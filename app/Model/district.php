@@ -7,13 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class District extends Model
 {
     //
+    protected $table = 'districts';
+    protected $primaryKey = 'id';
+    protected $fillable = [
+        'id','city_id','name'
+        
+    ];
     public function city()
     {
-        return $this->belongsto('App\Model\City');
+        return $this->belongsTo('App\Model\City');
     }
 
     public function wards()
     {
-        return $this->hasmany('App\Model\Ward');
+        return $this->hasMany('App\Model\Ward');
     }
 }

@@ -10,7 +10,7 @@ class BookingController extends Controller
 {
    public function getList() {
       	$booking = booking::all();
-    	return view('booking.list',['booking'=>$booking]);
+    	return view('member.booking.list',['booking'=>$booking]);
     }
 
   public function getAdd() {

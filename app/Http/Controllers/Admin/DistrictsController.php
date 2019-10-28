@@ -1,16 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Member;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\district;
 use App\Model\city;
-class DistrictController extends Controller
+class DistrictsController extends Controller
 {
     
    public function getList() {
-    	return view('district.list');
+   // $data['districts'] = district::all();
+   //  $data['cities']=city::all();
+    $data['districts']=district::with('city')->get();
+    	return view('admin.district.list',$data);
     }
 
     public function getAdd() {

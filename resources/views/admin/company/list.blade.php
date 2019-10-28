@@ -1,10 +1,10 @@
-@extends('client.master')
+@extends('admin.master')
 @section('main')
-<div id="page-wrapper">
+        <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Quận huyện
+                        <h1 class="page-header">Công ty
                             <small>Danh sách</small>
                         </h1>
                     </div>
@@ -18,25 +18,23 @@
                         <thead>
                             <tr align="center">
                                 <td><b>STT</td>
-                                <td><b>Tên thành phố</td>
-                                <td><b>Tên quận huyện</td>
+                                <td><b>Tên danh sách</td>
                                 
                                 <td><b>Xóa</td>
                                 <td><b>Cập nhật</td>
                             </tr>
                         </thead>
                         <tbody>
-                 
+                 @foreach($companies as $cp)
                             <tr class="odd gradeX" align="center">
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                               
+                             <td>{{$cp->id}}</td>
+                                <td>{{$cp->name}}</td>
                                 
-                                
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href=""> Xóa</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="">Cập nhật</a></td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{{route('member.company.delete.get', ['id'=>$cp->id])}}"> Xóa</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('member.company.edit.get', ['id'=>$cp->id])}}">Cập nhật</a></td>
                             </tr>
-                         
+                           @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -44,4 +42,5 @@
             </div>
             <!-- /.container-fluid -->
         </div>
-        @endsection
+        <!-- /#page-wrapper -->
+@endsection

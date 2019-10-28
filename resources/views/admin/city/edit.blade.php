@@ -1,11 +1,12 @@
-@extends('client.master')
+   
+@extends('admin.master')
 @section('main')
-  <div id="page-wrapper">
+   <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Quận huyện
-                            <small>{{$quanhuyen->ten}}</small>
+                        <h1 class="page-header">Thành phố
+                            <small>{{$city->name}}</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -27,22 +28,13 @@
                                 {{session('loi')}}
                             </div>
                         @endif
-                        <form action="{{route('district.edit.post')}}" method="POST">
+                        <form action="{{route('admin.city.edit.post',['id' => $city->id])}}" method="POST">
                             <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                             <div class="form-group">
-                                <label>Thành phố</label>
-                                <select class="form-control" name="city">
-                                  
-                                    <option >
-                                    </option>
-                                    
-                                </select>
+                                <label>Tên Thành Phố</label>
+                                <input class="form-control" name="name" placeholder="Nhập tên thành phố" value ="{{$city->name}}" />
                             </div>
-                            <div class="form-group">
-                                <label>Tên quận huyện</label>
-                                <input class="form-control" name="name" placeholder="Nhập tên quận huyện" value ="" />
-                            </div>
-                           <a class="btn btn-sm btn-info " href="{{ URL::to('') }}"> <i class="glyphicon glyphicon-circle-arrow-left"></i> Quay lại</a>
+                           <a class="btn btn-sm btn-info " href="{{ URL::to('city.list') }}"> <i class="glyphicon glyphicon-circle-arrow-left"></i> Quay lại</a>
                             
                             <button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-floppy-save"></span>Cập nhật </button>
                         <form>
@@ -52,4 +44,6 @@
             </div>
             <!-- /.container-fluid -->
         </div>
-        @endsection
+        <!-- /#page-wrapper -->
+
+ @endsection      

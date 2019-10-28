@@ -1,11 +1,11 @@
-@extends('client.master')
-@section('main')
-<div id="page-wrapper">
+  @extends('admin.master')
+    @section('main')
+  <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Phường
-                            <small>{{$phuong->ten}}</small>
+                        <h1 class="page-header">Quận huyện
+                            <small>{{$quanhuyen->ten}}</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -27,20 +27,20 @@
                                 {{session('loi')}}
                             </div>
                         @endif
-                        <form action="" method="POST">
+                        <form action="{{route('district.edit.post')}}" method="POST">
                             <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                             <div class="form-group">
-                                <label>Quận huyện</label>
-                                <select class="form-control" name="district">
-                                    
+                                <label>Thành phố</label>
+                                <select class="form-control" name="city">
+                                  
                                     <option >
                                     </option>
-                                  
+                                    
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Tên phường</label>
-                                <input class="form-control" name="name" placeholder="Nhập tên phường" value ="" />
+                                <label>Tên quận huyện</label>
+                                <input class="form-control" name="name" placeholder="Nhập tên quận huyện" value ="" />
                             </div>
                            <a class="btn btn-sm btn-info " href="{{ URL::to('') }}"> <i class="glyphicon glyphicon-circle-arrow-left"></i> Quay lại</a>
                             
@@ -52,4 +52,4 @@
             </div>
             <!-- /.container-fluid -->
         </div>
-@endsection
+        @endsection

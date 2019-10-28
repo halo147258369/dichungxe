@@ -1,12 +1,11 @@
-   
-@extends('client.master')
+@extends('admin.master')
 @section('main')
-   <div id="page-wrapper">
+<div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Thành phố
-                            <small>{{$city->name}}</small>
+                        <h1 class="page-header">Công ty
+                            <small>{{$company->name}}</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -28,13 +27,13 @@
                                 {{session('loi')}}
                             </div>
                         @endif
-                        <form action="{{route('city.edit.post')}}/{{$city->id}}" method="POST">
+                        <form action="{{route('member.company.edit.post',['id' => $company->id])}}" method="POST">
                             <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                             <div class="form-group">
                                 <label>Tên công ty</label>
-                                <input class="form-control" name="name" placeholder="Nhập tên thành phố" value ="{{$thanhpho->ten}}" />
+                                <input class="form-control" name="ten" placeholder="Nhập tên công ty" value ="{{$company->name}}" />
                             </div>
-                           <a class="btn btn-sm btn-info " href="{{ URL::to('city.list') }}"> <i class="glyphicon glyphicon-circle-arrow-left"></i> Quay lại</a>
+                           <a class="btn btn-sm btn-info " href="{{ URL::to('company/list') }}"> <i class="glyphicon glyphicon-circle-arrow-left"></i> Quay lại</a>
                             
                             <button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-floppy-save"></span>Cập nhật </button>
                         <form>
@@ -44,6 +43,4 @@
             </div>
             <!-- /.container-fluid -->
         </div>
-        <!-- /#page-wrapper -->
-
- @endsection      
+        @endsection

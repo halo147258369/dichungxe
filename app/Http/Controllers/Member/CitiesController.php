@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Member;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\city;
-class CityController extends Controller
+class CitiesController extends Controller
 {
    public function getList() {
       	$city = city::all();
-    	return view('city.list',['city'=>$city]);
+    	return view('admin.city.list',['city'=>$city]);
     }
 
   public function getAdd() {

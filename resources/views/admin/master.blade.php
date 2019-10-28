@@ -147,9 +147,9 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="/" class="brand-link">
+      <a href="../../index3.html" class="brand-link">
         <img src="{{asset('dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">DiChungXe</span>
+        <span class="brand-text font-weight-light">AdminLTE 3</span>
       </a>
 
       <!-- Sidebar -->
@@ -208,6 +208,75 @@
                 </li>
                 <li class="nav-item">
                   <a href="{{route('member.trip.add.get')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Thêm</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-motorcycle"></i>
+                <p>
+                  Thành Phố
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('admin.city.list.get')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Danh sách</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('admin.city.add.get')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Thêm</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-motorcycle"></i>
+                <p>
+                  Quận Huyện
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('admin.district.list.get')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Danh sách</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('admin.district.add.get')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Thêm</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-motorcycle"></i>
+                <p>
+                  Phường Xã 
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('admin.ward.list.get')}}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Danh sách</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{route('admin.ward.add.get')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Thêm</p>
                   </a>

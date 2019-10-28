@@ -1,5 +1,5 @@
- @extends('client.master')
-@section('main')
+    @extends('admin.master')
+    @section('main')
  <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
@@ -26,17 +26,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                           
+                            @foreach($wards as $ward)
+
                             <tr class="odd gradeX" align="center">
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                 <td></td>
+                                <td>{{$ward->district->city->name}}</td>
+                                <td>{{$ward->district->name}}</td>
+                               <td>{{$ward->name}}</td>
                                 
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href=""> Xóa</a></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="">Cập nhật</a></td>
                             </tr>
-                           
+                          @endforeach
                         </tbody>
                     </table>
                 </div>
