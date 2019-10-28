@@ -24,20 +24,8 @@ class Ward extends Model
         return $this->belongsTo('App\Model\city');
     }
 
-    // public function chuyendi()
-    // {
-    //     return $this->belongsto('App\chuyendi','idDiemDi','id');
-        
-    // }
-
-    //  public function chuyendi()
-    // {
-    //     return $this->belongsto('App\chuyendi','idDiemDen','id');
-        
-    // }
-
-     public function places()
-{
-    return $this->hasmany('App\Model\place');
-}
+    public function places()
+    {
+        return $this->hasMany('App\Model\Place');
+    }
 }

@@ -6,23 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Place extends Model
 {
-    //
-
     public function ward()
     {
-        return $this->belongsto('App\Model\ward');
+        return $this->belongsTo('App\Model\ward');
     }
 
     public function district()
     {
-        return $this->belongsto('App\Model\district');
+        return $this->belongsTo('App\Model\district');
     }
 
     public function city()
     {
-        return $this->belongsto('App\Model\city');
+        return $this->belongsTo('App\Model\city');
     }
-
 
     public function trips_from()
     {
