@@ -12,6 +12,13 @@ class BookingController extends Controller
       	$booking = booking::all();
     	return view('member.booking.list',['booking'=>$booking]);
     }
+    public function getBooking($id)
+    {
+           $data['booking']=booking::find($id);
+           
+        return view('member.booking.detail',$data );
+    }
+
 
   public function getAdd() {
     	return view('booking.add');

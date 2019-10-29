@@ -1,4 +1,7 @@
-@extends('client.master')
+@extends('member.master')
+@section('title')
+Danh sách chuyến đi
+@endsection
 @section('main')
 <div id="page-wrapper">
             <div class="container-fluid">
@@ -23,8 +26,8 @@
                                 <td><b>Số điện Thoại</td>
                                 <td><b>Sỗ chỗ đặt</td>
                             
-                                <td><b></td>
-                                <td><b><a href="{{route('book..', ['book_id' => $book->id])}}">Duyệt</a></td>
+                                <td><b>Xóa</td>
+                                <td><b><a href="">Duyệt</a></td>
                             </tr>
                         </thead>
                         <tbody>

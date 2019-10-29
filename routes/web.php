@@ -13,6 +13,7 @@
 
 Route::get('/', 'Guest\IndexController@getIndex')->name('guest.index.view.post');
 Route::post('search','Guest\SearchController@postSearch')->name('guest.index.search.post');
+Route::get('detail/{id}', 'Guest\TripsController@getView')->name('guest.trip.view.get');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -47,6 +48,7 @@ Route::prefix('/member')->middleware('auth:member')->namespace('Member')->name('
     Route::get('/edit/{id}','TripsController@getEdit')->name('edit.get');
     Route::post('/edit/{id}','TripsController@postEdit')->name('edit.post');
     Route::get('/delete/{id}','TripsController@getDelete')->name('delete.get');
+
   });
 
   Route::prefix('/companies')->name('company.')->group(function() {

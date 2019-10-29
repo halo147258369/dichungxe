@@ -577,7 +577,7 @@
                                 <div class="row">
                                     <div class="col-sm-12 col-md-6 col-md-push-6 no-pd-l">
                                         <div class="main-img cruise-img">
-                                            <a href="#">
+                                            <a href="member.trip.view">
                                                 <img src="https://i.imgur.com/LWcVi9q.jpg" class="img-responsive" alt="cruise-img" />
                                                 <div class="cruise-mask">
                                                     <p>7 Nights, 6 Days</p>
@@ -589,7 +589,7 @@
                                     <div class="col-sm-12 col-md-6 col-md-pull-6 no-pd-r">
                                         <div class=" main-info cruise-info">
                                             <div class="main-title cruise-title">
-                                                <a href="{{route('member.trip.list.get')}}">{{$trip->title}}</a>
+                                                <a href="{{route('guest.trip.view.get', ['id' => $trip->id])}}">{{$trip->title}}</a>
                                                 <p>Từ {{$trip->from->city->name}} đến {{$trip->to->city->name}}</p>
                                                 <div class="rating">
                                                     <span><i class="fa fa-star orange"></i></span>
