@@ -18,7 +18,7 @@ class BookingController extends Controller
     public function getList()
     {
         $data['bookings'] = $this->model->orderBy('verify')->get();
-        return view('admin.book.list.get', $data);
+        return view('admin.booking.list', $data);
     }
 
     public function getVerify($id)
