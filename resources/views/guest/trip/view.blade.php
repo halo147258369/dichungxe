@@ -126,12 +126,6 @@
                         <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Huong Dan<span><i class="fa fa-angle-down"></i></span></a>
                             <ul class="dropdown-menu">
                                 <li class="active"><a href="#">Main Homepage</a></li>
-                                <!-- <li><a href="flight-homepage.html">Flight Homepage</a></li>
-                                <li><a href="hotel-homepage.html">Hotel Homepage</a></li>
-                                <li><a href="tour-homepage.html">Tour Homepage</a></li>
-                                <li><a href="cruise-homepage.html">Cruise Homepage</a></li>
-                                <li><a href="car-homepage.html">Car Homepage</a></li>
-                                <li><a href="landing-page.html">Landing Page</a></li> -->
                             </ul>           
                         </li>
                        
@@ -146,57 +140,6 @@
                                 <li><a href="car-detail-right-sidebar.html">Detail Right Sidebar</a></li>
                             </ul>           
                         </li>
-                       <!--  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages<span><i class="fa fa-angle-down"></i></span></a>
-                            <ul class="dropdown-menu mega-dropdown-menu row">
-                                <li>
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <ul class="list-unstyled">
-                                                <li class="dropdown-header">Standard <span>Pages</span></li> -->
-                                                <!-- <li><a href="about-us.html">About Us</a></li>
-                                                <li><a href="contact-us.html">Contact Us</a></li>
-                                                <li><a href="blog-listing-left-sidebar.html">Blog Listing Left Sidebar</a></li>
-                                                <li><a href="blog-listing-right-sidebar.html">Blog Listing Right Sidebar</a></li>
-                                                <li><a href="blog-detail-left-sidebar.html">Blog Detail Left Sidebar</a></li>
-                                                <li><a href="blog-detail-right-sidebar.html">Blog Detail Right Sidebar</a></li>
-                                            </ul>
-                                        </div>
-                                        
-                                        <div class="col-md-3">
-                                            <ul class="list-unstyled">  
-                                                <li class="dropdown-header">User <span>Dashboard</span></li>
-                                                <li><a href="dashboard.html">Dashboard</a></li>
-                                                <li><a href="user-profile.html">User Profile</a></li>
-                                                <li><a href="booking.html">Booking</a></li>
-                                                <li><a href="wishlist.html">Wishlist</a></li>
-                                                <li><a href="cards.html">Cards</a></li>
-                                            </ul>
-                                        </div>
-                                        
-                                        <div class="col-md-3">
-                                            <ul class="list-unstyled">
-                                                <li class="dropdown-header">Special <span>Pages</span></li>
-                                                <li><a href="login.html">Login</a></li>
-                                                <li><a href="registration.html">Registration</a></li>
-                                                <li><a href="forgot-password.html">Forgot Password</a></li>
-                                                <li><a href="error-page.html">404 Page</a></li>
-                                                <li><a href="coming-soon.html">Coming Soon</a></li>   
-                                            </ul>
-                                        </div>
-                                        
-                                        <div class="col-md-3">
-                                            <ul class="list-unstyled">
-                                                <li class="dropdown-header">Extra <span>Pages</span></li>
-                                                <li><a href="before-you-fly.html">Before Fly</a></li>
-                                                <li><a href="travel-insurance.html">Travel Insurance</a></li>
-                                                <li><a href="holidays.html">Holidays</a></li>
-                                                <li><a href="thank-you.html">Thank You</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>           
-                        </li> -->
                         <li><a href="javascript:void(0)" class="search-button"><span><i class="fa fa-search"></i></span></a></li>
                     </ul>
                 </div><!-- end navbar collapse -->
@@ -337,84 +280,19 @@
                         <div class="col-xs-12 col-sm-12 col-md-3 side-bar left-side-bar">
                             
                             <div class="side-bar-block booking-form-block">
-                            	<h2 class="selected-price">giá tiền <span>tên xe</span></h2>
+                            	<h2 class="selected-price">ĐẶT XE</h2>
                             
                             	<div class="booking-form">
-                                	<p><h4>Đặt chuyến đi</h4></p>
-                                    <p>đồng hành cùng nhau</p>
-                                    
-                                    <form action="" method="POST" enctype="multipart/form-data" id="myform">
-                                        <input type="hidden" name="trip_id" value="" />
-
+                                    Bạn đã đăng nhập với tên {{ Auth::guard('member')->user()->name }}
+                                    <form action="{{route('member.booking.add.post')}}" method="POST" enctype="multipart/form-data" id="myform">
+                                        <input type="hidden" name="trip_id" value="{{$trip->id}}" />
+                                        <input type="hidden" name="user_id" value="{{Auth::guard('member')->user()->id}}" />
                                         <input type="hidden" name="_token" value="{{csrf_token()}}" />
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="name"placeholder="ten" >
-                                        </div>
-                                        
-                                        
-                                    	<!-- <div class="form-group">
-                                    		<input type="text" class="form-control" name="ten"placeholder="tên" >
-                                        </div> -->
-                                        
-                                        <div class="form-group">
-                                    		<input type="text" class="form-control"name="phone" placeholder="số điện thoại" >
-                                        </div>
-                                        
-                                       <div class="form-group">
-                                    		<input type="text" class="form-control" name= "address"placeholder="Địa Chỉ">
-                                        </div>
-                                        
-                                        <!-- <div class="form-group">
-                                    		<input type="text" class="form-control" placeholder="số điện thoại" required/>
-                                        </div> -->
-                                        
-                                        <!-- <div class="form-group">
-                                    		<input type="text" class="form-control" placeholder="Country" required/>
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                    		<input type="text" class="form-control dpd1" placeholder="Pick-Up Date" required/>                                       		<i class="fa fa-calendar"></i>
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                    		<input type="text" class="form-control dpd2" placeholder="Drop-Off Date" required/>                                       		<i class="fa fa-calendar"></i>
+                                            <input type="text" class="form-control" name="seat" placeholder="Số chỗ" >
                                         </div>
 
-                                        <div class="form-group right-icon">
-                                            <select class="form-control">
-                                                <option selected>Drop-Off Hour</option>
-                                                <option>24 hrs</option>
-                                                <option>35 hrs</option>
-                                                <option>48 hrs</option>
-                                            </select>
-                                            <i class="fa fa-angle-down"></i>
-                                        </div>
-
-                                        <div class="form-group right-icon">
-                                            <select class="form-control">
-                                                <option selected>Drop-Off Mins</option>
-                                                <option>60 min</option>
-                                                <option>45 min</option>
-                                                <option>30 min</option>
-                                            </select> -->
-                                          <!--   <i class="fa fa-angle-down"></i>
-                                        </div>
-
-                                        <div class="form-group right-icon">
-                                            <select class="form-control">
-                                                <option selected>Payment Method</option>
-                                                <option>Credit Card</option>
-                                                <option>Paypal</option>
-                                            </select>
-                                            <i class="fa fa-angle-down"></i>
-                                        </div> -->
-                                        
-                                        <!-- <div class="checkbox custom-check">
-                                        	<input type="checkbox" id="check01" name="checkbox"/>
-                                            <label for="check01"><span><i class="fa fa-check"></i></span>By continuing, you are agree to the <a href="#">Terms & Conditions.</a></label>
-                                        </div>
-                                         -->
-                                        <button class="btn btn-block btn-orange">Đặt</button>
+                                        <button class="btn btn-block btn-orange">Đặt xe</button>
                                     </form>
 
                                 </div><!-- end booking-form -->
@@ -480,8 +358,6 @@
                             <div class="detail-tabs">
                             	<ul class="nav nav-tabs nav-justified">
                                     <li class="active"><a href="#car-information" data-toggle="tab">Thông tin về xe</a></li>
-                                    <!-- <li><a href="#cr-features" data-toggle="tab">Features</a></li>
-                                    <li><a href="#rental-info" data-toggle="tab">Rental Info</a></li> -->
                                 </ul>
                             	
                                 <div class="tab-content">

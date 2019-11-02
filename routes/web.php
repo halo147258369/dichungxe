@@ -68,6 +68,7 @@ Route::prefix('/member')->middleware('auth:member')->namespace('Member')->name('
     Route::post('/edit/{id}','PlacesController@postEdit')->name('edit.post');
     Route::get('/delete/{id}','PlacesController@getDelete')->name('delete.get');
   });
+
   Route::prefix('/bookings')->name('booking.')->group(function() {
     Route::get('/','BookingController@getList')->name('list.get');
     Route::get('/add','BookingController@getAdd')->name('add.get');
@@ -111,6 +112,16 @@ Route::prefix('/admin')->middleware('auth:member')->namespace('Admin')->name('ad
     Route::get('/edit/{id}','BusroutesController@getEdit')->name('edit.get');
     Route::post('/edit/{id}','BusroutesController@postEdit')->name('edit.post');
     Route::get('/delete/{id}','BusroutesController@getDelete')->name('delete.get');
+  });
+  
+  Route::prefix('/bookings')->name('booking.')->group(function() {
+    Route::get('/','BookingController@getList')->name('list.get');
+    Route::get('/add','BookingController@getAdd')->name('add.get');
+    Route::post('/add','BookingController@postAdd')->name('add.post');
+    Route::get('/verify/{id}','BookingController@getVerify')->name('verify.get');
+    Route::get('/edit/{id}','BookingController@getEdit')->name('edit.get');
+    Route::post('/edit/{id}','BookingController@postEdit')->name('edit.post');
+    Route::get('/delete/{id}','BookingController@getDelete')->name('delete.get');
   });
 });
 

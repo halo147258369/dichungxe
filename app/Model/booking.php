@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model
 {
-    //
+    public $fillable = ['user_id', 'trip_id', 'seat', 'verify'];
+
     public function trip()
     {
     	//

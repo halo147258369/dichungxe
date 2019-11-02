@@ -8,46 +8,42 @@ use App\Model\city;
 use App\Model\booking;
 class BookingController extends Controller
 {
-   public function getList() {
-      	$booking = booking::all();
-    	return view('member.booking.list',['booking'=>$booking]);
+    protected $model;
+
+    public function __construct(booking $model)
+    {
+        $this->model = $model;
     }
+
+    public function getList() {
+      	$data['booking'] = $this->model->all();
+    	return view('member.booking.list', $data);
+    }
+
     public function getBooking($id)
     {
-           $data['booking']=booking::find($id);
-           
+        $data['booking']= $this->model->find($id);
         return view('member.booking.detail',$data );
     }
 
 
-  public function getAdd() {
+    public function getAdd() {
     	return view('booking.add');
     }
-     public function postAdd(Request $request)
-    {
-        
-        
-        $this->validate($request,
-            [
-               
-            ],
-            [
-                
-                
-            ]);
-        $city = new city;
-        $city->name= $request->name;
-        $city->save();
 
-        return redirect('city/add')->with('thongbao','Thêm thành công');
+    public function postAdd(Request $request)
+    {
+        $data = $request->only($this->model->fillable);
+        $book = $this->model->create($data);
+        return $book;
     }
+
     public function getEdit($id)
     {
     	$city = city::find($id);
         return view('city.edit',['city'=>$city]);
-
-
     }
+
     public function postEdit(Request $request,$id)
     {
         $city =city::find($id);
@@ -64,7 +60,8 @@ class BookingController extends Controller
       $city->save();
         return redirect('city/edit/'.$id)->with('thongbao','Bạn đã cập nhật thành công');
     }
-    public function getXoa($id)
+
+    public function getDelete($id)
     {
         $city = city::find($id);
         $city->delete();
