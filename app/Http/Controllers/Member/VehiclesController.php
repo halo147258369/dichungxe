@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Vehicle;
 use App\Model\Vehicle_type;
+use Auth;
 
 class VehiclesController extends Controller
 {
@@ -21,7 +22,7 @@ class VehiclesController extends Controller
    
     public function getList()
     {
-        $data['vehicles'] = $this->model->all();
+        $data['vehicles'] = $this->model->where('member_id', Auth::guard('member')->user()->id)->paginate(10);
         return view($this->view_prefix.'list', $data);
     }
 

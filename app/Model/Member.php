@@ -17,4 +17,14 @@ class Member extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function vehicles()
+    {
+        $this->hasMany('App\Model\Vehicle');
+    }
+
+    public function bookings()
+    {
+        $this->hasMany('App\Model\Booking');
+    }
 }

@@ -25,7 +25,7 @@ class TripsController extends Controller
    
     public function getList()
     {
-        $data['trips'] = $this->model->with('vehicle', 'from.city', 'to.city')->get();
+        $data['trips'] = $this->model->where('member_id', Auth::guard('member')->user()->id)->with('vehicle', 'from.city', 'to.city')->paginate(10);
         return view($this->view_prefix.'list', $data);
     }
 

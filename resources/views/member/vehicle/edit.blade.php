@@ -1,76 +1,95 @@
 @extends('member.master')
+
+@section('head')
+<title>Dichungxe | Thêm phương tiện</title>
+<link rel="stylesheet" href="{{ secure_asset('plugins/select2/select2.min.css') }}">
+@stop
+  
 @section('main')
-<div id="page-wrapper">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Phương tiện
-                    <small>{{$vehicle->name}}</small>
-                </h1>
-            </div>
-            <!-- /.col-lg-12 -->
-            <div class="col-lg-7" style="padding-bottom:120px">
-                @if(count($errors) > 0)
-                <div class="alert alert-danger">
-                    @foreach($errors->all() as $err)
-                    {{$err}}<br>
-                    @endforeach
-                </div>
-                @endif
-                @if(session('status'))
-                <div class='alert alert-success'>
-                    {{session('status')}}
-                </div>
-                @endif
-                @if(session('error'))
-                <div class='alert alert-success'>
-                    {{session('error')}}
-                </div>
-                @endif
-                <form action="{{route('member.vehicle.edit.post', ['id' => $vehicle->id])}}" method="POST" enctype="multipart/form-data">
-                    <!-- thieu enctype="multipart/form-data" -->
-                    <input type="hidden" name="_token" value="{{csrf_token()}}" />
-
-                    <div class="form-group">
-                        <label>Loại phương tiện (*)</label>
-                        <select class="form-control" name="vehicle_type_id">
-                            @foreach($vehicle_types as $type)
-                            <option @if($vehicle->vehicle_type_id == $type->id)
-                                {{"selected"}}
-                                @endif
-                                value="{{$type->id}}">{{$type->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Tên phương tiện</label>
-                        <input class="form-control" name="name" placeholder="Nhập tên phương tiện" value="{{$vehicle->name}}" />
-                    </div>
-
-                    <div class="form-group">
-                        <label>Biển số</label>
-                        <input class="form-control" name="number" placeholder="Nhập tên phương tiện" value="{{$vehicle->number}}" />
-                    </div>
-
-                    <div class="form-group">
-                        <label>Tình trạng</label>
-                        <textarea name="tinhtrang" id="description" class="form-control ckeditor" rows="3">{{$vehicle->description}}</textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Số chỗ</label>
-                        <input class="form-control" name="seat" placeholder="Nhập tên phương tiện" value="{{$vehicle->seat}}" />
-                    </div>
-                    
-                    <button class="btn btn-sm btn-info " onclick="history.go(-1);"> <i class="glyphicon glyphicon-circle-arrow-left"></i> Quay lại</button>
-
-                    <button type="submit" class="btn btn-primary btn-sm">Cập nhật </button>
-                    <form>
-            </div>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>THÊM PHƯƠNG TIỆN</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+              <li class="breadcrumb-item active">Phương tiện</li>
+            </ol>
+          </div>
         </div>
-        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+    @if (count($errors) > 0) 
+    @foreach ($errors->all() as $error) 
+      <div class="alert alert-danger alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <h4><i class="icon fa fa-ban"></i> Thất bại!</h4> {!! $error !!}
+      </div>
+    @endforeach
+    @endif
+    <form action="{{route('member.vehicle.add.post')}}" method="post">
+    {{csrf_field()}}
+    <input type="hidden" name="member_id" value="{{ Auth::guard('member')->user()->id}}"/>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-primary">
+          <div class="card-body">
+            <div class="col-md-12">
+              <div class="form-group col-md-12">
+                <label>Loại phương tiện</label>
+                <select name="vehicle_type_id" class="form-control select2" style="width: 100%;">
+                  @foreach($vehicle_types as $vehicle_type)
+                  <option value="{{$vehicle_type->id}}">{{$vehicle_type->name}}</option>
+                  @endforeach
+                </select>
+              </div>
+              <div class="form-group col-md-12">
+                <label>Tên phương tiện</label>
+                <input type="texxt" class="form-control" name="name" value="{{ old('name') }}" required>
+              </div>
+              <div class="form-group col-md-12">
+                <label>Số chỗ</label>
+                <input type="number" class="form-control" name="seat" value="{{ old('seat') }}" required>
+              </div>
+              <div class="form-group col-md-12">
+                <label>Biển số</label>
+                <input type="textarea" class="form-control" name="number" value="{{ old('number') }}" placeholder="VD: 65-XX 456.79" required>
+              </div>
+              <div class="form-group col-md-12">
+                <label>Tình trạng xe</label>
+                <input type="textarea" class="form-control" name="description" value="{{ old('description') }}" placeholder="Xe đời 2016, có máy lạnh, ..." required>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary pull-right">Thêm mới</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- /.container-fluid -->
+    </form>
+    </div>
+  </section>
+  <!-- /.content -->
 </div>
-@endsection
+<!-- /.content-wrapper -->
+@stop
+@section('script')
+<!-- bootstrap datepicker -->
+<script language="JavaScript" type="text/javascript" src="{{ asset('/plugins/jquery/jquery.min.js')}}"></script>
+<script language="JavaScript" type="text/javascript" src="{{ asset('/plugins/select2/select2.full.min.js')}}"></script>
+<script>
+/* global $ */
+  $(function () {
+    $('.select2').select2()
+  })
+</script>
+@stop

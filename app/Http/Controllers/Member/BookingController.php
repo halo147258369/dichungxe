@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\city;
 use App\Model\booking;
+use Auth;
+
 class BookingController extends Controller
 {
     protected $model;
@@ -16,9 +18,9 @@ class BookingController extends Controller
     }
 
     public function getList() {
-      	$data['booking'] = $this->model->all();
+      	$data['bookings'] = $this->model->where('user_id', Auth::guard('member')->user()->id)->paginate(10);
     	return view('member.booking.list', $data);
-    }
+}
 
     public function getBooking($id)
     {

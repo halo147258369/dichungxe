@@ -22,4 +22,9 @@ class Vehicle extends Model
     {
         return $this->hasMany('App\Model\trip');
     }
+
+    public function member()
+    {
+        return $this->belongsTo('App\Model\Member');
+    }
 }

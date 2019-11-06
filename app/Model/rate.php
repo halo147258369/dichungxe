@@ -6,12 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rate extends Model
 {
-     public function rate_type()
+    public $fillable = ['rate_type_id', 'booking_id', 'member_id'];
+
+    public function rate_type()
     {
-        return $this->belongsTo('App\rate_type');
+        return $this->belongsTo('App\Model\rate_type');
     }
-    public function user()
+    public function member()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Model\Member');
+    }
+    public function booking()
+    {
+        return $this->belongsTo('App\Model\Booking');
     }
 }

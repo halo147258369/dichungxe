@@ -82,35 +82,12 @@
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <div id="links">
                         <ul class="list-unstyled list-inline">
-                            <li><a href="login"><span><i class="fa fa-lock"></i></span>Đăng Nhập</a></li>
-                            <li><a href="dk"><span><i class="fa fa-plus"></i></span>Đăng Ký</a></li>
-                            <li>
-                                <form>
-                                    <ul class="list-inline">
-                                        <li>
-                                            <div class="form-group currency">
-                                                <span><i class="fa fa-angle-down"></i></span>
-                                                <select class="form-control">
-                                                    <option value="">$</option>
-                                                    <option value="">£</option>
-                                                </select>
-                                            </div><!-- end form-group -->
-                                        </li>
-
-                                        <li>
-                                            <div class="form-group language">
-                                                <span><i class="fa fa-angle-down"></i></span>
-                                                <select class="form-control">
-                                                    <option value="">EN</option>
-                                                    <option value="">UR</option>
-                                                    <option value="">FR</option>
-                                                    <option value="">IT</option>
-                                                </select>
-                                            </div><!-- end form-group -->
-                                        </li>
-                                    </ul>
-                                </form>
-                            </li>
+                            @if(Auth::guard('member')->check())
+                            <li><span style="color: #fff">Xin chào {{Auth::guard('member')->user()->name}}, </span><a href="{{route('member.logout.get')}}"><span><i class="fa fa-lock"></i></span>Đăng xuất</a></li>
+                            @else
+                            <li><a href="{{route('guest.login.get')}}"><span><i class="fa fa-lock"></i></span>Đăng Nhập</a></li>
+                            <li><a href="#"><span><i class="fa fa-plus"></i></span>Đăng Ký</a></li>
+                            @endif
                         </ul>
                     </div><!-- end links -->
                 </div><!-- end columns -->

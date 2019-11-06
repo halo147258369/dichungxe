@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'Guest\IndexController@getIndex')->name('guest.index.view.post');
+Route::get('/', 'Guest\IndexController@getIndex')->name('guest.index.view.get');
 Route::post('search','Guest\SearchController@postSearch')->name('guest.index.search.post');
 Route::get('detail/{id}', 'Guest\TripsController@getView')->name('guest.trip.view.get');
 Auth::routes();
