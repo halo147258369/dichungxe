@@ -62,9 +62,7 @@
                   <td>
                     @if($booking->verify)
                     <a class="btn btn-primary" href="{{ route('member.booking.delete.get', ['id' => $booking->id]) }}">Huỷ chuyến</a>
-                    @if(count($booking->rates) == 0)
                     <a class="btn btn-warning" href="{{ route('member.booking.rate.get', ['id' => $booking->id]) }}">Đánh giá</a>
-                    @endif
                     @else
                     <div class="btn-group">
                       <a href="{{ route('member.booking.edit.get', ['id' => $booking->id]) }}" class="btn btn-primary">Sửa</a>

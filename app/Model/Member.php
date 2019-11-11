@@ -11,7 +11,7 @@ class Member extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'phone', 'description', 'address', 'rate'
     ];
 
     protected $hidden = [
@@ -20,11 +20,11 @@ class Member extends Authenticatable
 
     public function vehicles()
     {
-        $this->hasMany('App\Model\Vehicle');
+        return $this->hasMany('App\Model\Vehicle');
     }
 
     public function bookings()
     {
-        $this->hasMany('App\Model\Booking');
+        return $this->hasMany('App\Model\Booking');
     }
 }

@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Trip extends Model
 {
     public $fillable = ['user_id', 'vehicle_id', 'price', 'to_id', 'from_id', 'title','day_go', 'day_to', 'seat'];
-     public function user()
+    
+    public function member()
     {
-        return $this->belongsTo('App\Model\User');
+        return $this->belongsTo('App\Model\Member');
     }
 
     public function vehicle()

@@ -19,7 +19,7 @@ class BookingController extends Controller
     }
 
     public function getList() {
-      	$data['bookings'] = $this->model->where('user_id', Auth::guard('member')->user()->id)->paginate(10);
+      	$data['bookings'] = Auth::guard('member')->user()->bookings()->paginate(10);
     	return view('member.booking.list', $data);
 }
 
@@ -69,24 +69,5 @@ class BookingController extends Controller
         $city = city::find($id);
         $city->delete();
         return redirect('city/list')->with('thongbao','Bạn đã xóa thành công');
-    }
-    
-
-    public function getRate($id)
-    {
-        $data['booking'] = $this->model->findOrFail($id);
-        if(!$data['booking']->verify) return redirect()->back();
-        return view('member.booking.rate', $data);
-    }
-
-    public function postRate($id, Request $request, Rate $rate_model)
-    {
-        $data['member_id'] = Auth::guard('member')->user()->id;
-        $data['booking_id'] = $id;
-        $rate = $rate_model::firstOrNew(data);
-        $rate->save();
-        $data = $request->only($rate_model->fillable);
-        $rate->update($data);
-        return redirect()->route('member.booking.list.get');
     }
 }

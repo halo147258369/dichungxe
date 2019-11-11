@@ -13,10 +13,10 @@ class Booking extends Model
     	//
         return $this->belongsTo('App\Model\trip');
     }
-    public function user()
+    public function member()
     {
     	//
-        return $this->belongsTo('App\Model\User');
+        return $this->belongsTo('App\Model\Member');
     }
 
     public function rates()

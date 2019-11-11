@@ -569,11 +569,12 @@
                                                 <a href="{{route('guest.trip.view.get', ['id' => $trip->id])}}">{{$trip->title}}</a>
                                                 <p>Từ {{$trip->from->city->name}} đến {{$trip->to->city->name}}</p>
                                                 <div class="rating">
+                                                    @for($i=0;$i<$trip->member->rate;$i++)
                                                     <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
+                                                    @endfor
+                                                    @for($i=0;$i<5-$trip->member->rate;$i++)
                                                     <span><i class="fa fa-star grey"></i></span>
+                                                    @endfor
                                                 </div><!-- end rating -->
                                                 <span class="cruise-price">{{$trip->price}}</span>
                                             </div><!-- end cruise-title -->

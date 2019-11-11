@@ -76,8 +76,8 @@ Route::prefix('/member')->middleware('auth:member')->namespace('Member')->name('
     Route::get('/edit/{id}','BookingController@getEdit')->name('edit.get');
     Route::post('/edit/{id}','BookingController@postEdit')->name('edit.post');
     Route::get('/delete/{id}','BookingController@getDelete')->name('delete.get');
-    Route::get('/rate/{id}','BookingController@getRate')->name('rate.get');
-    Route::post('/rate/{id}','BookingController@postRate')->name('rate.post');
+    Route::get('/rate/{id}','RateController@getRateBooking')->name('rate.get');
+    Route::post('/rate/{id}','RateController@postRateBooking')->name('rate.post');
   });
 
 });
