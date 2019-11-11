@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rate extends Model
 {
-    public $fillable = ['rate_type_id', 'booking_id', 'member_id'];
+    public $fillable = ['rate_type_id', 'booking_id', 'member_id', 'content'];
 
     public function rate_type()
     {

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\city;
 use App\Model\booking;
+use App\Model\Rate;
 use Auth;
 
 class BookingController extends Controller
@@ -71,5 +72,21 @@ class BookingController extends Controller
     }
     
 
+    public function getRate($id)
+    {
+        $data['booking'] = $this->model->findOrFail($id);
+        if(!$data['booking']->verify) return redirect()->back();
+        return view('member.booking.rate', $data);
+    }
 
+    public function postRate($id, Request $request, Rate $rate_model)
+    {
+        $data['member_id'] = Auth::guard('member')->user()->id;
+        $data['booking_id'] = $id;
+        $rate = $rate_model::firstOrNew(data);
+        $rate->save();
+        $data = $request->only($rate_model->fillable);
+        $rate->update($data);
+        return redirect()->route('member.booking.list.get');
+    }
 }

@@ -18,4 +18,14 @@ class Booking extends Model
     	//
         return $this->belongsTo('App\Model\User');
     }
+
+    public function rates()
+    {
+        return $this->hasMany('App\Model\Rate');
+    }
+
+    public function hasRate()
+    {
+        return (!count($this->rates)==0);
+    }
 }
