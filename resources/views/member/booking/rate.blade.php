@@ -1,8 +1,8 @@
 @extends('member.master')
 @section('head')
 <title>Dichungxe | Đánh giá trải nghiệm</title>
-<link rel="stylesheet" href="{{secure_asset('plugins/datatables/dataTables.bootstrap4.css')}}">
-<link rel="stylesheet" href="{{secure_asset('star-rating/StarRating.css')}}">
+<link rel="stylesheet" href="{{asset('plugins/datatables/dataTables.bootstrap4.css')}}">
+<link rel="stylesheet" href="{{asset('star-rating/StarRating.css')}}">
 <link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 <style>
   .pagination li {
@@ -65,9 +65,9 @@
 @stop
 
 @section('script')
-<script src="{{secure_asset('plugins/datatables/jquery.dataTables.js')}}"></script>
-<script src="{{secure_asset('star-rating/StarRating.js')}}"></script>
-<script src="{{secure_asset('plugins/datatables/dataTables.bootstrap4.js')}}"></script>
+<script src="{{asset('plugins/datatables/jquery.dataTables.js')}}"></script>
+<script src="{{asset('star-rating/StarRating.js')}}"></script>
+<script src="{{asset('plugins/datatables/dataTables.bootstrap4.js')}}"></script>
 <script>
   function submit() {
     post(

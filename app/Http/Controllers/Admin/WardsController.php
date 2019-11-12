@@ -22,7 +22,7 @@ class WardsController extends Controller
     {
 	    	$districts = district::all();
 	    	$cities=city::all();
-        return view('admin.ward.add',['districts'=>$district,'cities'=>$city]);
+        return view('admin.ward.add',['districts'=>$districts,'cities'=>$cities]);
     }
 
     public function postAdd(Request $request)

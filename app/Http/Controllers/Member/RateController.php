@@ -30,8 +30,9 @@ class RateController extends Controller
         $data['member_id'] = Auth::guard('member')->user()->id;
         $data['booking_id'] = $id;
         $rate = $rate_model::firstOrNew($data);
+        $rate->rate_type_id = $request->rate_type_id;
+        $rate->content = $request->content;
         $rate->save();
-        $data = $request->only($rate_model->fillable);
         $rate->update($data);
 
         $booking = $booking_model->findOrFail($id);

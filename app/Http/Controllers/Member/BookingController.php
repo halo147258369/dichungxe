@@ -38,7 +38,7 @@ class BookingController extends Controller
     {
         $data = $request->only($this->model->fillable);
         $book = $this->model->create($data);
-        return $book;
+        return redirect()->route('member.booking.list.get');
     }
 
     public function getEdit($id)

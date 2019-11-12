@@ -286,7 +286,7 @@
                                     Bạn đã đăng nhập với tên {{ Auth::guard('member')->user()->name }}
                                     <form action="{{route('member.booking.add.post')}}" method="POST" enctype="multipart/form-data" id="myform">
                                         <input type="hidden" name="trip_id" value="{{$trip->id}}" />
-                                        <input type="hidden" name="user_id" value="{{Auth::guard('member')->user()->id}}" />
+                                        <input type="hidden" name="member_id" value="{{Auth::guard('member')->user()->id}}" />
                                         <input type="hidden" name="_token" value="{{csrf_token()}}" />
                                         <div class="form-group">
                                             <input type="text" class="form-control" name="seat" placeholder="Số chỗ" >
