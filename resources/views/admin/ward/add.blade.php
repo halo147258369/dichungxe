@@ -1,70 +1,94 @@
-  @extends('admin.master')
-    @section('main')
-<div id="page-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">Phường
-                            <small>Thêm</small>
-                        </h1>
-                    </div>
-                    <!-- /.col-lg-12 -->
-                    <div class="col-lg-12" style="padding-bottom:120px">                      
-                        @if(count($errors) > 0)
-                            <div class="alert alert-danger">
-                                 @foreach($errors->all() as $err)
-                                    {{$err}}<br>
-                                 @endforeach   
-                            </div>
-                        @endif
-                        @if(session('thongbao'))
-                            <div class='alert alert-success'>
-                                {{session('thongbao')}}
-                            </div>
-                        @endif
-                         @if(session('loi'))
-                            <div class='alert alert-success'>
-                                {{session('loi')}}
-                            </div>
-                        @endif
-                        <form action="{{route('admin.ward.add.post')}}" method="POST" enctype="multipart/form-data" id="myform">
-                            <input type="hidden" name="_token" value="{{csrf_token()}}">
-            
-                            <div class="form-group">
-                                <label>Thành Phố</label>
-                                <select class="form-control" name="cities">
-                                   
-                                    <option value=""></option>
-                                 
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Quận Huyện</label>
-                                <select class="form-control" name="district">
-                                   
-                                    <option value=""></option>
-                                 
-                                </select>
-                            </div>
-                            <div class="form-group form-group-sm">
-                                <label>Tên phường <span class="error">(*) </span></label>
-                                <input class="form-control" name="name" placeholder="Nhập tên phường" />
-                            </div>
-                            
-                           <!--  <div class="form-group form-group-sm">
-                                <label>Thông báo:</label>
-                                <input class="form-control" name="thongbao" placeholder="Nhập tiêu tên thông báo" />
-                            </div> -->
-                                
-                             <a class="btn btn-sm btn-info " href="{{ URL::to('') }}"> <i class="glyphicon glyphicon-circle-arrow-left"></i> Quay lại</a>
-                            <button type="reset" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-refresh"></i>Làm mới</button>
-                            <button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-floppy-save"></span>Thêm </button>
-                        <form>
-                    </div>
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.container-fluid -->
+@extends('member.master')
+@section('head')
+<title>Dichungxe | Đặt xe của tôi</title>
+@stop
+@section('main')
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>THÊM PHƯỜNG/XÃ</h1>
         </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+            <li class="breadcrumb-item active">Phường/xã</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
 
-@endsection
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Nhập tông tin phường xã</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div class="form-group">
+              <select name="citi_id" id="citi_id" class="form-control"  onchange="getDistricts('citi_id', 'district_id')">
+                <option value="0">Chọn tỉnh/thành phố</option>
+                @foreach($cities as $city)
+                <option value="{{$city->id}}">{{$city->name}}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="name">Chọn quận/huyện</label>
+              <select name="district_id" id="district_id" class="form-control">
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="name">Tên phường/xã</label>
+              <input type="text" name="name" id="name" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Thêm</button>
+          </div>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+@stop
+
+@section('script')
+<script>
+      function getDistricts(id_form, id_to) {
+        var matp = $("#"+id_form).val();
+        $.ajax({
+          url: '/api/getdistricts/' + matp
+        }).done(function(data) {
+          $("#"+id_to).html('<option value="0">Chọn quận/huyện</option>');
+          data.forEach(function(element) {
+            $("#"+id_to).append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
+          });
+        });;
+      }
+
+      function getWards(id_form, id_to) {
+        var maqh = $("#"+id_form).val();
+        $.ajax({
+          url: '/api/getwards/' + maqh
+        }).done(function(data) {
+          $("#"+id_to).html('<option value="0">Chọn xã/phường/thị trấn</option>');
+          data.forEach(function(element) {
+            $("#"+id_to).append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
+          });
+        });;
+      }
+</script>
+@stop
