@@ -1,218 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" rel="stylesheet">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-</head>
-<style>
-  body {
-    background: #F1F3FA;
-  }
-
-
-  .profile {
-    margin: 20px 0;
-  }
-
-  .profile-sidebar {
-    padding: 20px 0 10px 0;
-    background: #fff;
-  }
-
-
-  .profile-userpic img {
-    float: none;
-    margin: 0 auto;
-    width: 50%;
-    height: 50%;
-    -webkit-border-radius: 50% !important;
-    -moz-border-radius: 50% !important;
-    border-radius: 50% !important;
-  }
-
-
-  .profile-usertitle {
-    text-align: center;
-    margin-top: 20px;
-  }
-
-
-  .profile-usertitle-name {
-    color: #5a7391;
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 7px;
-  }
-
-
-  .profile-usertitle-job {
-    text-transform: uppercase;
-    color: #5b9bd1;
-    font-size: 12px;
-    font-weight: 600;
-    margin-bottom: 15px;
-  }
-
-
-  .profile-userbuttons {
-    text-align: center;
-    margin-top: 10px;
-  }
-
-
-  .profile-userbuttons .btn {
-    text-transform: uppercase;
-    font-size: 11px;
-    font-weight: 600;
-    padding: 6px 15px;
-    margin-right: 5px;
-  }
-
-
-  .profile-userbuttons .btn:last-child {
-    margin-right: 0px;
-  }
-
-  .profile-usermenu {
-    margin-top: 30px;
-  }
-
-  .profile-usermenu ul li {
-    border-bottom: 1px solid #f0f4f7;
-  }
-
-
-  .profile-usermenu ul li:last-child {
-    border-bottom: none;
-  }
-
-  .profile-usermenu ul li a {
-    color: #93a3b5;
-    font-size: 14px;
-    font-weight: 400;
-  }
-
-
-  .profile-usermenu ul li a i {
-    margin-right: 8px;
-    font-size: 14px;
-  }
-
-  .profile-usermenu ul li a:hover {
-    background-color: #fafcfd;
-    color: #5b9bd1;
-  }
-
-
-  .profile-usermenu ul li.active {
-    border-bottom: none;
-  }
-
-
-  .profile-usermenu ul li.active a {
-    color: #5b9bd1;
-    background-color: #f6f9fb;
-    border-left: 2px solid #5b9bd1;
-    margin-left: -2px;
-  }
-
-
-  .profile-content {
-    padding: 20px;
-    background: #fff;
-    min-height: 460px;
-  }
-
-  p {
-    margin-right: 650px;
-    \
-
-  }
-
-  /*https://hocwebgiare.com/thiet_ke_web_chuan_demo/bootstrap_user_profile/images/profile_user.jpg*/
-</style>
-
-<body>
-  <div class="container">
-    <h1 class="text-center">Trang người dùng</h1>
-    <div class="container">
-      <div class="row profile">
-        <div class="col-md-3">
-          <div class="profile-sidebar">
-            <div class="profile-userpic"> <img src="{{asset('images/luanvan.jpg')}}" class="img-responsive" alt="Thông tin cá nhân">
-            </div>
-            <div class="profile-usertitle">
-              <div class="profile-usertitle-name">
-
-              </div>
-              <div class="profile-usertitle-job">
-
-              </div>
-            </div>
-            <div class="profile-userbuttons">
-              <a class="btn btn-success btn-sm" href="{{route('member.dashboard.view.get')}}">Trang chủ</a>
-              <a class="btn btn-danger btn-sm" href="{{route('member.logout.get')}}">Thoát ra</a>
-            </div>
-            <div class="profile-usermenu">
-              <ul class="nav">
-                <div class="logo_menuchinh" style="float:left; padding-top:5px; padding-left:10px; color:#fff; margin-left:auto; margin-right:auto; text-align=center; line-height:40px; font-size:16px;font-weight:bold;font-family:Arial">TienDat</div>&nbsp&nbsp<div class="menu-icon"><span></span></div>
-                <li class="active">
-                  <a href="#">
-                    THÔNG TIN CÁ NHÂN
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="glyphicon glyphicon-user"></i>
-                    {{Auth::guard('member')->user()->name}}
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="glyphicon glyphicon-phone"></i>
-                    {{Auth::guard('member')->user()->phone}}
-                  </a>
-                </li>
-                <li>
-                  <a href="#" target="_blank">
-                    <i class="glyphicon glyphicon-home"></i>
-                    {{Auth::guard('member')->user()->address or 'Không có'}}
-                  </a>
-                </li>
-
-              </ul>
-            </div>
-          </div>
+@extends('member.master')
+@section('head')
+<title>Dichungxe |  Chỉnh sửa chuyển đi</title>
+@stop
+@section('main')
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Chỉnh/Sửa</h1>
         </div>
-        <div class="col-md-9">
-          <div class="profile-content">
-            <div class="profile-userbuttons">
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+            <li class="breadcrumb-item active">Chỉnh sửa/chuyến đi</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
 
-              <div class="panel-body">
-                @if(count($errors) > 0)
-                <div class="alert alert-danger">
-                  @foreach($errors->all() as $err)
-                  {{$err}}<br>
-                  @endforeach
-                </div>
-
-                @endif
-                @if(session('status'))
-                <div class="alert alert-success">
-                  {{session('status')}}
-                </div>
-                @endif
-
-                @if(session('error'))
-                <div class="alert alert-danger">
-                  {{session('error')}}
-                </div>
-                @endif
-              </div>
-              <form action="{{route('member.trip.edit.post', ['id'=>$trip->id])}}" method="POST" enctype="multipart/form-data" id="myform">
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">chỉnh sửa thông tin chuyến đi</h3>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            
+           <form action="{{route('member.trip.edit.post', ['id'=>$trip->id])}}" method="POST" enctype="multipart/form-data" id="myform">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
 
                 <div class="form-group">
@@ -291,8 +112,7 @@
                   </div>
                 </div>
                 <br>
-                <br>
-                <br>
+              
                 <div class="form-group form-group-sm">
                   <p align="left"><B>Tiêu Đề (*)</B></p>
                   <input class="form-control" name="title" placeholder="Nhập Tiêu Đề" required="required" value="{{$trip->title}}"/>
@@ -317,13 +137,7 @@
                 <button type="reset" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-refresh"></i>Làm mới</button>
                 <button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-floppy-save"></span>Lưu </button>
               </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <script>
+              <script>
       function getDistricts(id_form, id_to) {
         var matp = document.getElementById(id_form).value;
         $.ajax({
@@ -347,7 +161,45 @@
           });
         });;
       }
-    </script>
-</body>
+    </script>      
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<!-- @stop
 
-</html>
+@section('script')
+<script>
+      function getDistricts(id_form, id_to) {
+        var matp = $("#"+id_form).val();
+        $.ajax({
+          url: '/api/getdistricts/' + matp
+        }).done(function(data) {
+          $("#"+id_to).html('<option value="0">Chọn quận/huyện</option>');
+          data.forEach(function(element) {
+            $("#"+id_to).append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
+          });
+        });;
+      }
+
+      function getWards(id_form, id_to) {
+        var maqh = $("#"+id_form).val();
+        $.ajax({
+          url: '/api/getwards/' + maqh
+        }).done(function(data) {
+          $("#"+id_to).html('<option value="0">Chọn xã/phường/thị trấn</option>');
+          data.forEach(function(element) {
+            $("#"+id_to).append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
+          });
+        });;
+      }
+</script>
+@stop -->

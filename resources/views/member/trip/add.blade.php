@@ -43,6 +43,8 @@
           </div>
           <!-- /.card-header -->
           <div class="card-body">
+            <form action="{{route('member.trip.add.post')}}" method="POST" enctype="multipart/form-data" id="myform">
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
             <div class="form-group">
               <label for="vehicle_id">Chọn phương tiện</label>
               <select name="vehicle_id" id="vehicle_id" class="form-control select2">
@@ -112,6 +114,7 @@
               <input type="number" name="price" class="form-control" placeholder="Nhập giá tiền" required="required">
             </div>
             <button type="submit" class="btn btn-primary">Lưu chuyến đi</button>
+              </form>
           </div>
         </div>
         <!-- /.card-body -->

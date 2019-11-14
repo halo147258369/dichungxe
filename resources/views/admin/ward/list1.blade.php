@@ -71,7 +71,7 @@
 <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-<!-- @stop
+@stop
 
 @section('script')
 <script>
@@ -99,4 +99,4 @@
         });;
       }
 </script>
-@stop -->
+@stop
