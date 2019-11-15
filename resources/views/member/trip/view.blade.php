@@ -45,42 +45,21 @@
             <table id="example1" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <td><b>ID</td>
-                  <td><b>phương tiện</td>
-                  <td><b>Điểm đi</td>
-                  <td><b>Điểm đến</td>
-                  <td><b>Tiêu đề</td>
-                  <td><b>TG đi</td>
-                  <td><b>TG đến</td>
-                  <td><b>Số chỗ</td>
-                  <td><b>Giá tiền</td>
+                  <td>Tên khách hàng</td>
+                  <td>Số điện thoại</td>
+                  <td>Tình trạng</td>
                   <td></td>
                 </tr>
               </thead>
               <tbody>
-                @foreach($trips as $trip)
+                @foreach($bookings as $booking)
                 <tr>
-                  <td>{{$trip->id}}</td>
-                  <td>{{$trip->vehicle->name}}</td>
-                  <td>{{$trip->from->name}}, {{$trip->from->city->name}}</td>
-                  <td>{{$trip->to->name}}, {{$trip->to->city->name}}</td>
-                  <td>{{$trip->title}}</td>
-                  <td>{{date('d-m-Y', strtotime($trip->day_go))}}</td>
-                  <td>{{date('d-m-Y', strtotime($trip->day_to))}}</td>
-                  <td>{{$trip->seat}}</td>
-                  <td>{{$trip->price}}</td>
+                  <td>{{$booking->member->name}}</td>
+                  <td>{{$booking->member->phone}}</td>
+
+                  <td>@if($booking->verify) <span class="badge bg-success">ĐÃ DUYỆT</span> @else <span class="badge bg-danger">CHƯA DUYỆT</span> @endif</td>
                   <td>
-                    <div class="btn-group">
-                      <a href="{{ route('member.trip.view.get', ['id' => $trip->id]) }}" class="btn btn-primary">Xem</a>
-                      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
-                      </button>
-                      <div class="dropdown-menu" role="menu">
-                        <a class="dropdown-item" href="{{ route('member.trip.edit.get', ['id' => $trip->id]) }}">Sửa</a>
-                        <a class="dropdown-item" href="{{ route('member.trip.delete.get', ['id' => $trip->id]) }}">Xoá</a>
-                      </div>
-                    </div>
+                    <a href="{{route('member.booking.verify.get', ['id'=>$booking->id])}}" class="btn btn-primary @if($booking->verify) disabled @endif" >@if($booking->verify) Đã @endif Duyệt</a>
                   </td>
                 </tr>
                 @endforeach
@@ -88,10 +67,6 @@
             </table>
           </div>
           <!-- /.card-body -->
-
-          <div class="dataTables_paginate paging_simple_numbers">
-            {{ $trips->links() }}
-          </div>
         </div>
         <!-- /.card -->
       </div>

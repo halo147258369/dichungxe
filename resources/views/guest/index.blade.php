@@ -433,19 +433,6 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="form-group form-group-sm">
-                                            <div class="col-xs-12 col-md-4"><label for="day_go">Thời gian đi</label>
-                                                <input type="date" name="day_go" class="form-control">
-                                            </div>
-                                            <div class="col-xs-12 col-md-4"><label for="day_to">Thời gian đến</label>
-                                                <input type="date" name="day_to" class="form-control">
-                                            </div>
-                                            <div class="col-xs-12 col-md-4"><label for="seat">Số chỗ</label>
-                                                <input type="number" name="seat" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
                                         <br>
                                         <div class="col-md-12">
                                             <button class="btn btn-orange">Tìm kiếm</button>
@@ -554,7 +541,7 @@
                                 <div class="row">
                                     <div class="col-sm-12 col-md-6 col-md-push-6 no-pd-l">
                                         <div class="main-img cruise-img">
-                                            <a href="member.trip.view">
+                                            <a href="{{route('guest.trip.view.get', ['id' => $trip->id])}}">
                                                 <img src="https://i.imgur.com/LWcVi9q.jpg" class="img-responsive" alt="cruise-img" />
                                                 <div class="cruise-mask">
                                                     <p>7 Nights, 6 Days</p>

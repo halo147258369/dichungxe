@@ -48,6 +48,7 @@ Route::prefix('/member')->middleware('auth:member')->namespace('Member')->name('
     Route::get('/edit/{id}','TripsController@getEdit')->name('edit.get');
     Route::post('/edit/{id}','TripsController@postEdit')->name('edit.post');
     Route::get('/delete/{id}','TripsController@getDelete')->name('delete.get');
+    Route::get('/{id}','TripsController@getView')->name('view.get');
 
   });
 
@@ -76,6 +77,7 @@ Route::prefix('/member')->middleware('auth:member')->namespace('Member')->name('
     Route::get('/edit/{id}','BookingController@getEdit')->name('edit.get');
     Route::post('/edit/{id}','BookingController@postEdit')->name('edit.post');
     Route::get('/delete/{id}','BookingController@getDelete')->name('delete.get');
+    Route::get('/verify/{id}','BookingController@getVerify')->name('verify.get');
     Route::get('/rate/{id}','RateController@getRateBooking')->name('rate.get');
     Route::post('/rate/{id}','RateController@postRateBooking')->name('rate.post');
   });
@@ -114,18 +116,7 @@ Route::prefix('/admin')->middleware('auth:member')->namespace('Admin')->name('ad
     Route::get('/edit/{id}','BusroutesController@getEdit')->name('edit.get');
     Route::post('/edit/{id}','BusroutesController@postEdit')->name('edit.post');
     Route::get('/delete/{id}','BusroutesController@getDelete')->name('delete.get');
-  });
-  
-  Route::prefix('/bookings')->name('booking.')->group(function() {
-    Route::get('/','BookingController@getList')->name('list.get');
-    Route::get('/add','BookingController@getAdd')->name('add.get');
-    Route::post('/add','BookingController@postAdd')->name('add.post');
-    Route::get('/verify/{id}','BookingController@getVerify')->name('verify.get');
-    Route::get('/edit/{id}','BookingController@getEdit')->name('edit.get');
-    Route::post('/edit/{id}','BookingController@postEdit')->name('edit.post');
-    Route::get('/delete/{id}','BookingController@getDelete')->name('delete.get');
-  });
-  
+  }); 
 });
 
 

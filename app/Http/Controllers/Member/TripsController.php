@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Member;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Model\Booking;
 use App\Model\Trip;
 use App\Model\Vehicle;
 use App\Model\City;
@@ -29,6 +30,13 @@ class TripsController extends Controller
         return view($this->view_prefix.'list', $data);
     }
 
+    public function getView($id)
+    {
+        $data['trip'] = $this->model->findOrFail($id);
+        $data['bookings'] = $data['trip']->bookings;
+        return view('member.trip.view', $data);
+    }
+
     public function getAdd()
     {
         $data['cities'] = City::all();
@@ -47,7 +55,7 @@ class TripsController extends Controller
             $place[$i]->save();
         }
         $data = $req->only($this->model->fillable);
-        $data['user_id'] = Auth::guard('member')->user()->id;
+        $data['member_id'] = Auth::guard('member')->user()->id;
         $data['from_id'] = $place[0]->id;
         $data['to_id'] = $place[1]->id;
         $vehicle = $this->model->insert($data);

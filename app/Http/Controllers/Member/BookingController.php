@@ -70,4 +70,15 @@ class BookingController extends Controller
         $city->delete();
         return redirect('city/list')->with('thongbao','Bạn đã xóa thành công');
     }
+
+    
+    public function getVerify($id)
+    {
+        $booking = $this->model->findOrFail($id);
+        $booking->verify = true;
+        $booking->save();
+        $booking->trip->remain_seat = $booking->trip->remain_seat + $booking->seat;
+        $booking->trip->save();
+        return redirect()->route('member.trip.view.get', ['id'=>$booking->trip->id])->with('status', 'Xác thực thành công');
+    }
 }

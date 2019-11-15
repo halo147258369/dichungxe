@@ -58,7 +58,7 @@
               <input type="text" name="name[]" class="form-control" placeholder="Số nhà, tên đường" required="required">
             </div>
             <div class="form-group">
-              <select name="citie_id[]" id="from_city" class="form-control"  onchange="getDistricts('from_city', 'from_district')">
+              <select name="city_id[]" id="from_city" class="form-control"  onchange="getDistricts('from_city', 'from_district')">
                 <option value="0">Chọn tỉnh/thành phố</option>
                 @foreach($cities as $city)
                 <option value="{{$city->id}}">{{$city->name}}</option>
@@ -78,7 +78,7 @@
               <input type="text" name="name[]" class="form-control" placeholder="Số nhà, tên đường" required="required">
             </div>
             <div class="form-group">
-              <select name="citie_id[]" id="to_city" class="form-control"  onchange="getDistricts('to_city', 'to_district')">
+              <select name="city_id[]" id="to_city" class="form-control"  onchange="getDistricts('to_city', 'to_district')">
                 <option value="0">Chọn tỉnh/thành phố</option>
                 @foreach($cities as $city)
                 <option value="{{$city->id}}">{{$city->name}}</option>
