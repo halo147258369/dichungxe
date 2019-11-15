@@ -8,6 +8,7 @@ use App\Model\city;
 use App\Model\Trip;
 use App\Model\Ward;
 
+
 class SearchController extends Controller
 {
   public function postSearch(Request $request){

@@ -125,6 +125,7 @@ Route::prefix('/admin')->middleware('auth:member')->namespace('Admin')->name('ad
     Route::post('/edit/{id}','BookingController@postEdit')->name('edit.post');
     Route::get('/delete/{id}','BookingController@getDelete')->name('delete.get');
   });
+  
 });
 
 

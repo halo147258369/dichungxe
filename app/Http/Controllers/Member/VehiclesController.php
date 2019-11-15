@@ -34,6 +34,7 @@ class VehiclesController extends Controller
 
     public function postAdd(Request $req)
     {
+        
         $data = $req->only($this->model->fillable);
         $vehicle = $this->model->insert($data);
         return redirect()->route('member.vehicle.list.get')->with('status', 'Thêm phương tiện thành công!');
