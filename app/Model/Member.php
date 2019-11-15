@@ -27,4 +27,14 @@ class Member extends Authenticatable
     {
         return $this->hasMany('App\Model\Booking');
     }
+
+    public function trips()
+    {
+        return $this->hasMany('App\Model\Rate');
+    }
+
+    public function reviews()
+    {
+        return $this->trip()->bookings()->hasMany('App\Model\Rate');
+    }
 }
