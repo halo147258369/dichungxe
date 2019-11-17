@@ -17,36 +17,31 @@ use Auth;
 class BusroutesController extends Controller
 {
     
+
+     protected $model;
+    public function __construct(Busroute $model)
+    {
+        $this->model = $model;
+    }
     public function getList() {
      $data['place']=Place::all();
 
-        return view('bus.add',$data);
+        return view('admin.bus.list',$data);
     }
 
     public function getAdd() {
-        $data['city'] = city::all();
-        $data['place'] = Place::all();
-        $data['ward'] = ward::all();
-        $data['district'] = district::all();
+        $data['cities'] = city::all();
+        
+        $data['wards'] = ward::all();
+        
         return view('admin.bus.add',$data);
     }
-     public function postAdd(Request $request)
+     public function postAdd(Request $req)
     {
-        
-        
-         for($i=0; $i<2; $i++) {
-            $place[$i] = new Place;
-            $place[$i]->name = $req->name[$i];
-            $place[$i]->ward_id = $req->ward_id[$i];
-            $place[$i]->district_id = $req->district_id[$i];
-            $place[$i]->city_id = $req->city_id[$i];
-            $place[$i]->save();
-        }
-        $data = $req->only($this->model->fillable);
-        $data['user_id'] = Auth::guard('admin')->user()->id;
-        $data['from_id'] = $place[0]->id;
-        $data['to_id'] = $place[1]->id;
-        $vehicle = $this->model->insert($data);
+        $data['name']= $req->name;
+        $data['from_id'] = $req->ward_id[0];
+        $data['to_id'] = $req->ward_id[1];
+        $this->model->insert($data);
         return redirect()->route('admin.busroute.list.get')->with('status', 'Thêm tuyến bus thành công!');
     }
   

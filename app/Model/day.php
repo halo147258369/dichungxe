@@ -4,20 +4,19 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class busroute extends Model
+class Day extends Model
 {
     //
 
-    protected $table = 'busroutes';
+    protected $table = 'days';
     protected $primaryKey = 'id';
     protected $fillable = [
         'id',
-        'name','to_id', 'from_id'
+        'name'
     ];
     public $timestamps = false;
-public function hour()
+ public function hour()
     {
-        return $this->belongsTo('App\Model\hour','busroute_id','id');
+        return $this->hasMany('App\Model\hour','day_id','id');
     }
-
 }

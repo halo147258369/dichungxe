@@ -61,14 +61,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-            <li class="nav-item">
-              <a href="{{route('admin.booking.list.get')}}" class="nav-link">
-                <i class="nav-icon fa fa-check"></i>
-                <p>
-                  Duyệt đặt xe
-                </p>
-              </a>
-            </li>
+            
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fa fa-motorcycle"></i>
@@ -155,6 +148,29 @@
                 </li>
                 <li class="nav-item">
                   <a href="{{route('admin.ward.add.get')}}" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Thêm</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+             <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-map-marker"></i>
+                <p>
+                  Tuyến Bus
+                  <i class="right fa fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Danh sách</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="admin/bus/add" class="nav-link">
                     <i class="fa fa-circle-o nav-icon"></i>
                     <p>Thêm</p>
                   </a>

@@ -117,6 +117,15 @@ Route::prefix('/admin')->middleware('auth:member')->namespace('Admin')->name('ad
     Route::post('/edit/{id}','BusroutesController@postEdit')->name('edit.post');
     Route::get('/delete/{id}','BusroutesController@getDelete')->name('delete.get');
   }); 
+
+  Route::prefix('/hours')->name('hour.')->group(function() {
+    Route::get('/','HoursController@getList')->name('list.get');
+    Route::get('/add','HoursController@getAdd')->name('add.get');
+    Route::post('/add','HoursController@postAdd')->name('add.post');
+    Route::get('/edit/{id}','HoursController@getEdit')->name('edit.get');
+    Route::post('/edit/{id}','HoursController@postEdit')->name('edit.post');
+    Route::get('/delete/{id}','HoursController@getDelete')->name('delete.get');
+  });
 });
 
 

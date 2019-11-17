@@ -3,6 +3,7 @@
 <title>Dichungxe | Đặt xe của tôi</title>
 <link rel="stylesheet" href="{{secure_asset('plugins/datatables/dataTables.bootstrap4.css')}}">
 <link rel="stylesheet" href="{{secure_asset('plugins/select2/select2.min.css')}}">
+
 <style>
   .pagination li {
     padding: 10px;
@@ -43,53 +44,44 @@
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-            <form action="{{route('admin.busroute.add.post')}}" method="POST" enctype="multipart/form-data" id="myform">
+            <form action="{{route('admin.hour.add.post')}}" method="POST" enctype="multipart/form-data" id="myform">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
             
-             <div class="form-group">
-              <label for="title">Tiêu đề</label>
-              <input type="text" name="name" class="form-control" placeholder="Nhập Tiêu Đề" required="required">
+              <div class="form-group">
+               <label>Chọn Tuyến Bus</label>
+               <select class="form-control" name="busroutes">
+                @foreach($busroutes as $busroute)
+                <option value="{{$busroute->id}}">{{$busroute->name}}</option>
+                @endforeach
+              </select>
+            </div>
+<div class="form-group">
+               <label>Chọn Công Ty</label>
+               <select class="form-control" name="companies">
+                @foreach($companies as $company)
+                <option value="{{$company->id}}">{{$company->name}}</option>
+                @endforeach
+              </select>
             </div>
             
             <div class="form-group">
-              <select name="city_id[]" id="from_city" class="form-control"  onchange="getDistricts('from_city', 'from_district')">
-                <option value="0">Chọn tỉnh/thành phố</option>
-                @foreach($cities as $city)
-                <option value="{{$city->id}}">{{$city->name}}</option>
-                @endforeach
+               <label>Chọn Thứ</label>
+               <select class="form-control" name="days">
+               @foreach($days as $day)
+                <option value="{{$day->id}}">{{$day->name}}</option>
+                @endforeach 
+          
               </select>
             </div>
+            
+
+           
+   
             <div class="form-group">
-              <select name="district_id[]" id="from_district" class="form-control" onchange="getWards('from_district', 'from_ward')">
-              </select>
-            </div>
-            <div class="form-group">
-              <select name="ward_id[]" id="from_ward" class="form-control">
-              </select>
+              <label>Thời gian đi</label>
+              <input type="time" name="time" class="form-control" placeholder="Nhập thời gian đi" required="required">
             </div>
            
-            <div class="form-group">
-              <select name="city_id[]" id="to_city" class="form-control"  onchange="getDistricts('to_city', 'to_district')">
-                <option value="0">Chọn tỉnh/thành phố</option>
-                @foreach($cities as $city)
-                <option value="{{$city->id}}">{{$city->name}}</option>
-                @endforeach
-              </select>
-            </div>
-            <div class="form-group">
-              <select name="district_id[]" id="to_district" class="form-control" onchange="getWards('to_district', 'to_ward')">
-              </select>
-            </div>
-            <div class="form-group">
-              <select name="ward_id[]" id="to_ward" class="form-control">
-              </select>
-            </div>
-           
-           <!--  <div class="form-group">
-              <label for="day_go">Thời gian đi</label>
-              <input type="" name="day_go" class="form-control" placeholder="Nhập thời gian đi" required="required">
-            </div>
-            -->
           
             <button type="submit" class="btn btn-primary">Lưu chuyến đi</button>
               </form>
