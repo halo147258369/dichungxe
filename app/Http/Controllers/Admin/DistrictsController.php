@@ -10,10 +10,7 @@ class DistrictsController extends Controller
 {
     
    public function getList() {
-   // $data['districts'] = district::all();
-    $data['cities']=city::all();
-      $data['districts']=city::all();
-    // $data['districts']=district::with('city')->get();
+        $data['districts']=district::with('city')->get();
     	return view('admin.district.list',$data);
     }
 

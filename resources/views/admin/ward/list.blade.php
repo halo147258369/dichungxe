@@ -1,4 +1,4 @@
-@extends('member.master')
+@extends('admin.master')
 @section('head')
 <title>Dichungxe | Đặt xe của tôi</title>
 @stop
