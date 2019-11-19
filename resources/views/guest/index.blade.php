@@ -95,7 +95,7 @@
         </div><!-- end container -->
     </div><!-- end top-bar -->
 
-    <nav class="navbar navbar-default main-navbar navbar-custom navbar-white" id="mynavbar-1">
+     <nav class="navbar navbar-default main-navbar navbar-custom navbar-white" id="mynavbar-1">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" id="menu-button">
@@ -106,23 +106,23 @@
                 <div class="header-search hidden-lg">
                     <a href="javascript:void(0)" class="search-button"><span><i class="fa fa-search"></i></span></a>
                 </div>
-                <a href="#" class="navbar-brand"><span><i class="fa fa-car"></i>Di</span>nhoxe</a>
+                <a href="#" class="navbar-brand"><span><i class="fa fa-car"></i>Di</span>chungxe</a>
             </div><!-- end navbar-header -->
 
             <div class="collapse navbar-collapse" id="myNavbar1">
                 <ul class="nav navbar-nav navbar-right navbar-search-link">
-                    <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Home<span><i class="fa fa-angle-down"></i></span></a>
+                    <li class="dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Trợ Giúp<span><i class="fa fa-angle-down"></i></span></a>
                         <ul class="dropdown-menu">
-                            <li class="active"><a href="#">Main Homepage</a></li>
-                            <!-- <li><a href="flight-homepage.html">Flight Homepage</a></li>
-                                <li><a href="hotel-homepage.html">Hotel Homepage</a></li>
-                                <li><a href="tour-homepage.html">Tour Homepage</a></li>
+                            <li class="active"><a href="test1">Cách Thức Hoạt Động</a></li>
+                            <li><a href="test2">Hướng Dẫn Sử Dụng</a></li>
+                                <li><a href="test">Hướng Dẫn An Toàn</a></li>
+                               <!--  <li><a href="tour-homepage.html">Tour Homepage</a></li>
                                 <li><a href="cruise-homepage.html">Cruise Homepage</a></li>
                                 <li><a href="car-homepage.html">Car Homepage</a></li>
                                 <li><a href="landing-page.html">Landing Page</a></li> -->
                         </ul>
                     </li>
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Flights<span><i class="fa fa-angle-down"></i></span></a>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Tin Tức<span><i class="fa fa-angle-down"></i></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="flight-homepage.html">Flight Homepage</a></li>
                             <!-- <li><a href="flight-listing-left-sidebar.html">List View Left Sidebar</a></li>
@@ -133,40 +133,29 @@
                                 <li><a href="flight-detail-right-sidebar.html">Detail Right Sidebar</a></li> -->
                         </ul>
                     </li>
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Hotels<span><i class="fa fa-angle-down"></i></span></a>
+              <!--       <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Tours<span><i class="fa fa-angle-down"></i></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="hotel-homepage.html">Hotel Homepage</a></li>
-                            <!-- <li><a href="hotel-listing-left-sidebar.html">List View Left Sidebar</a></li>
-                                <li><a href="hotel-listing-right-sidebar.html">List View Right Sidebar</a></li>
-                                <li><a href="hotel-grid-left-sidebar.html">Grid View Left Sidebar</a></li>
-                                <li><a href="hotel-grid-right-sidebar.html">Grid View Right Sidebar</a></li>
-                                <li><a href="hotel-detail-left-sidebar.html">Detail Left Sidebar</a></li>
-                                <li><a href="hotel-detail-right-sidebar.html">Detail Right Sidebar</a></li> -->
-                        </ul>
-                    </li>
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Tours<span><i class="fa fa-angle-down"></i></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="tour-homepage.html">Tour Homepage</a></li>
+                            <li><a href="tour-homepage.html">Tour Homepage</a></li> -->
                             <!-- <li><a href="tour-listing-left-sidebar.html">List View Left Sidebar</a></li>
                                 <li><a href="tour-listing-right-sidebar.html">List View Right Sidebar</a></li>
                                 <li><a href="tour-grid-left-sidebar.html">Grid View Left Sidebar</a></li>
                                 <li><a href="tour-grid-right-sidebar.html">Grid View Right Sidebar</a></li>
                                 <li><a href="tour-detail-left-sidebar.html">Detail Left Sidebar</a></li>
                                 <li><a href="tour-detail-right-sidebar.html">Detail Right Sidebar</a></li> -->
-                        </ul>
-                    </li>
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Cruise<span><i class="fa fa-angle-down"></i></span></a>
+                    <!--     </ul>
+                    </li> -->
+                   <!--  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Cruise<span><i class="fa fa-angle-down"></i></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="cruise-homepage.html">Cruise Homepage</a></li>
-                            <!-- <li><a href="cruise-listing-left-sidebar.html">List View Left Sidebar</a></li>
+                            <li><a href="cruise-listing-left-sidebar.html">List View Left Sidebar</a></li>
                                 <li><a href="cruise-listing-right-sidebar.html">List View Right Sidebar</a></li>
                                 <li><a href="cruise-grid-left-sidebar.html">Grid View Left Sidebar</a></li>
                                 <li><a href="cruise-grid-right-sidebar.html">Grid View Right Sidebar</a></li>
                                 <li><a href="cruise-detail-left-sidebar.html">Detail Left Sidebar</a></li>
-                                <li><a href="cruise-detail-right-sidebar.html">Detail Right Sidebar</a></li> -->
+                                <li><a href="cruise-detail-right-sidebar.html">Detail Right Sidebar</a></li>
                         </ul>
-                    </li>
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Cars<span><i class="fa fa-angle-down"></i></span></a>
+                    </li> -->
+                   <!--  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Cars<span><i class="fa fa-angle-down"></i></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="car-homepage.html">Car Homepage</a></li>
                             <li><a href="car-listing-left-sidebar.html">List View Left Sidebar</a></li>
@@ -176,7 +165,7 @@
                             <li><a href="car-detail-left-sidebar.html">Detail Left Sidebar</a></li>
                             <li><a href="car-detail-right-sidebar.html">Detail Right Sidebar</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                     <!--  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages<span><i class="fa fa-angle-down"></i></span></a>
                             <ul class="dropdown-menu mega-dropdown-menu row">
                                 <li>
@@ -583,272 +572,130 @@
         <!--=============== TOUR OFFERS ===============-->
   <section id="flight-offers" class="section-padding">
             <div class="container">
+
                 <div class="row">
+
                     <div class="col-sm-12">
                         <div class="page-heading">
-                            <h2>Flight Offers</h2>
+                            <h2>Tuyến Bus</h2>
                             <hr class="heading-line" />
                         </div><!-- end page-heading -->
+                   
                         
                         <div class="row">
+
+                             @foreach($hour as $h)
+
+                            <div class="col-sm-6 col-md-4">
+                                <div class="main-block flight-block">
+                                    
+                                    <a href="#">
+                                       
+                                        <div class="flight-img">
+
+  @foreach($busroute as $b)
+                                            @if($h->busroute_id == $b->id)
+                                                <img src="/public/upload/Vehicle/{{
+                                                $b->image}}"  />
+                                            @endif
+                                  
+                                         
+                                       @endforeach     
+                                        </div><!-- end flight-img -->
+                                      
+                                        <div class="flight-info">
+                                            <div class="flight-title">
+                                                <h4><span class="flight-destination">@foreach($busroute as $b)
+                                            @if($h->busroute_id == $b->id)
+                                                {{$b->name}}
+                                            @endif
+                                        @endforeach</span>|<span class="flight-type">@foreach($company as $c)
+                                            @if($h->company_id == $c->id)
+                                                {{$c->name}}
+                                            @endif
+                                        @endforeach</span></h4>
+                                            </div><!-- end flight-title -->
+                                            
+                                            <div class=" flight-timing">
+                                                <ul class="list-unstyled">
+                                                    <li><span><i class="fa fa-bus"></i></span><span class="date"><h3>@foreach($day as $d)
+                                            @if($h->day_id == $d->id)
+                                                {{$d->name}}
+                                            @endif
+                                        @endforeach</h3> </span>{{$h->time}}</li>
+                                                    <li><span><i class=""></i></span> <h3>{{$h->time}}</h3>khởi hành<span class="date"> </span></li>
+                                                </ul>
+                                            </div><!-- end flight-timing -->
+                                            
+                                            <ul class="list-unstyled list-inline offer-price-1">
+                                                <li class="price"><h5>Cách 30p có chuyến</h5><span class="pkg"></span></li>
+                                                <li class="rating">
+                                                    <span><i class="fa fa-star orange"></i></span>
+                                                    <span><i class="fa fa-star orange"></i></span>
+                                                    <span><i class="fa fa-star orange"></i></span>
+                                                    <span><i class="fa fa-star orange"></i></span>
+                                                    <span><i class="fa fa-star lightgrey"></i></span>
+                                                </li>
+                                            </ul>
+                                        </div><!-- end flight-info -->
+                                    </a>
+                                </div><!-- end flight-block -->
+                            </div><!-- end columns -->
                         
-                            <div class="col-sm-6 col-md-4">
-                                <div class="main-block flight-block">
-                                    <a href="#">
-                                        <div class="flight-img">
-                                            <img src="images/flight-1.jpg" class="img-responsive" alt="flight-img" />
-                                        </div><!-- end flight-img -->
-                                        
-                                        <div class="flight-info">
-                                            <div class="flight-title">
-                                                <h3><span class="flight-destination">Spain</span>|<span class="flight-type">OneWay Flight</span></h3>
-                                            </div><!-- end flight-title -->
-                                            
-                                            <div class=" flight-timing">
-                                                <ul class="list-unstyled">
-                                                    <li><span><i class="fa fa-plane"></i></span><span class="date">Aug, 02-2017 </span>(8:40 PM)</li>
-                                                    <li><span><i class="fa fa-plane"></i></span><span class="date">Aug, 03-2017 </span>(8:40 PM)</li>
-                                                </ul>
-                                            </div><!-- end flight-timing -->
-                                            
-                                            <ul class="list-unstyled list-inline offer-price-1">
-                                                <li class="price">$568.00<span class="pkg">Avg/Person</span></li>
-                                                <li class="rating">
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star lightgrey"></i></span>
-                                                </li>
-                                            </ul>
-                                        </div><!-- end flight-info -->
-                                    </a>
-                                </div><!-- end flight-block -->
-                            </div><!-- end columns -->
-                            
-                            <div class="col-sm-6 col-md-4">
-                                <div class="main-block flight-block">
-                                    <a href="#">
-                                        <div class="flight-img">
-                                            <img src="images/flight-2.jpg" class="img-responsive" alt="flight-img" />
-                                        </div><!-- end flight-img -->
-                                        
-                                        <div class="flight-info">
-                                            <div class="flight-title">
-                                                <h3><span class="flight-destination">Spain</span>|<span class="flight-type">OneWay Flight</span></h3>
-                                            </div><!-- end flight-title -->
-                                            
-                                            <div class=" flight-timing">
-                                                <ul class="list-unstyled">
-                                                    <li><span><i class="fa fa-plane"></i></span><span class="date">Aug, 02-2017 </span>(8:40 PM)</li>
-                                                    <li><span><i class="fa fa-plane"></i></span><span class="date">Aug, 03-2017 </span>(8:40 PM)</li>
-                                                </ul>
-                                            </div><!-- end flight-timing -->
-                                            
-                                            <ul class="list-unstyled list-inline offer-price-1">
-                                                <li class="price">$568.00<span class="pkg">Avg/Person</span></li>
-                                                <li class="rating">
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star lightgrey"></i></span>
-                                                </li>
-                                            </ul>
-                                        </div><!-- end flight-info -->
-                                    </a>
-                                </div><!-- end flight-block -->
-                            </div><!-- end columns -->
-                            
-                            <div class="col-sm-6 col-md-4">
-                                <div class="main-block flight-block">
-                                    <a href="#">
-                                        <div class="flight-img">
-                                            <img src="images/flight-3.jpg" class="img-responsive" alt="flight-img" />
-                                        </div><!-- end flight-img -->
-                                        
-                                        <div class="flight-info">
-                                            <div class="flight-title">
-                                                <h3><span class="flight-destination">Spain</span>|<span class="flight-type">OneWay Flight</span></h3>
-                                            </div><!-- end flight-title -->
-                                            
-                                            <div class=" flight-timing">
-                                                <ul class="list-unstyled">
-                                                    <li><span><i class="fa fa-plane"></i></span><span class="date">Aug, 02-2017 </span>(8:40 PM)</li>
-                                                    <li><span><i class="fa fa-plane"></i></span><span class="date">Aug, 03-2017 </span>(8:40 PM)</li>
-                                                </ul>
-                                            </div><!-- end flight-timing -->
-                                            
-                                            <ul class="list-unstyled list-inline offer-price-1">
-                                                <li class="price">$568.00<span class="pkg">Avg/Person</span></li>
-                                                <li class="rating">
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star lightgrey"></i></span>
-                                                </li>
-                                            </ul>
-                                        </div><!-- end flight-info -->
-                                    </a>
-                                </div><!-- end flight-block -->
-                            </div><!-- end columns -->
-                            
-                            <div class="col-sm-6 col-md-4">
-                                <div class="main-block flight-block">
-                                    <a href="#">
-                                        <div class="flight-img">
-                                            <img src="images/flight-4.jpg" class="img-responsive" alt="flight-img" />
-                                        </div><!-- end flight-img -->
-                                        
-                                        <div class="flight-info">
-                                            <div class="flight-title">
-                                                <h3><span class="flight-destination">Spain</span>|<span class="flight-type">OneWay Flight</span></h3>
-                                            </div><!-- end flight-title -->
-                                            
-                                            <div class=" flight-timing">
-                                                <ul class="list-unstyled">
-                                                    <li><span><i class="fa fa-plane"></i></span><span class="date">Aug, 02-2017 </span>(8:40 PM)</li>
-                                                    <li><span><i class="fa fa-plane"></i></span><span class="date">Aug, 03-2017 </span>(8:40 PM)</li>
-                                                </ul>
-                                            </div><!-- end flight-timing -->
-                                            
-                                            <ul class="list-unstyled list-inline offer-price-1">
-                                                <li class="price">$568.00<span class="pkg">Avg/Person</span></li>
-                                                <li class="rating">
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star lightgrey"></i></span>
-                                                </li>
-                                            </ul>
-                                        </div><!-- end flight-info -->
-                                    </a>
-                                </div><!-- end flight-block -->
-                            </div><!-- end columns -->
-                            
-                            <div class="col-sm-6 col-md-4">
-                                <div class="main-block flight-block">
-                                    <a href="#">
-                                        <div class="flight-img">
-                                            <img src="images/flight-5.jpg" class="img-responsive" alt="flight-img" />
-                                        </div><!-- end flight-img -->
-                                        
-                                        <div class="flight-info">
-                                            <div class="flight-title">
-                                                <h3><span class="flight-destination">Spain</span>|<span class="flight-type">OneWay Flight</span></h3>
-                                            </div><!-- end flight-title -->
-                                            
-                                            <div class=" flight-timing">
-                                                <ul class="list-unstyled">
-                                                    <li><span><i class="fa fa-plane"></i></span><span class="date">Aug, 02-2017 </span>(8:40 PM)</li>
-                                                    <li><span><i class="fa fa-plane"></i></span><span class="date">Aug, 03-2017 </span>(8:40 PM)</li>
-                                                </ul>
-                                            </div><!-- end flight-timing -->
-                                            
-                                            <ul class="list-unstyled list-inline offer-price-1">
-                                                <li class="price">$568.00<span class="pkg">Avg/Person</span></li>
-                                                <li class="rating">
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star lightgrey"></i></span>
-                                                </li>
-                                            </ul>
-                                        </div><!-- end flight-info -->
-                                    </a>
-                                </div><!-- end flight-block -->
-                            </div><!-- end columns -->
-                            
-                            <div class="col-sm-6 col-md-4">
-                                <div class="main-block flight-block">
-                                    <a href="#">
-                                        <div class="flight-img">
-                                            <img src="images/flight-6.jpg" class="img-responsive" alt="flight-img" />
-                                        </div><!-- end flight-img -->
-                                        
-                                        <div class="flight-info">
-                                            <div class="flight-title">
-                                                <h3><span class="flight-destination">Spain</span>|<span class="flight-type">OneWay Flight</span></h3>
-                                            </div><!-- end flight-title -->
-                                            
-                                            <div class=" flight-timing">
-                                                <ul class="list-unstyled">
-                                                    <li><span><i class="fa fa-plane"></i></span><span class="date">Aug, 02-2017 </span>(8:40 PM)</li>
-                                                    <li><span><i class="fa fa-plane"></i></span><span class="date">Aug, 03-2017 </span>(8:40 PM)</li>
-                                                </ul>
-                                            </div><!-- end flight-timing -->
-                                            
-                                            <ul class="list-unstyled list-inline offer-price-1">
-                                                <li class="price">$568.00<span class="pkg">Avg/Person</span></li>
-                                                <li class="rating">
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star lightgrey"></i></span>
-                                                </li>
-                                            </ul>
-                                        </div><!-- end flight-info -->
-                                    </a>
-                                </div><!-- end flight-block -->
-                            </div><!-- end columns -->
-                            
+                           
+                             @endforeach
                         </div><!-- end row -->
-                        
+                  
                         <div class="view-all text-center">
                             <a href="#" class="btn btn-orange">View All</a>
                         </div><!-- end view-all -->
                     </div><!-- end columns -->
-                </div><!-- end row -->
+                </div><!-- end row -->  
             </div><!-- end container -->
         </section><!-- end flight-offers -->
      <!--======================================-->                          
       
     <!--======================= FOOTER =======================-->
-    <section id="footer" class="ftr-heading-o ftr-heading-mgn-1">
+   <section id="footer" class="ftr-heading-o ftr-heading-mgn-1">
 
         <div id="footer-top" class="banner-padding ftr-top-grey ftr-text-white">
             <div class="container">
                 <div class="row">
 
                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 footer-widget ftr-contact">
-                        <h3 class="footer-heading">CONTACT US</h3>
+                        <h3 class="footer-heading">Thông Tin</h3>
                         <ul class="list-unstyled">
-                            <li><span><i class="fa fa-map-marker"></i></span>29 Land St, Lorem City, CA</li>
-                            <li><span><i class="fa fa-phone"></i></span>+00 123 4567</li>
-                            <li><span><i class="fa fa-envelope"></i></span>info@starhotel.com</li>
+                            <li><span><i class="fa fa-map-marker"></i></span>3/2, Thành Phố Cần Thơ, CT</li>
+                            <li><span><i class="fa fa-phone"></i></span>+0373765400</li>
+                            <li><span><i class="fa fa-envelope"></i></span>datb1505712@student.ctu.edu.vn</li>
                         </ul>
                     </div><!-- end columns -->
 
                     <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 footer-widget ftr-links">
-                        <h3 class="footer-heading">COMPANY</h3>
+                        <h3 class="footer-heading">Tham Gia</h3>
                         <ul class="list-unstyled">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Flight</a></li>
-                            <li><a href="#">Hotel</a></li>
-                            <li><a href="#">Tours</a></li>
-                            <li><a href="#">Cruise</a></li>
-                            <li><a href="#">Cars</a></li>
+                            <li><a href="#">Phương Trang</a></li>
+                            <li><a href="#">Lộc Phát</a></li>
+                            <li><a href="#">Mai Linh</a></li>
+                            <li><a href="#">Đại Thăng</a></li>
+                            
                         </ul>
                     </div><!-- end columns -->
 
                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 footer-widget ftr-links ftr-pad-left">
-                        <h3 class="footer-heading">RESOURCES</h3>
+                        <h3 class="footer-heading">Hướng Dẫn</h3>
                         <ul class="list-unstyled">
-                            <li><a href="#">Blogs</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Login</a></li>
-                            <li><a href="#">Register</a></li>
-                            <li><a href="#">Site Map</a></li>
+                            <li><a href="test1">Cách Thức Hoạt Động</a></li>
+                            <li><a href="test2">Hướng Dẫn Sử Dụng</a></li>
+                            <li><a href="test">Hướng Dẫn An Toàn</a></li>
+                            <li><a href="#">Đăng ký</a></li>
+                           
                         </ul>
                     </div><!-- end columns -->
 
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 footer-widget ftr-about">
-                        <h3 class="footer-heading">ABOUT US</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit.</p>
+                        <h3 class="footer-heading">Dichung</h3>
+                        <p> Dichung được thiết kế với định hướng hỗ trợ tối đa việc chia sẻ/ mua bán chỗ trống. Bạn hãy khai thác các tính năng các tính năng dưới đây để có thể đi chung một cách dễ dàng.</p>
                         <ul class="social-links list-inline list-unstyled">
                             <li><a href="#"><span><i class="fa fa-facebook"></i></span></a></li>
                             <li><a href="#"><span><i class="fa fa-twitter"></i></span></a></li>
@@ -861,7 +708,7 @@
                     </div><!-- end columns -->
 
                 </div><!-- end row -->
-        	</div><!-- end container -->
+            </div><!-- end container -->
         </section><!-- end best-features -->
                 
         

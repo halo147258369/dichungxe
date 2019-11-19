@@ -11,14 +11,15 @@ class DistrictsController extends Controller
     
    public function getList() {
    // $data['districts'] = district::all();
-   //  $data['cities']=city::all();
-    $data['districts']=district::with('city')->get();
+    $data['cities']=city::all();
+      $data['districts']=city::all();
+    // $data['districts']=district::with('city')->get();
     	return view('admin.district.list',$data);
     }
 
     public function getAdd() {
     	$city = city::all();
-    	return view('district.add',['city'=>$city]);
+    	return view('admin.district.add',['city'=>$city]);
     }
      public function postAdd(Request $request)
     {

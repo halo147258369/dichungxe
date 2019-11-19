@@ -1,0 +1,37 @@
+function calcPriceRideCreate(selectPrice, totalLength, isService, isBoss, totalCost, totalSeat, seatLeft, isBike, isBicycle, isXeom)
+{
+	var params = {selectPrice: selectPrice, 
+    				totalLength: totalLength, 
+    				isService: isService, 
+    				isBoss: isBoss, 
+    				totalCost: totalCost, 
+    				totalSeat: totalSeat, 
+    				seatLeft: seatLeft,
+    				isBike: isBike?1:0,
+    				isBicycle: isBicycle?1:0,
+    				isXeom: isXeom?1:0};
+
+	
+	$.post("/ride/calc", 
+				params,
+			 function(data) {
+					
+                //gia co dinh
+                $('#suggest_price_input').val(data.fixed);
+                
+                //gia chia deu toi thieu
+                $('#min_price').val(data.min);
+                
+                //gia chia deu toi da
+                $('#max_price').val(data.max);
+                
+                
+                $('#suggested_price_text').html(selectPrice);
+                
+                var path = '#vehicle input:checked';
+                $('#vehicle_selected_text').html($(path).parent().find('label').eq(0).html());
+					
+			 }, 
+		 "json"
+		);
+}

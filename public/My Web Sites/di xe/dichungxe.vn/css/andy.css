@@ -1,0 +1,373 @@
+.ui-state-hover, .ui-widget-content .ui-state-hover, 
+.ui-widget-header .ui-state-hover, 
+.ui-state-focus, 
+.ui-widget-content 
+.ui-state-focus, .ui-widget-header .ui-state-focus {
+    top: 1px !important; 
+    right: 1px !important; 
+    border-radius: 0; 
+    -webkit-border-radius: 0; 
+    -moz-border-radius: 0; 
+    -ms-border-radius: 0;
+    background: none;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+    background: #e6e6e6; 
+    padding: 5px;
+    border-radius: 0; 
+    -ms-border-radius: 0; 
+    -moz-border-radius: 0; 
+    -webkit-border-radius: 0
+}
+.ui-datepicker-calendar{
+    margin-top: 10px;
+}
+.ui-timepicker-div {       background-color: #0288D1; color: #fff; border-top: solid 2px orange; padding: 5px; overflow: hidden;  padding-top: 10px;}
+.ui-timepicker-div dl{margin-bottom: 0}
+.ui_tpicker_minute_label{ display: none}
+.ui-timepicker-div dl dd{ float: left; margin: 0 0px 10px 10px !important}
+.ui-datepicker .ui-datepicker-buttonpane{margin: 0 !important}
+.ui-timepicker-div dl dt{padding-top: 5px !important}
+.ui_tpicker_time_label{display: none}
+.ui_tpicker_time{display: none} 
+.ui-widget-header{     background: #E6E6E6; color: #000; border: none;  border-radius: 0; webkit-border-radius: 0; border-bottom: solid 1px #ccc}
+.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current{ display: none}
+.ui-timepicker-div select{ background: #fff !important}
+.ui-datepicker .ui-datepicker-buttonpane button { 
+    font-weight: normal; 
+    border-radius: 0; 
+    -ms-border-radius: 0; 
+    -moz-border-radius: 0; 
+    -webkit-border-radius: 0
+}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active{background: #fff}
+/* ------------- END CALENDAR -------------------*/
+
+.price_1 {background-color: #FAFAFA; margin-left: 20px;}
+
+.phanloai {padding: 0}
+.vehicle_unit_count{padding: 0}
+#chair_id {    width: 60px; display: inline-block;}
+.vehicle_unit { font-size: 12px; margin-left: 2px;  margin-top: 10px; color: #5D8CA5;}
+.home_partial_booking_step + .box_md{ padding-bottom: 0}
+.home_partial_booking_step + .box_md + script + .box_md { padding-top: 10px}
+.total-rating .number{width: 90px !important}
+.copyright{     text-align: center; border-top: solid 2px #ccc; padding: 10px;}
+.slogan { left: 0 !important; top: 40% !important; text-align: center; width: 100%}
+.ride_date_time>div{ padding-left: 0}
+
+.thongtinchuyenbay #plane_date { padding: 5px}
+.btn-sm, .btn-group-sm>.btn { padding: 8px 10px; font-weight: bold}
+#home_booking_form .datxe{z-index: 10}
+#home_booking_form .show_all {
+/*    padding-top: 30px;*/
+    margin-top: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+#home_booking_form .show_all a{border-bottom: solid 1px}
+
+.btn:hover {color: #0288d1}
+ 
+#detail_booking_form #input_date, #detail_booking_form #input_time{
+    padding: 7px 10px;
+}
+#detail_booking_form #input_time{margin-left: 10px;}
+.progress_bar td {
+    border-right: solid 1px #fff;
+    background-image: none !important;
+}
+.orange{ color: orange}
+.price_desc {
+    color: #888;
+    border-bottom: solid 1px #ccc;
+    padding-top: 5px;
+    font-weight: normal;
+    cursor: pointer;
+}
+.show_price_1{overflow: hidden; margin-top: -20px; border-top: 1px solid #D6D6D6;}
+.fixed.price_desc { color: green; text-decoration: none}
+.showxe .price{font-weight: bold}
+.showxe .price.dynamic, .showxe #total_price { color: rgb(171, 99, 6); }
+
+.img-responsive, .thumbnail>img, .thumbnail a>img, .carousel-inner>.item>img, .carousel-inner>.item>a>img {width: 100%}
+.carousel-indicators{z-index: 1}
+form.blog_search .btn{padding: 6px 12px}
+.news_img_list {margin-right: 10px}
+.price {background: inherit;
+    border: none;
+    box-shadow: none;
+    text-align: left;
+/*    display: inline-block;
+    width: 330px;*/
+    padding: 10px 0;}
+.showxe .radio_label{ display: block; margin-top: 10px}
+.booking_regular_bg .day_frame .text_box{width: 103px}
+.booking_regular_bg .stats{ display: none}
+#home_booking_form .select2, #detail_booking_form .select2{width: 100% !important}
+.datxe_form-control[disabled] { padding: 9px 5px !important}
+
+#home_booking_form .suggest .dim{color: #449230} 
+.rating{height:14px;overflow:hidden; position:relative;width:82px }
+.rating.with-num{width:140px}
+
+.star-img{background:url("../../giaothong.dichung.vn/assets/images/stars_rate.png") no-repeat scroll 0 0 transparent;display:block;height:100%;width:100%}
+.rating .stars-,.rating .stars-0{background-position:-3px -3px}
+.rating .stars-1{background-position:-3px -21px}
+.rating .stars-15{background-position:-3px -39px}
+.rating .stars-2{background-position:-3px -58px}
+.rating .stars-25{background-position:-3px -74px}
+.rating .stars-3{background-position:-3px -93px}
+.rating .stars-35{background-position:-3px -111px}
+.rating .stars-4{background-position:-3px -129px}
+.rating .stars-45{background-position:-3px -147px}
+.rating .stars-5{background-position:-3px -165px}
+.rating-small{float:left;height:9px;overflow:hidden;position:relative;width:49px}
+.rating-small .stars-,.rating-small .stars-0{background-position:-3px -183px}
+.rating-small .stars-1{background-position:-3px -195px}
+.rating-small .stars-15{background-position:-3px -207px}
+.rating-small .stars-2{background-position:-3px -219px}
+.rating-small .stars-25{background-position:-3px -231px}
+.rating-small .stars-3{background-position:-3px -243px}
+.rating-small .stars-35{background-position:-3px -255px}
+.rating-small .stars-4{background-position:-3px -267px}
+.rating-small .stars-45{background-position:-3px -279px}
+.rating-small .stars-5{background-position:-3px -291px}
+.rating-large{height:21px;overflow:hidden;position:relative;width:200px}
+.rating-large .stars-, .rating-large .stars-0{background-position:-3px -303px}
+.rating-large .stars-1{background-position:-3px -327px}
+.rating-large .stars-15{background-position:-3px -351px}
+.rating-large .stars-2{background-position:-3px -375px}
+.rating-large .stars-25{background-position:-3px -399px}
+.rating-large .stars-3{background-position:-3px -423px}
+.rating-large .stars-35{background-position:-3px -447px}
+.rating-large .stars-4{background-position:-3px -471px}
+.rating-large .stars-45{background-position:-3px -495px}
+.rating-large .stars-5{background-position:-3px -519px}
+
+//vote 
+.rating-f .br-widget {
+    height: 24px;
+}
+
+.rating-f .br-widget a {
+    background: url('../images/star.html');
+    width: 24px;
+    height: 24px;
+    display: block;
+    float: left;
+}
+
+.rating-f .br-widget a:hover,
+.rating-f .br-widget a.br-active,
+.rating-f .br-widget a.br-selected {
+    background-position: 0 24px;
+}
+#popup_message .vote_comment{height: 190px; overflow: hidden; overflow-y: auto;}
+#popup_message .vote_comment p{margin-bottom: 5px; border-bottom: dotted 1px #ccc}
+#popup_message .vote_comment span.bl{ background: #F9F9F9; padding: 3px; margin-bottom: 5px; border: solid 1px #ccc;}
+
+
+.th_vehicle_service_frame p, .th_provider_frame p, .th_vehicle_frame p, .th_count_frame p {
+
+    display: none;
+    border-top: solid 1px #ccc;
+    color: rgb(178, 123, 52);
+    padding: 5px;
+}
+
+.th_vehicle_service_frame.selected p, .th_provider_frame.selected p, .th_vehicle_frame.selected p, .th_count_frame.selected p {
+    display: block;
+}
+
+/*.th_vehicle_service_frame, .th_count_frame, .th_provider_frame {
+  position: absolute;
+  margin-top: -23px;
+  background: #0288d1 url(data:image/gif;base64,R0lGODlhFQAEAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAQAAAINjB+gC+jP2ptn0WskLQA7) right center no-repeat;
+  padding: 4px 0 0;
+  width: 70px;
+  z-index: 1;
+}*/
+.th_count_frame p{text-align: center;}
+.th_vehicle_frame.selected, .th_provider_frame.selected {width: 125px}
+/*.th_count_frame{width: 100px }*/
+.th_vehicle_service_frame.selected, .th_provider_frame.selected, .th_vehicle_frame.selected, .th_count_frame.selected {
+    border: solid 2px #ccc;
+    cursor: pointer;
+    background: #fff;
+    color: #000;
+    margin-left: -2px;
+    margin-top: -13px;
+}
+table.showxe .selected {  margin-top: -20px;  padding-left: 3px;}
+
+table.showxe tbody tr.selected {
+    background: #E9F2F7;
+    color: #A84622;
+    font-weight: bold;
+}
+
+.success {
+    background-color:#edfcd8;
+    border:1px solid #c0dda9;
+    color: #333;
+    margin-bottom: 20px;
+    padding: 5px 10px;
+    text-align: center;
+}
+.bold{font-weight: bold}
+.red{color: red}
+#popup_message dt {
+    float: left;
+    width: 75px;
+    margin-right: 5px;
+    clear: left;
+    margin-bottom: 10px;
+}
+.tuyenphobien .carousel-control {width: 0}
+.tuyenphobien .carousel-control.right {background-image: none ; }
+.tuyenphobien .carousel-control.right span{margin-right: 10px !important; }
+.tuyenphobien .carousel-control.left {background-image: none; }
+.tuyenphobien .carousel-control.left span{ margin-left: 10px !important;}
+.tuyenphobien .carousel-control span{    
+    
+    background-color: #000;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    opacity: .5;
+}
+.limit_booking .book_now { cursor: pointer; border-bottom: solid 1px #ccc}
+.flR{ float: right}
+.flL{ float: left}
+.register_frame {
+    text-align: center;
+}
+#popup_message dd {
+    margin-bottom: 10px;
+}
+.divider {
+
+    border-top: 1px solid #e1e6e7;
+    font-family: Tahoma, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    line-height: 10px;
+    margin: 20px 0 10px 0;
+    position: relative;
+    text-align: center;
+}
+
+.divider span {
+    background-color: #fff;
+    color: #b6c0c6;
+    padding: 0 7px;
+    position: relative;
+    text-transform: uppercase;
+    top: -6px;
+}
+
+label.header {
+    display: block;
+    font-size: 14px;
+    color: #E57F40;
+    /* padding-left: 4px; */
+    border-bottom: solid 2px #2885B3;
+    padding-bottom: 4px;
+    white-space: nowrap;
+}
+#dkkm .column label {
+    display: block;
+    text-align: left;
+}
+#dkkm .column {
+    width: 49%;
+    display: inline-block;
+}
+#dkkm .column select {
+    width: 94%;
+}
+#dkkm .column select, #dkkm .column input {
+    width: 90%;
+    margin-top: 5px;
+    -moz-border-radius: 5px;
+    border: solid 1px #ccc;
+    padding: 8px;
+}
+
+.info_hl_bg {
+    margin-bottom: 20px;
+    background: #fff;
+    border: 1px solid;
+    border-color: #e9eaed #dfe0e4 #d0d1d5;
+    -webkit-border-radius: 3px;
+    padding: 20px;
+}
+.tuyenphobien .carousel-inner>.item { height: 400px}
+/*#thumbs .thumbs {display: block; width: 200px; margin: 0 auto}
+.brand_info_img_gallery {display: block; margin: 0 auto; max-width: 510px}
+.brand_info_img_gallery #controls { display: none}*/
+
+.blog_frame *{font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif !important}
+.map{ height: 100%}
+#booking_iframe_body #home_booking_form label { font-weight: bold;}
+body#booking_iframe_body{background-color: transparent}
+#booking_iframe_body .datxe {position: inherit}
+#booking_iframe_body .nav>li>a {padding: 10px}
+.widget_custom .datxe>.tabbable>.tab-content, #booking_iframe_body .datxe>.tabbable>.tab-content {  
+    border: solid 1px #ccc;
+    border-top: none;
+}
+select:disabled, input:disabled{ background: #eee; color: #444; border: 1px solid #aaa}
+.widget_custom #home_booking_form .datxe{ position: inherit;} 
+.show_demo_code { display: none}
+
+
+#widget_popup {height: auto !important;}
+
+//ticket
+.show_price_1 {overflow: hidden}
+
+button#widget{
+    height: auto !important;
+    color: #fafafa;
+    background-color: #0288d1; 
+    padding: 10px; 
+    width: 200px; 
+    display: inline-block;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;   text-align: center;
+    border-radius: 3px; border: none
+}
+.carousel-control{z-index: 10}
+#captcha_input{
+    width: 40% !important;
+    font-size: 22px !important;
+    vertical-align: top;
+    font-weight: bold;
+    min-width: 50px;
+}
+
+@media (max-width: 768px) {
+    .banner {
+        height: 633px !important;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .showxe .th_vehicle, .showxe .vehicle_col { display: none !important}
+}
+
+#ui-datepicker-div{ z-index: 10 !important; font-size: 1.19em}
+.ui-datepicker .ui-datepicker-title {margin: 0 1.3em}
+
+.my_time_frame {padding: 10px 0; font-weight: bold;     border-bottom: 1px solid #d3d3d3; color: #555}
+.my_time_frame select{ padding: 3px 13px; color: #000}
+
+#cost .min1, #cost .min2 {font-size: 18px; padding: 4px 0;}

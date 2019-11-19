@@ -1,0 +1,24 @@
+function hasCalcRoute()
+{
+	var is = issetStart();
+	var ie = issetEnd();
+	 ret = is&&ie;
+	 
+	
+	return ret;
+}
+function issetStart()
+{
+	 return $('#start').val().length > 0 
+			&& $('#start').val() != defaultVal.start 
+			&& $('#start').val() != defaultHomeVal.start ;
+			
+}
+
+function issetEnd()
+{
+	 return $('#end').val().length > 0 
+			&& $('#end').val() != defaultVal.end 
+			&& $('#end').val() != defaultHomeVal.end;
+			
+}

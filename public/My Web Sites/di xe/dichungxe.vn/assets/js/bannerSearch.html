@@ -1,0 +1,307 @@
+function select_address_dulich(){
+   $("#booking_form_to_address").MySuggestPlugin({url : "/api/search_end"});
+
+}
+
+function selectaddressMap(){
+ var options = {
+      //map: ".map_canvas",
+      autoselect: false
+    }
+    $('#form_dichungtaxi #depart-date').MyDateTimePicker();
+    $('.form_dulich #depart-date').datepicker();
+    $('#form_dichung #depart-date').datepicker();
+
+
+    $('#start, #end').focus(function(){
+      $('.search_form button').attr('disabled', 'disabled');
+    });
+    $("#start, #end").geocomplete(options)
+    .bind("geocode:result", function(event, result){
+      $('.search_form button').removeAttr('disabled', 'disabled');
+      locat = result.geometry.location;
+      id = $(this).attr('id');
+      $('#'+id+'_pos').val(locat.lat()+','+locat.lng());
+      startPos = $('#start_pos').val();
+      endPos = $('#end_pos').val();
+      if(startPos.length > 0 && endPos.length > 0 ) {
+        if(id == 'start'){
+          v = endPos.split(','); 
+        }
+        else {
+          v = startPos.split(','); 
+        }
+        nextPos = new google.maps.LatLng(v[0], v[1]);
+        mainRadius = GMapCalcLength(locat, nextPos);
+        $('#radius').val(mainRadius/(2*1000));
+      }
+    })
+    .bind("geocode:error", function(event, status){
+      $(this).val("");
+      $('#'+$(this).attr('id')+'_pos').val("");
+      $('.search_form button').removeAttr('disabled', 'disabled');
+        //$.log("ERROR: " + status);
+      })
+    .bind("geocode:multiple", function(event, results){
+        //$.log("Multiple: " + results.length + " results found");
+      });
+    $("#start, #end").blur(function(){
+      var self = this;
+      setTimeout(function(){
+        $(self).trigger("geocode");
+      }, 100);
+    });
+    $('a.way').click(function (){
+      $('#end_pos, #start_pos').val("");
+      $('#start').val($(this).find(".st").text());
+      $('#end').val($(this).find(".en").text());
+      $('#start').blur();
+      itvr = null;
+      itv = null;
+      itvr = setInterval(function(){
+        if($('#start_pos').val().length > 0){
+          $('#end').blur();
+          itv = setInterval(function(){
+            if($('#end_pos').val().length > 0){
+              $('.search_form').submit();
+              clearInterval(itv);
+            }
+          }, 100);
+          clearInterval(itvr);
+        }
+      }, 100);
+      return false;
+    });
+  }
+  function render_chosen(){
+     $("#end_chosen , #start_chosen").MySuggestPlugin({url: "/api/suggest_address"});
+  //   $("#end_chosen, #start_chosen").select2({
+  //     ajax: {
+  //       url: "/home/ ",
+  //       dataType: 'json',
+  //       delay: 250,
+  //       data: function (params) {
+  //         return {
+  //         q: $('.select2-search__field').val(), // search term
+  //         page: params.page
+  //       };
+  //     },
+  //     processResults: function (data, page) {
+  //       return {
+  //         results: data.items
+  //       };
+  //     },
+  //     cache: true
+  //   },
+  //   escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+  //   minimumInputLength: 2,
+  // });
+
+  }
+  $(document).ready(function(){
+    selectaddressMap();
+    $("body").on("click", "#submit_booking_taxi", function(e) {
+      var depart_city = $('#depart_city').val();
+      var chunk_search = $('#chunk_search').val();
+      var start = $('#start').val();
+      var end = $('#end').val();
+      var depart_date = $('#depart-date').val();
+      var start_chosen = $('#start_chosen').val();
+      var end_chosen = $('#end_chosen').val();
+
+      if(depart_city == '0'){
+        alert('Bạn chưa chọn thành phố ');
+        return false;
+      }else if(chunk_search == '0'){
+        alert('Bạn chưa chọn tuyến ');
+        return false;
+      }
+      else if(start_chosen == '0'){
+       alert('Bạn chưa chọn phố, phường ');
+       return false;
+     }
+     else if(end_chosen == '0'){
+       alert('Bạn chưa chọn phố, phường ');
+       return false;
+     }
+     else if(depart_date == false){
+      alert('Bạn chưa chọn thời gian');
+      return false;
+    }
+    else{
+      jQuery.ajax({
+        type: "POST", 
+        url: "/home/submitBookingSearchBanner", 
+        dataType:"json", 
+        data:{"depart_city":depart_city,"chunk_search":chunk_search,"start":start,"end":end,"depart_date":depart_date,"start_chosen":start_chosen,"end_chosen":end_chosen}, 
+        success:function(response){
+          var code = response.code;
+          var msg = response.msg;
+          if(code == '1'){
+            alert(msg);
+          }
+          if(code == '2'){
+            var url = response.url;
+            window.location.href= url;
+          }
+        },
+          // error:function (xhr, ajaxOptions, thrownError){
+          });
+    }
+  });
+
+$("body").on("change", "#chunk_search", function(e) {
+  var depart_city = $('#depart_city').val();
+  var chunk_search = $('#chunk_search').val();
+  jQuery.ajax({
+    type: "POST", 
+    url: "/home/renderChunk", 
+    dataType:"json", 
+    data:{"depart_city":depart_city,"chunk_search":chunk_search}, 
+    success:function(response){
+      if(response){
+        var code = response.code;
+        var text = response.text;
+        var html = response.html;
+        var html_start = response.html_start;
+        var html_end = response.html_end;
+        if(code == '1'){
+          $('#label_start_chosen').html(html_start);
+          $('#label_end_chosen').html(html_end);
+          $('#end').val(text).prop('disabled', true);
+          render_chosen();
+          selectaddressMap();
+        }
+        if(code == '2'){
+          $('#label_start_chosen').html(html_start);
+          $('#label_end_chosen').html(html_end);
+          $('#start').val(text).prop('disabled', true);
+          render_chosen();
+          selectaddressMap();
+        }
+        if(code == '3'){
+          var html_start = response.html_start;
+          var html_end = response.html_end;
+          $('#label_start_chosen').html(html_start);
+          $('#label_end_chosen').html(html_end);
+          selectaddressMap();
+        }
+      }
+    },
+  });
+});
+
+$("body").on("change", "#depart_city", function(e) {
+  var depart_city = $('#depart_city').val();
+  jQuery.ajax({
+    type: "POST", 
+    url: "/home/getChunk", 
+    dataType:"json", 
+    data:{"depart_city":depart_city}, 
+    success:function(response){
+      var code = response.code;
+      var msg = response.msg;
+      var html = response.html;
+      if(code == '1'){
+        $('#chunk_search').html('<select name="chunk_search" id="chunk_search" class="input_form" style="width:110px"><option value="0">Chọn Tuyến</option>'+html);
+      }
+    },
+  });
+});
+
+$("#searchOptions li").click(function() {
+ $('li').removeClass('active');
+ $(this).addClass("active");
+});
+
+$('#tab_dichung').click(function(){
+ $('#content_banner').html('<div id="banner" class="banner_formSearch" style=" background: url(../images/new/images/slider/banner0b.jpg) 0 0 no-repeat;"><div class="heroMsg"><h1><span class="tagl"  style="padding-top:100px;font-size:0.7em;font-weight:700">ĐI XE RIÊNG, GIÁ RẺ NHƯ XE KHÁCH</span></h1></div></div>').hide().show('fade');
+ var fromDichung = 1;
+ jQuery.ajax({
+  type: "POST", 
+  url: "/home/getFormSearch", 
+  dataType:"json", 
+  data:{"fromDichung":fromDichung}, 
+  success:function(response){
+    var code = response.code;
+    var msg = response.msg;
+    var html = response.html;
+    if(code == '1'){
+      $('#contentSearch').html(html);
+      selectaddressMap();
+    }
+  },
+          // error:function (xhr, ajaxOptions, thrownError){
+          });
+});
+$('#tab_dichungtaxi').click(function(){
+ $('#content_banner').html('<div id="banner" class="banner_formSearch" style=" background: url(../images/new/images/slider/dichung_taxi.jpg) no-repeat center center ;"><div class="heroMsg"><h1><span class="tagl" style="padding-top:100px;font-size:0.7em;font-weight:700">TIẾT KIỆM ĐẾN 40% CHI PHÍ ĐI TAXI</span></h1></div>').hide().show('fade');
+ var fromDichungTaxi = 1;
+ jQuery.ajax({
+  type: "POST", 
+  url: "/home/getFormSearch", 
+  dataType:"json", 
+  data:{"fromDichungTaxi":fromDichungTaxi}, 
+  success:function(response){
+    var code = response.code;
+    var msg = response.msg;
+    var html = response.html;
+    if(code == '1'){
+     $('#contentSearch').html(html);
+
+
+              //   selectaddressMap();
+            }
+          },
+          // error:function (xhr, ajaxOptions, thrownError){
+          });
+});
+
+
+$('#tab_dichungdulich').click(function(){
+  $('#content_banner').html('<div id="banner" class="banner_formSearch" style=" background: url(../images/new/images/slider/banner_dichvu.jpg) no-repeat center center ;"><div class="heroMsg"><h1><span class="tagl" style="padding-top:100px;font-size:0.7em;font-weight:700">QUẲNG GÁNH LO CHI PHÍ KHI ĐI DU LỊCH</span></h1></div>').hide().show('fade');
+  var fromDichungDulich = 1;
+  jQuery.ajax({
+    type: "POST", 
+    url: "/home/getFormSearch", 
+    dataType:"json", 
+    data:{"fromDichungDulich":fromDichungDulich}, 
+    success:function(response){
+      var code = response.code;
+      var msg = response.msg;
+      var html = response.html;
+      if(code == '1'){
+        $('#contentSearch').html(html);
+        selectaddressMap();
+        select_address_dulich();
+      }
+    },
+            // error:function (xhr, ajaxOptions, thrownError){
+            });
+});
+
+
+$('#tab_dichung_bus').click(function(){
+ $('#content_banner').html('<div id="banner" class="banner_formSearch" style=" background: url(../images/new/images/slider/minibus.jpg) no-repeat center center ;"><div class="heroMsg"><h1>TIẾT KIỆM TỐI ĐA VỚI ĐI CHUNG MINIBUS/ XE DU LỊCH<span class="tagl">Chọn một trong hàng ngàn nhà cung cấp dịch vụ chuyên nghiệp hoặc bán chuyên nghiệp</span></h1></div>').hide().show('fade');
+});
+$("body").on("click", "#formSearchDichungDulich", function(e) {
+  var submitformDichungDulich = 1;
+  var start = $('#start').val();
+  var booking_form_to_address = $('#booking_form_to_address').val();
+  var depart_date = $('#depart-date').val();
+  jQuery.ajax({
+    type: "POST", 
+    url: "/home/getFormSearch", 
+    dataType:"json", 
+    data:{"submitformDichungDulich":submitformDichungDulich,"start":start,"booking_form_to_address":booking_form_to_address,"depart_date":depart_date}, 
+    success:function(response){
+      var code = response.code;
+      var url = response.url;
+      if(code =='success'){
+        window.location.href= url ;
+      }
+    },
+          // error:function (xhr, ajaxOptions, thrownError){
+          });
+});
+});

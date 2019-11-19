@@ -1,0 +1,60 @@
+.selectPriceType{
+ background: #FFFFFF url('../assets/images/bg_input_text.gif') top repeat-x;
+ border: 1px solid #C1D5E8;
+ font-size: 15px;
+ height: 50px;
+ line-height: 1.3em;
+ padding: 4px 3px 3px 3px;
+ width: 170px !important;
+ }
+ .newAddRideStyle .bigradio input, .newAddRideStyle .bigradio label{
+     padding: 5px 0px 0px 5px !important;
+ }
+.text_input_popup{
+   width: 250px !important;
+   box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   width: 100%;
+   height: 39px;
+   padding: 8px 10px;
+   outline: none;
+   border-width: 2px;
+   border-radius: 0;
+   border: 1px solid #C1D5E8 !important;
+   background: #fff;
+   font: 15px/19px 'Open Sans', Helvetica, Arial, sans-serif;
+   color: #404040;
+}
+.row_popup{
+    margin: 15px 15px 15px 15px;
+}
+.div_popup{
+   width: 100px;
+float: left;
+margin-top: 15px;
+}
+.button_submit_ride {
+height: 39px;
+overflow: hidden;
+margin: 10px 0 0 20px;
+padding: 0 25px;
+outline: none;
+border: 0;
+font: 300 15px/39px 'Open Sans', Helvetica, Arial, sans-serif;
+text-decoration: none;
+color: #fff;
+cursor: pointer;
+}
+#popup_title{
+   line-height: 2.75em;
+   text-align: center;
+}
+#popup_content.form {
+  background: white;
+}
+.popup_border{
+    background: white;
+}
+#popup_container_fast{
+    border: solid 8px #999;
+}

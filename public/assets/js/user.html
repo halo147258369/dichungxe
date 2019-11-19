@@ -1,0 +1,28 @@
+$(document).ready(function(){
+	
+	// open box car
+	$('#user_profile .add_car').click(function(){
+		$(this).addClass('disabled');
+		$(this).parent().find('.my_car').removeClass('hidden');
+		return false;
+	});
+	
+	$('.show_upcoming').click(function(){
+		$('.rides.upcoming').show();
+		$('.rides.past').hide();
+		
+		$(this).addClass('active');
+		$('.show_past').removeClass('active');
+	});
+	
+	
+	$('.show_past').click(function(){
+		$('.rides.past').show();
+		$('.rides.upcoming').hide();
+		
+		$(this).addClass('active');
+		$('.show_upcoming').removeClass('active');
+	});
+	
+	
+});

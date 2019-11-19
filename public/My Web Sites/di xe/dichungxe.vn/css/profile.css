@@ -1,0 +1,128 @@
+   .m_{padding:0px 20px !important; left:0px;}
+   .panel.body select{ width: 110px;padding: 5px; float: right}
+   .panel.body label{width: 85px;}
+   .panel.body li{ height: 35px;}
+   
+   .step_container{
+        padding-top: 10px;
+        width: 1000px !important;
+   }
+
+   .step_container span {
+        float: left;
+        width: 160px;
+        padding-left: 40px;
+        color: #C0C0C0;
+        padding-top: 25px;
+        padding-bottom: 10px;
+    }
+     .step_container span.active{
+       color:#29598e;
+    }
+    .selectOption select {
+        cursor: pointer;
+        filter: alpha(opacity=0);
+        border: 1px solid #AAA;
+        background-color: #EAEAEA;
+        top: -1px;
+        left: 0px;
+        width: 100%;
+        height: 27px;
+        z-index: 90;
+    }
+   .b-close{
+    background-color: black  !important;
+    border-radius: 10px;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.3);
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    float:right;
+    margin-left: -35px;
+   }
+    #facebox .tr{
+      height: 0px; 
+      overflow: hidden; 
+      padding: 0; 
+      width: 0px; 
+    }
+  .b{
+    border: none;
+  }
+  .dropdownVehicle select{
+  cursor: pointer;
+  position: absolute;
+  border: 1px solid #AAA;
+  background-color: #EAEAEA;
+  top: -1px;
+  right: 0px;
+  width: 75%;
+  height: 27px;
+  z-index: 90;
+
+  }
+ .roundtrip_icon {display: inline-block;width: 12px;background: url(../assets/images/round_trip_medium.png) no-repeat center 0;height: 12px;padding: 0 5px;}
+.oneway_icon {display: inline-block;width: 12px;background: url(../assets/images/round_trip_medium.png) no-repeat center -19px;height: 12px;padding: 0 5px;}
+.cm {
+width: 540px;
+float: left;
+position: relative;
+}
+.cm_content {
+border: 1px solid #a5a5a5;
+width: 523px;
+float: right;
+}
+.ava {
+width: 45px;
+height: 45px;
+border-radius: 50%;
+border: 3px solid #ffffff;
+box-shadow: 1px 1px 3px #b2b2b2;
+}
+.rating{height:14px;overflow:hidden;
+    position:relative;width:82px
+}
+.rating.with-num{width:140px}
+.star-img{background:url("../images/stars_rate.png") no-repeat scroll 0 0 transparent;display:block;height:100%;width:100%}.rating .stars-0{background-position:-3px -3px}.rating .stars-1{background-position:-3px -21px}.rating .stars-1-half{background-position:-3px -39px}.rating .stars-2{background-position:-3px -58px}.rating .stars-2-half{background-position:-3px -74px}.rating .stars-3{background-position:-3px -93px}.rating .stars-3-half{background-position:-3px -111px}
+.rating .stars-4{background-position:-3px -129px}
+.rating .stars-4-half{background-position:-3px -147px}
+.rating .stars-5{background-position:-3px -165px}
+.rating-small{float:left;height:9px;overflow:hidden;position:relative;width:49px}
+.rating-small .stars-0{background-position:-3px -183px}
+.rating-small .stars-1{background-position:-3px -195px}
+.rating-small .stars-1-half{background-position:-3px -207px}
+.rating-small .stars-2{background-position:-3px -219px}
+.rating-small .stars-2-half{background-position:-3px -231px}
+.rating-small .stars-3{background-position:-3px -243px}
+.rating-small .stars-3-half{background-position:-3px -255px}
+.rating-small .stars-4{background-position:-3px -267px}
+.rating-small .stars-4-half{background-position:-3px -279px}
+.rating-small .stars-5{background-position:-3px -291px}
+.rating-large{height:21px;overflow:hidden;position:relative;width:200px}
+.rating-large .stars-0{background-position:-3px -303px}
+.rating-large .stars-1{background-position:-3px -327px}
+.rating-large .stars-1-half{background-position:-3px -351px}
+.rating-large .stars-2{background-position:-3px -375px}
+.rating-large .stars-2-half{background-position:-3px -399px}
+.rating-large .stars-3{background-position:-3px -423px}
+.rating-large .stars-3-half{background-position:-3px -447px}
+.rating-large .stars-4{background-position:-3px -471px}
+.rating-large .stars-4-half{background-position:-3px -495px}
+.rating-large .stars-5{background-position:-3px -519px}
+.account {
+width: 100px;
+text-align: center;
+float: left;
+}
+.point {
+background-image: url("../images/point.png");
+width: 16px;
+height: 16px;
+position: absolute;
+top: 0px;
+left: 0px;
+}

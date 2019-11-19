@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Place extends Model
 {
+      protected $table = 'places';
+    protected $primaryKey = 'id';
+    protected $fillable = [
+        'name'
+        
+    ];
     public function ward()
     {
         return $this->belongsTo('App\Model\ward');

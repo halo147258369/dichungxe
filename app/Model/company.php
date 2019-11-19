@@ -13,4 +13,11 @@ class Company extends Model
         'name'
     ];
     public $timestamps = false;
+
+
+    public function hour()
+    {
+        return $this->hasMany('App\Model\hour','company_id','id');
+    }
+ 
 }

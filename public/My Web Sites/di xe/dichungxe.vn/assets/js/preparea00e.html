@@ -1,0 +1,1508 @@
+														
+$(document).ready(function(){
+	
+	//user/register
+	/*
+	$('.register_login').submit(function(){
+		var email = $(this).find('#login_user_email').val();
+		var password = $(this).find('#login_user_password').val();
+	  
+		if(email.length == 0  || password.length == 0)
+		{
+			alert('Bạn phải nhập đầy đủ thông tin đăng nhập');
+			return false;
+		}
+		 
+		var self = this;
+		//post
+		 
+		$(this).find('input, button').attr('disabled', 'disabled');
+		$.post("/user/login", { 'user[email]': email, 'user[password]': password},
+			 function(data) {
+				jAlert(data.msg);
+				
+				if(data.url){
+					location.href = data.url;
+				}   
+			 }, 
+		 "json"
+		).always(function() { $(self).find('input, button').removeAttr('disabled'); });
+		//end post
+		return false;
+	});
+	*/
+	//lazy load
+	$("img.lazy").lazy();
+	
+	//ride/search.html: search form / reset select
+	//$('#info select.filter_destination :nth-child(1)').prop('selected', true);;
+	 
+	//ride/search.html: search form
+	$('#info select.filter_destination').change(function(){
+		link = $(this).find('option:selected').attr('link');
+		if(link && link.length > 0 ) 
+			location.href= link;
+	});
+	
+	
+  $('.trans_feedback').click(function (){
+    var self = this;
+    jForm("feedbackForm"+$(this).attr('rbid'), "Phản hồi", function (response){
+        
+        if(response)
+        {
+					var obj = $.parseJSON(response);
+					if(obj.code == 0)
+					{
+						$.alerts._hide();
+						$(self).remove();
+						jAlert("Phản hồi thành công");
+					}
+					else{
+						jAlert(obj.msg);
+					}
+        }
+				else
+				{
+					jAlert("Phản hồi không thành công");
+				}
+    });
+    return false;
+  });
+  
+	$('.user .ride_invite').click(function(){
+		
+		if(!logged)
+		{
+			alert('Bạn phải đăng nhập để sử dụng chức năng này');
+			$('#log_in').click();
+			return false;
+		}
+		return true;
+		
+	});
+	
+	$('#invite_facebook_button').click(function(event){
+		
+		var url = '/facebook_connect.html?invite=1';
+		var win = popup(url, event);
+		var rid = $(this).attr('rid');
+		//add button
+		setTimeout(function(){
+			$('#facebox .action').html('<button class="send" rid="'+rid+'" onclick="sendFacebookInvite(this)">SEND</button> <span class="tip" title="snvf">?</span>');
+		}, 500);
+		
+
+	});
+	
+		try{
+			$('.helpicon').tipsy({gravity: 'n', opacity: 1,  html: true});
+		}
+		catch( e)
+		{
+		}
+	$('a').each(function(){
+		var id = $(this).attr('href');
+		
+		if(id && id.indexOf('#') == 0)
+		{
+			if(id.indexOf('/') == -1 && $(id).size() > 0 && id != '#login' && id != '#bad_ride')
+			{
+				$(this).facebox({width: '600px'});
+			}
+		}
+	});
+	
+	//bad ride
+	if($('a.report.flag_red').size() > 0)
+	{
+		$('a.report.flag_red').facebox({width: '324px'});
+		
+	}
+	
+	
+	$('#feedback_button').click(function(){
+		$('#rv_id').val($(this).attr('rv_id'));
+		$('.feedback_form').removeClass('hidden');
+		$('.feedback_form #comment').focus();
+		$(this).hide();
+		return false;
+	});
+	//$('#post-it a').facebox({width: '600px'});
+	
+	//$('.refer .email .button').facebox({width: '600px'});
+	//shout box
+		//if($.browser.msie && $.browser.version.indexOf('6')==0)
+		{
+			$(window).scroll(function(){
+			
+				$('#shout_box').css({bottom: '0px'});
+			});
+		}
+	
+	if($('#home_help #content a').size() > 0)
+	{
+		var i = 0;
+	
+		$('#home_help #content h3').each(function(){
+			$(this).wrapAll('<a href="#h3_'+i+'"></a>');
+			$('#home_help #content p').eq(i).attr('id', 'h3_'+i);
+			i++
+		});
+		$('#home_help #content a').facebox({width: '600px'});
+	}
+	//edit car
+
+	$('.year .dropdown select').change(function(){
+		$('.year .dropdown #view').html($(this).val());
+	});
+	
+	//city
+	$('#private_networks').click(function(){
+		
+		if($(this).hasClass('opened'))
+		{
+			$(this).removeClass('opened');
+			$('#networks_header').css('display', 'none');
+			$('body').css('background-position', '0 119px');
+		}
+		else
+		{
+			$(this).addClass('opened');
+			$('#networks_header').css('display', 'block');
+			$('body').css('background-position', '0 410px');
+		}
+	});
+	$('#networks_header').hover(function(){}, function(){$('#private_networks').click();});
+	
+	
+	$('.nav ul.states a').click(function(){
+		$('.nav .state_wrap').css('display', 'none');
+		var target = $(this).attr('target');
+		$('.nav .platform_wrap #'+target).css('display', 'block');
+		return false;
+	});
+	$('.nav .platform_wrap .nav').click(function(){
+		$('.nav .platform_wrap .state').css('display', 'none');
+		$('.nav .state_wrap').css('display', 'block');
+	});
+	//confirm book
+	$('#tran_history').find('#cus_reject_cancel, #boss_reject_cancel, #accept, #deny, #finish, #user_cancel, #boss_require_cancel, #boss_approve_cancel, #cus_require_cancel, #cus_approve_cancel').click(function(){
+		var pr = $(this).parent();
+		if(pr.find('.loading_img').size() == 0)
+		{
+			pr.append('<img class="loading_img" src="../images/loading.gif">');
+		}
+		
+		var idName = $(this).attr('id');
+		var id = $(this).attr('trans_id');
+		var rvId = $(this).attr('rv-id');
+		var dim = $(this).parent().attr('dimension');
+	  var status = {'accept': 1,
+									'deny': 2,
+									'finish': 4,
+									'user_cancel': 3,
+									'boss_require_cancel': 5,
+									'boss_approve_cancel': 6,
+									'cus_require_cancel': 7,
+									'cus_approve_cancel': 8,
+									'cus_reject_cancel': 9,
+									'boss_reject_cancel': 10};
+		var msg = {'accept': 'Bạn đồng ý ?',
+								'deny': 'Bạn từ chối ?',
+								'finish': 'Bạn đã kết thúc chuyến đi ?',
+								'user_cancel': 'Bạn không đi nữa ?',
+								
+								'boss_require_cancel': 'Bạn xin hủy đặt chỗ?',
+								'boss_approve_cancel': 'Bạn đồng ý huỷ đặt chỗ?',
+								'cus_require_cancel': 'Bạn xin hủy đặt chỗ?',
+								'cus_approve_cancel': 'Bạn đồng ý huỷ đặt chỗ?',
+								'cus_reject_cancel': 'Bạn từ chối cho huỷ?',
+								'boss_reject_cancel': 'Bạn từ chối cho huỷ?'};
+		if(confirm(msg[idName]))
+		{
+			$(this).hide();
+			pr.find('.loading_img').show();
+			$.ajax({url: '/dev.php/user/book_confirm',
+								type: 'post',
+								data: {	id: id, status: status[idName]},
+								dataType: 'json',
+								success: function(data){
+									location.reload(true);
+								}});
+		}
+	});
+	//inbox
+	var sendMsg = null;
+	$('#inbox .detail_msg').click(function(){
+		
+		$('#message_box #user_id').val($(this).attr('second-user-id'));
+		$('#message_box #fullname').html($(this).attr('fullname')+': ');
+		$('#message_box #second_user_message #msg').html($(this).html());
+		$('#message_box #second_user_avatar').attr('src', $(this).attr('src'));
+		
+		overlay = new OverlayObject('overlay', 'close_overlay', 'message_box', 'Gửi tin nhắn');
+		overlay.addOverlay();
+		prepareSendMsg();
+		$('#message_box #msg').focus();
+		
+		var self = this;
+		//confirm readed
+		$.ajax({url: '/user/confirm_readed',
+							type: 'post',
+							data: {	id: $(self).attr('alert-id')},
+							dataType: 'json',
+							success: function(data){
+								$(self).addClass('readed');
+							}});
+		return false;
+	});
+	
+	//dang tin
+	$('.newest #create_button').click(function(){
+		location.href = '/ride/create';
+		
+	});
+	// menu thong bao
+	$('.inbox #alert').click(function(){
+		var k = '.inbox .inbox_messages';
+		if(!$(k).hasClass('open'))
+		{
+			$(k).addClass('open');
+			var self = this;
+			$.ajax({url: '/home/readed',
+							
+							dataType: 'json',
+							success: function(data){
+								if(data.code == 0)
+								{
+									$(self).find('.red_bold').remove();
+								}
+							}});
+		}
+		else
+			$(k).removeClass('open');
+		
+		
+						
+		return false;
+	});
+	$('.inbox .inbox_messages').hover(function(){
+			
+		},
+		function(){
+			$(this).removeClass('open');
+		}
+	);
+	
+	/*
+	var bhs = $('#booking_history .box a.float_right');
+	if(bhs.size() > 0)
+	{
+		bhs.facebox({width: '433px'});
+	}
+	*/
+	//user destroy ride
+	$('.destroy_ride').click(function(){
+		if(confirm('Bạn muốn huỷ chuyến đi này'))
+		{
+			var rtId = $(this).attr('rv-id');
+			//confirm readed
+			$.ajax({url: '/ride/destroy',
+								type: 'post',
+								data: {	'id': rtId},
+								dataType: 'json',
+								success: function(data){
+									location.reload(true);
+								}});
+		}
+		return false;
+	});
+	//upload avatar
+	
+	$('.car_pic').mousemove(function(e){
+			var cpos = $(this).offset();
+      $('.car_pic input[type=file]').css({left: (e.pageX-10-cpos.left) +'px', top:(e.pageY-5-cpos.top)+'px', 'z-index': 100});
+   }); 
+	
+	$('#info .panel').mousemove(function(e){
+		var cpos = $(this).offset();
+      $('#info #user_avatar').css({left: (e.pageX-10-cpos.left) +'px', top:(e.pageY-5-cpos.top)+'px', 'z-index': 100});
+   }); 
+	 
+	//var overlay = null;
+	//login
+	prepareLoginButton();
+	
+	//ride select book
+	$('.seats_booked').change(function(){
+		/*if($('.seats_booked').size() == 2)
+		{
+			var id = $(this).attr('id');
+			
+			var k = 0;
+			var tval = 0;
+			$('.seats_booked').each(function(){
+					
+				if(k > 0 && tval == 0)
+				{
+					$(this).val(1);
+					$(this).parent().find('.number').html(1);
+				}
+				tval += $(this).val();
+				k++;
+			});
+		}*/
+		$(this).parent().find('.number').html($(this).val());
+		
+		var params = {};
+		var i = 0;
+		$('.seats_booked').each(function(){
+			if(!params.dimension)
+			{
+				params.dimension = {};
+				params.seatCount = {};
+				params.error = {};
+			}
+			params.dimension[i] = $(this).attr('dimension');
+			params.seatCount[i] = $(this).val();
+			params.error[i] = $(this).attr('error');
+			
+			i++;
+		});
+		var id = $(this).attr('ride_id');
+		params.rvId = id;
+		
+		var self = this;
+		$.post("/ride/calc_item_price", 
+				params,
+			 function(data) {
+					var price = 0;
+					for(var k in data)
+					{
+						var mprice = parseInt(data[k].price);
+						price += mprice*parseInt(data[k].seatCount);
+						var fprice = number_format(mprice*parseInt(data[k].seatCount));
+						
+						$('.seats_booked[dimension="'+k+'"]').parent().find('.unique_price').html(number_format(mprice));
+						
+						$('.seats_booked[dimension='+k+']').parent().parent().find('.subprice').html(fprice);
+						
+					}
+					$('.subtotal .price').html(number_format(price));
+					
+			 }, 
+		 "json"
+		);
+		
+	});
+
+	
+	//book form
+	$('#book_it').submit(function(){
+		
+		
+		
+		//if(confirm('Bạn muốn đặt '+seatCount+' chỗ với giá ' +price+' VND cho chuyến đi này'))
+		{
+			if(!logged)
+			{
+				alert('Bạn phải đăng nhập để đặt chỗ');
+				$('#log_in').click();
+			}
+			else
+			{
+				
+				var d = new Array();
+				var seat = new Array();
+				var i = 0;
+				$(this).find('select.seats_booked').each(function(){
+					if(!$(this).parent().hasClass('disabled'))
+					{
+						if($(this).val() > 0)
+						{
+							d[i] = $(this).attr('dimension');
+							seat[i] = $(this).val();
+							i++;
+						}
+					}
+				});
+				
+				var param = {};
+				var id = $(this).attr('value');
+				var dim = d.join('_');
+				var strSeat = seat.join('_');
+        var date = $(this).attr('data-date');
+				location.href='/ride/book/id/'+id+'/dimension/'+dim+'/seat/'+strSeat+'?date='+date;
+				
+			}
+		}
+		return false;
+	});
+	
+	//send message
+	$('#sendmessage, h1.name button').click(function(){
+		if(!logged)
+		{
+			alert('Để gửi tin nhắn bạn phải đăng nhập');
+			return false;
+		}
+		overlay = new OverlayObject('overlay', 'close_overlay', 'message_box', 'Gửi tin nhắn');
+		overlay.addOverlay();
+		
+		prepareSendMsg();
+		$('#msg').focus();
+		return false;
+		
+	});
+	function prepareSendMsg()
+	{
+		if(sendMsg == 1)
+		{
+			return 1;
+		}
+		sendMsg = 1;
+		
+		var defaultMsg = 'Nhập nội dung tin nhắn';
+		
+		
+		$('#message_box #send_msg').click(function(){
+			var parent = $(this).parent();
+			
+			var msgObj = parent.find('textarea#msg');
+			var msg = msgObj.val();
+			
+			if( msg == defaultMsg || msg == '')
+			{
+				alert(defaultMsg);
+				msgObj.focus();
+				return false;
+			}
+			overlay.remove();
+			$.ajax({url: '/ride/send_message',
+							type: 'post',
+							data: {	'ride[uid]': $('#message_box #user_id').val(),
+											'ride[msg]': msg
+										},
+							dataType: 'json',
+							success: function(data){
+								if(data.code == 0)
+									alert('Gửi tin nhắn thành công');
+								else
+									alert(data.msg);
+							}});
+							
+			$('#message_box #msg').val(defaultMsg);
+		});
+		$('#message_box #msg').focus(function(){
+			var val = $(this).val();
+			$(this).val(val==defaultMsg?'':val);
+		});
+		
+		
+		$('#message_box #msg').blur(function(){
+			var val = $(this).val();
+			$(this).val(val==''?defaultMsg:val);
+		});
+		
+	}
+	//end send message
+	
+	//filter
+	$('.filters .inner .filterset a').click(function(){
+		if($(this).attr('href') && $(this).attr('href').length > 0)
+			return true;
+		var cparent = $(this).parent();
+		var cfield = $(cparent).attr('field');
+		var arr = new Array;
+		var i = 0;
+		$('.filters .inner .filterset').each(function(){
+			var field = $(this).attr('field');
+			if(field != cfield)
+			{
+				arr[i] = 'filters['+field+']='+($(this).find('a.active').attr('data-filter'));
+				i++;
+			}
+		});
+		arr[i] = 'filters['+cfield+']='+$(this).attr('data-filter');
+		//arr[i+1] = 'filters[start_pos]='+$('#start_pos').val();
+		//arr[i+2] = 'filters[end_pos]='+$('#end_pos').val();
+		
+		//arr[i+3] = 'filters[depart_range]='+$('#filters_depart_range').val();
+		//arr[i+4] = 'filters[back_range]='+$('#filters_back_range').val();
+		
+		//arr[i+5] = 'filters[and_or]='+$('#filters_and_or').val();
+		
+		arr[i+6] = 'filters[depart_city]='+$('#depart_city').val();
+		arr[i+7] = 'filters[depart_district]='+$('#depart_district').val();
+		arr[i+8] = 'filters[depart_village]='+$('#depart_village').val();
+		
+		arr[i+9] = 'filters[end_city]='+$('#end_city').val();
+		arr[i+10] = 'filters[end_district]='+$('#end_district').val();
+		arr[i+11] = 'filters[end_village]='+$('#end_village').val();
+		
+		var start = $('#start').val();
+		var end = $('#end').val();
+		var date = $('#search_date').val();
+		
+		var str = 'filters[start]='+start+'&filters[end]='+end+'&filters[date]='+date+'&'+arr.join('&');
+		var hr = location.href.split('?');
+		location.href = hr[0]+'?'+str;
+		
+		return false;
+	});/*
+	$('.filters .postsby a').click(function(){
+		
+		var pos = $(this).attr('data-filter');
+		var vehicle = $('.filters .vehicletype a.active').attr('data-filter');
+		var demand = $('.filters .demand a.active').attr('data-filter');
+		var start = $('#search_s').val();
+		var end = $('#search_e').val();
+		var date = $('#search_date').val();
+		
+		var str = 'filters[start]='+start+'&filters[end]='+end+'&filters[date]='+date;
+		
+		location.href = '/ride/view?filters[post]='+pos+'&filters[vehicle]='+vehicle+'&filters[demand]='+demand+'&'+str;
+		return false;
+	});
+	
+	$('.filters .vehicletype a').click(function(){
+		
+		var vehicle = $(this).attr('data-filter');
+		var pos = $('.filters .postsby a.active').attr('data-filter');
+		var demand = $('.filters .demand a.active').attr('data-filter');
+		var start = $('#search_s').val();
+		var end = $('#search_e').val();
+		var date = $('#search_date').val();
+		
+		var str = 'filters[start]='+start+'&filters[end]='+end+'&filters[date]='+date;
+		
+		location.href = '/ride/view?filters[post]='+pos+'&filters[vehicle]='+vehicle+'&filters[demand]='+demand+'&'+str;
+		return false;
+	});
+	
+	$('.filters .demand a').click(function(){
+		
+		var dm = $(this).attr('data-filter');
+		var pos = $('.filters .postsby a.active').attr('data-filter');
+		var vehicle = $('.filters .vehicletype a.active').attr('data-filter');
+		var start = $('#search_s').val();
+		var end = $('#search_e').val();
+		var date = $('#search_date').val();
+		
+		var str = 'filters[start]='+start+'&filters[end]='+end+'&filters[date]='+date;
+		
+		location.href = '/ride/view?filters[post]='+pos+'&filters[vehicle]='+vehicle+'&filters[demand]='+dm+'&'+str;
+		return false;
+	});
+	*/
+	function calcPriceAtRideDetail(dimension)
+	{
+		var path = '#vehicle input:checked';
+		var id = $(path).val();
+		
+		var selectPrice = parseInt($('#book_it #price').val());
+		var totalLength = parseFloat($('#book_it #total_length').val());
+		var isService = parseInt($('#book_it #is_service').val())==1?true:false; //xe dvu
+		var isBoss = $('#book_it #is_boss').val()==1?true:false; //chu xe
+		var totalCost = parseInt(totalLength*selectPrice/1000);
+		var totalSeat = parseInt($('#book_it #total_seat').val());
+		
+		if(dimension == 1)
+		{
+			var seatLeft = parseInt($('#book_it #booked_depart_seat').val());
+		}
+		else if(dimension == 3)
+		{
+			var seatLeft = parseInt($('#book_it #booked_return_seat').val());
+		}
+		
+
+		//set total cost
+		$('#cost').val(totalCost);
+		
+		//calc fixed price
+		if(isBoss)
+		{
+			if(isService)
+			{
+				//gia co dinh
+				$('#suggest_price_input').val(parseInt(totalCost/(totalSeat-1)));
+				
+				//gia chia deu toi thieu
+				$('#min_price').val(parseInt(totalCost/(totalSeat-1)));
+				
+				//gia chia deu toi da
+				$('#max_price').val(parseInt(totalCost/(totalSeat-seatLeft)));
+			}
+			else //xe rieng
+			{
+				//gia co dinh
+				$('#suggest_price_input').val(parseInt(totalCost/totalSeat));
+				
+				//gia chia deu toi thieu
+				$('#min_price').val(parseInt(totalCost/totalSeat));
+				
+				//gia chia deu toi da
+				$('#max_price').val(parseInt(totalCost/(totalSeat-seatLeft+1)));
+			}
+			
+		}
+		else // hanh khach
+		{
+			if(isService)
+			{
+				//gia co dinh
+				$('#suggest_price_input').val(parseInt(totalCost/(totalSeat-1)));
+				
+				//gia chia deu toi thieu
+				$('#min_price').val(parseInt(totalCost/(totalSeat-1)));
+				
+				//gia chia deu toi da
+				$('#max_price').val(parseInt(totalCost/(totalSeat-seatLeft)));
+			}
+			else //xe rieng
+			{
+				//gia co dinh
+				$('#suggest_price_input').val(parseInt(totalCost/totalSeat));
+				
+				//gia chia deu toi thieu
+				$('#min_price').val(parseInt(totalCost/totalSeat));
+				
+				//gia chia deu toi da
+				$('#max_price').val(parseInt(totalCost/(totalSeat-seatLeft+1)));
+			}
+		}
+		
+		$('#suggested_price_text').html(selectPrice);
+		
+		$('#vehicle_selected_text').html($(path).parent().find('label').eq(0).html());
+	}
+
+	var ds = '';
+	var de = '';
+		
+	$('#search_s, #search_e').focus(function(){
+		
+		if(($(this).attr('id') == 'search_s' && $(this).val() == ds) || $(this).attr('id') == 'search_e' && $(this).val() == de)
+		{
+			$(this).val('');
+		}
+	});
+	
+	$('#search_s, #search_e').blur(function(){
+		
+		if($(this).attr('id') == 'search_s' && $(this).val() == '')
+			$(this).val(ds);
+		
+		if($(this).attr('id') == 'search_e' && $(this).val() == '')
+			$(this).val(de);
+	});
+	
+	//auto search
+	$('.main_filter select').change(function(){
+		$('form.search_form').submit();
+	});
+	$('form.search').submit(function(){
+		//$('.filters .vehicletype a.active').click();
+		//return false;
+	});
+	
+	//help
+	
+	$('.help_frame h3').click(function(){
+		var index = $('.help_frame h3').index(this);
+		var id = 'content_detail_'+index;
+		
+		if($('#'+id).size() == 0)
+		{
+			$('.help_frame p').eq(index).attr('id', id);
+			if($('#'+id+' div').size() == 0)
+			{
+				$('#'+id).html('<div style="width: 600px;">'+$('#'+id).html()+'</div>');
+			};
+		}
+		overlay = new OverlayObject('overlay', 'close_overlay', id, $(this).html());
+		overlay.addOverlay();
+	});
+	
+	//menu when user logged
+	prepareDropdownUsermenu();
+	prepareDatepicker();
+	
+	
+});
+jQuery(function($){
+					$.datepicker.regional['vi'] = {
+									closeText: 'Đóng',
+									prevText: '&#x3c;Trước',
+									nextText: 'Tiếp&#x3e;',
+									currentText: 'Hôm nay',
+									monthNames: ['Tháng Một', 'Tháng Hai', 'Tháng Ba', 'Tháng Tư', 'Tháng Năm', 'Tháng Sáu',
+									'Tháng Bảy', 'Tháng Tám', 'Tháng Chín', 'Tháng Mười', 'Tháng Mười Một', 'Tháng Mười Hai'],
+									monthNamesShort: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6',
+									'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+									dayNames: ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'],
+									dayNamesShort: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'],
+									dayNamesMin: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'],
+									weekHeader: 'Tu',
+									dateFormat: 'yy-mm-dd',
+									firstDay: 0,
+									isRTL: false,
+									showMonthAfterYear: false,
+									yearSuffix: ''};
+					$.datepicker.setDefaults($.datepicker.regional['vi']);
+	});
+	
+function prepareDatepicker()
+{
+	try{
+		$('#depart-date').datepicker({dateFormat: 'yy-mm-dd'});
+		$('#return-date').datepicker({dateFormat: 'yy-mm-dd'});
+		$('#search_date').datepicker({dateFormat: 'yy-mm-dd'});
+	}
+	catch(e)
+	{
+	}
+}
+
+function prepareLoginButton()
+{
+	//'#log_in, #signup_container button, .call_to_action .button'
+	$('#log_in, #signup_container button').click(function(){
+		if(logged)
+		{
+			window.location.reload();
+			return false;
+		}
+		overlay = new OverlayObject ('overlay', 'close_overlay', 'login_form', 'Đăng nhập');
+		overlay.addOverlay();
+		return false;
+	});
+	
+	$('#login_form, #login').submit(function(){
+		var email = $(this).find('#email').val();
+		var password = $(this).find('#password').val();
+		var captcha = $(this).find('#user_captcha').val(); 
+		if(email.length == 0  || password.length == 0)
+		{
+			alert('Bạn phải nhập đầy đủ Email và Mật khẩu');
+			return false;
+		}
+		
+		if(!$(this).find('.captcha_frame').hasClass('hide'))
+		{
+			if(captcha && captcha.length == 0)
+			{
+				alert('Bạn hãy nhập mã xác nhận');
+				return false;
+			}
+		}
+		var self = this;
+		//post
+		var refer = $(this).attr('refer');
+		$(this).find('input').attr('disabled', 'disabled');
+		$.post("/user/login", { 'user[email]': email, 'user[password]': password, 'user[captcha]': captcha },
+			 function(data) {
+				
+				$(self).find('#captcha').click();
+				if(data.code > 0)
+				{
+					$(self).find('.error li p').html(data.msg);
+					$(self).find('.error').show();
+					if(data.display_captcha)
+					{ 
+						$(self).find('.captcha_frame').removeClass('hide');
+						$(self).find('#captcha').click();
+					}
+				}
+				else if(data.code == 0)
+				{
+					 
+						if(refer)
+						{
+							location.href = refer;
+						}
+						else if(data.url!= null && data.url.length > 0)
+						{
+							location.href = data.url;
+						}
+						else if(location.href.indexOf('/ride/create') == -1)
+						{
+							var ref = $(self).find('#referer').val();
+							if(!ref)
+							{
+								location.reload(true);
+							}
+							else
+							{
+								location.href = ref;
+							}
+						}
+						else
+						{
+							location.reload(true);
+							//getLogInOutHtml();
+						}
+					 
+				}
+					
+			 }, 
+		 "json"
+		).always(function() { $(self).find('input').removeAttr('disabled'); });
+		//end post
+		return false;
+	});
+	
+	function getLogInOutHtml()
+	{
+		logged = true;
+				$.get('/user/log_in_out_html', function(data){
+					$('#top_nav li').eq(1).remove();
+					$('#top_nav li').eq(1).remove();
+					$(data).insertAfter($('#top_nav li').eq(0));
+					prepareDropdownUsermenu();
+					if(overlay)
+					{
+						overlay.remove();
+					}
+				});
+	}
+	var defaultValComment = 'Nhập nội dung thảo luận';
+	$('#comment').focus(function(){
+		var val = $(this).val();
+		$(this).val(val==defaultValComment?'':val);
+	});
+	
+	
+	$('#comment').blur(function(){
+		var val = $(this).val();
+		$(this).val(val==''?defaultValComment:val);
+	});
+	
+	$('#send_comment').click(function(){
+		var cm = $('#comment').val();
+		if( cm == '' || cm == defaultValComment)
+		{
+			alert('Bạn hãy nhập nội dung thảo luận');
+			$('#comment').focus();
+			return false;
+		}
+		var id = $('#id').val();
+		$.ajax({url: '/ride/comment',
+						type: 'post',
+						data: {	'ride[rid]': id,
+										'ride[comment]': cm
+									},
+						dataType: 'json',
+						success: function(data){
+							
+
+							if(data.code == 0)
+								$.get('/ride/comment_list?id='+id, function(data) {
+									$('#view_comment').html(data)
+								});
+							else
+								alert(data.msg);
+						}});
+		$('#comment').val(defaultValComment);
+	});
+	
+	$('#book_form').submit(function(){
+		$(this).find('button[type="submit"]').hide();
+		$(this).find('.loading_img').show();
+	});
+	
+	$('#send_feedback').click(function(){
+		var cm = $('#comment').val();
+		if( cm == '' || cm == defaultValComment)
+		{
+			alert('Bạn hãy nhập nội dung thảo luận');
+			$('#comment').focus();
+			return false;
+		}
+		if($('.feedback_form input:checked').size()==0)
+		{
+			alert('Bạn hãy chọn Thích hoặc Ghét');
+			return false;
+		}
+		var id = $('#uid').val();
+		var rvid = $('#rv_id').val();
+		var self = this;
+		var status = $('.feedback_form input:checked').val();
+		$('.feedback_form').addClass('hidden');
+		$.ajax({url: '/user/feedback',
+						type: 'post',
+						data: {	'fb[uid]': id,
+										'fb[rvid]': rvid,
+										'fb[status]': status,
+										'fb[comment]': cm
+									},
+						
+						success: function(data)
+						{
+							$('.feedback .comment').html(data);
+							
+							
+						}});
+		return false;
+	});
+	
+	$('#settings a').click(function(){
+		var self = this;
+		setTimeout(function(){
+			var fc = $(self).attr('fc');
+		
+			$('#private_form .'+fc).show();
+			if(fc == 'mk')
+			{
+				$('#private_form .lock').hide();
+			}
+			else
+			{
+				$('#private_form .mk').hide();
+			}
+		}, 100);
+		
+	});
+	
+	
+}
+
+function getFeedback(uid)
+{
+	$.ajax({url: '/user/feedback',
+						
+						data: {	'fb[uid]': uid
+									},
+						
+						success: function(data)
+						{
+							$('.feedback .comment').html(data);
+							
+						}});
+	
+}
+function saveLike(obj, id){
+	$.ajax({url: '/user/like',
+							
+							data: {	'fb[id]': id
+										},
+							
+							success: function(data)
+							{
+								if(data.length > 0)
+									$(obj).parent().parent().attr('class', data);
+								
+							}});
+}
+	
+function prepareDropdownUsermenu()
+{
+	$('#top_nav .dropmenu .km_click_event_by_href').click(function(){
+	
+		var pr = $(this).parent().parent();
+		
+		if(!pr.hasClass('open'))
+		{
+			pr.addClass('open');
+		}
+		else
+		{
+			pr.removeClass('open');
+		}
+		
+		pr.hover(
+			function(){
+			
+			},
+			function(){
+				pr.removeClass('open');
+			});
+		return false;
+	});
+	
+	//log out
+	$('#log_out').click(function(){
+		$.get('/user/logout', function(data){
+			/*$.get('/user/log_in_out_html', function(data){
+				$('#top_nav li').eq(1).remove();
+				$('#top_nav li').eq(1).remove();
+				$(data).insertAfter($('#top_nav li').eq(0));
+				logged = false;
+				prepareLoginButton();
+			});*/
+			location.reload(true);
+		});
+		return false;
+	});
+	/*
+	if($('.policy').size() > 0)
+		$('.policy').facebox();
+
+	if($('#settings a').size() > 0)
+		$('#settings a').facebox({width: '433px'});
+		
+	if($('#fb_cplcy').size() > 0)
+		$('#fb_cplcy').facebox();
+	if($('.checklist .safety').size() > 0)
+	{
+		$('.checklist .safety').facebox({width: '433px'});
+		$('.after a').facebox({width: '433px'});
+	}
+	*/
+}
+
+function updatePrivateFormInfo(formObject)
+{
+	var opass = $(formObject).find('#old_password').val();
+	var pass = $(formObject).find('#password').val();
+	var rpass = $(formObject).find('#retype_password').val();
+	
+	if(opass.length > 0 || pass.length > 0 || rpass.length > 0)
+	{
+		if(opass.length > 0 && opass.length < 6)
+		{
+			alert('Mật khẩu cũ không hợp lệ');
+			return false;
+		}
+		
+		
+		if(pass.length < 6)
+		{
+			alert('Mật khẩu phải ít nhất 6 ký tự');
+			$(formObject).find('#password').focus();
+			return false;
+		}
+		
+		if(pass.length != rpass.length)
+		{
+			alert('Mật khẩu xác nhận không hợp lệ');
+			$(formObject).find('#retype_password').focus();
+			return false;
+		}
+	}
+	
+	$.ajax({url: $(formObject).attr('action'),
+					type: 'post',
+					data: getFormDataToObj(formObject),
+					dataType: 'json',
+					success: function(data)
+					{
+						alert(data.msg);
+						if(data.code == 0)
+						{
+							window.location.reload();
+						}
+					}});
+}
+
+function getFormDataToObj(formObject)
+{
+	
+	var data = %7b%7d%3b.html
+	
+	$(formObject).find('input[type="text"], input[type="password"], input:checked, textarea').each(function(){
+		var name = $(this).attr('name');
+		
+		if(!name)
+			name = $(this).attr('id');
+			
+		data[name] = $(this).val();
+	});
+	
+	return data;
+}
+function bookRide(id, seats)
+{
+	$.post("/user/book", { id: id, seats: seats},
+			 function(data) {
+				alert(data.msg);
+				if(data.code == 0)
+				{
+					location.reload();
+				}
+			 }, 
+		 "json"
+		);
+}
+ww = $('body').width();
+function OverlayObject (overlayId, closeOverlayId, refId, title){
+	this.closeOverlayId = closeOverlayId?closeOverlayId:'close_overlay';
+	this.overlayId = overlayId?overlayId:'overlay';
+	this.refId = refId?refId:'';
+	this.addOverlay = addOverlay;	
+	this.remove = removeOverlay;
+	this.title = title?title:'Thông báo';
+	function addOverlay()
+	{
+		overlayId  = this.overlayId;
+		if($('#'+overlayId).size() == 0)
+		{
+			$('body').append('<div id="'+overlayId+'"></div>');
+		}
+		
+		//$('body').css({'overflow': 'hidden'});
+		$('#'+overlayId).css({	display: 'block', 
+								width: ($(document).width())+'px',
+								height: $(document).height()+'px',
+								background: '#000',
+								opacity: '0.6',
+								filter: 'Alpha(opacity=60)',
+								position: 'absolute',
+								 top: 0,
+								 left: 0,
+								'z-index': '101'});
+		$('#'+overlayId).click(function(){removeOverlay();});
+		$('#'+refId).dialog({	title: this.title, 
+													width: 'auto', 
+													height: 'auto', 
+													position: 'fixed',
+													close: function(){ 
+														$('#'+overlayId).remove(); 
+														//$('body').css('overflow', 'auto');
+													}
+											});
+	}
+
+	function removeOverlay()
+	{
+		//$('body').css('overflow', 'auto');
+		$('#'+overlayId).remove();
+		if(refId.length > 0)
+		{
+			$('#'+refId).dialog('close');
+			
+		}
+	}
+}
+function number_format (number, decimals, dec_point, thousands_sep) {
+    // Strip all characters but numerical ones.
+    number = (number + '').replace(/[^0-9+\-Ee.]/g, '');
+    var n = !isFinite(+number) ? 0 : +number,
+        prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+        sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+        dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+        s = '',
+        toFixedFix = function (n, prec) {
+            var k = Math.pow(10, prec);
+            return '' + Math.round(n * k) / k;
+        };
+    // Fix for IE parseFloat(0.55).toFixed(0) = 0;
+    s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+    if (s[0].length > 3) {
+        s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+    }
+    if ((s[1] || '').length < prec) {
+        s[1] = s[1] || '';
+        s[1] += new Array(prec - s[1].length + 1).join('0');
+    }
+    return s.join(dec);
+}
+function isNumberKey(evt)
+{
+	 var charCode = (evt.which) ? evt.which : evt.keyCode
+	 if (charCode > 31 && (charCode < 48 || charCode > 57))
+			return false;
+
+	 return true;
+}
+
+function inviteEmail(obj)
+{
+	var email = $(obj).find('#email_recipient_list').val();
+	if(email.length == 0 && $('#facebox #invite_mail_ .selected li').size() == 0)
+	{
+		alert('Bạn hãy nhập email');
+		return false;
+	}
+	
+	if($('#facebox #invite_mail_ .selected li').size() > 0)
+	{
+		
+		var selectedEmails = '';
+		
+		$('#facebox #invite_mail_ .selected li').each(function(){
+			selectedEmails += ','+$(this).text();
+			
+		});
+		
+		email += selectedEmails;
+		
+		
+	}
+
+	$(obj).find('button').hide();
+	$(obj).find('.loading_img').show();
+	$.ajax({url: '/home/invite_email',
+							
+							data: {	emails: email, rid: $(obj).attr('rid')},
+							type: 'post',
+							success: function(data)
+							{
+								alert(data);
+								
+							},
+							complete: function(){
+								$(obj).find('button').show();
+								$(obj).find('.loading_img').hide();
+								$.facebox.close();
+							}});
+							
+	return false;
+}
+
+function feedbackEdit(obj)
+{
+	var parent = $(obj).parent().parent();
+	parent.find('.html').hide();
+	parent.find('textarea').show();
+	$(obj).hide();
+	parent.find('.action .save').show();
+	
+}
+
+function feedbackSave(obj, id)
+{
+	
+	var parent = $(obj).parent().parent();
+	var texta = parent.find('textarea');
+	var textaVal = texta.val();
+	if(textaVal.length == 0)
+	{
+		
+		alert('Bạn hãy nhập phản hồi');
+		texta.focus();
+		return;
+	}
+	
+	parent.find('.html').html(textaVal.replace(/\n/g, "<br>")).show();
+	texta.hide();
+	$(obj).hide();
+	parent.find('.action .edit').show();
+	
+	//save
+	$.ajax({url: '/user/feedback_save',
+							
+							data: {	id: id, content: textaVal},
+							type: 'post',
+							success: function(data)
+							{
+								if(data.length > 0)
+								{
+									alert(data);
+								}
+							}});
+}
+
+function removeMail(id)
+{
+	$('#row_'+id).remove();
+	$.ajax({url: '/user/inbox/remove/'+id,
+							
+							data: {	id: id},
+							success: function(data)
+							{
+								
+							}});
+}
+
+
+function sendBadRide(obj)
+{
+
+	var p = $(obj).parent().parent();
+	var content = p.find('textarea').val();
+	var id = p.find('input[name="id"]').val();
+	//alert(content);
+	
+	$.ajax({url: "/ride/bad_ride", 
+					type: 'POST',
+					data: {id: id, content: content}, 
+					success: function(data){ 
+							alert(data);
+							closeBadRide();
+						}});
+	return false;
+}
+function closeBadRide()
+{
+	$('#facebox .footer .close').click();
+	return false;
+}
+
+function loginWithFacebook(params)
+{
+	popup('/facebook_connect.html?'+(params?params:''));
+}
+function loginWithYahoo(params)
+{
+	popup('/home/openid/type/yahoo?'+(params?params:''));
+}
+
+function loginWithGoogle(params)
+{
+	popup('/home/openid/type/google?'+(params?params:''));
+}
+
+function getInviteEmail(obj)
+{
+	var pr = $(obj).parent();
+	pr.find('#email').attr('disabled', 'disabled');
+	pr.find('#password').attr('disabled', 'disabled');
+	$(obj).attr('disabled', 'disabled');
+	
+	var email = pr.find('#email').val();
+	var password = pr.find('#password').val();
+	
+	$.ajax({url: "/home/openinviter", 
+					type: 'POST',
+					data: {email: email, password: password}, 
+					dataType: 'json',
+					success: function(data){ 
+							pr.find('#email, #password').removeAttr('disabled');
+							$(obj).removeAttr('disabled');
+							var er = pr.parent().parent().find('.error');
+							if(data.code == 1)
+							{
+								
+								er.show();
+								er.find('p').html(data.msg);
+							}
+							else
+							{
+								var emailId  = '#facebox #invite_mail_ .selected';
+								var first = '<li onclick="removeEmail(this)"><div class="icon"></div>';
+								var last = '</li>';
+								var emails = first+data.contacts.join(last+first)+last;
+								
+								$(emailId).html(emails);
+								er.hide();
+							}
+							
+						}});
+	return false;
+}
+
+function selectEmail(li)
+{
+	$('#invite_mail_ .selected').prepend('<li onclick="removeEmail(this)">'+$(li).html()+'</li>');
+	$(li).remove();
+}
+
+function removeEmail(li)
+{
+	$('#invite_mail_ .all').prepend('<li onclick="selectEmail(this)">'+$(li).html()+'</li>');
+	$(li).remove();
+}
+
+function popup(url, event) {
+	var w = 800;
+	var h = 600;
+	var left = (screen.width/2)-(w/2);
+	var top = (screen.height/2)-(h/2);
+
+	var windowName = "popUp";
+	var params = "width="+w+",height="+h+",top="+top+",left="+left;
+	
+	var newwin = window.open(url, windowName, params);
+	if(event)
+		event.preventDefault();
+	
+	if (window.focus) {newwin.focus()}
+	return newwin;
+}
+
+function selectFbFriend(obj)
+{
+	if($(obj).hasClass('active'))
+		$(obj).removeClass('active');
+	else
+		$(obj).addClass('active');
+}
+
+function sendFacebookInvite(obj)
+{
+	var params = {'rid': $(obj).attr('rid')};
+	var i = 0;
+	$('#facebox #wrap_fb .fb_friend.active').each(function(){
+		params['friends['+i+']'] = $(this).attr('id');
+		i++;
+	});
+	
+	if(!params['friends[0]'])
+	{
+		alert('Bạn hãy click vào ảnh của bạn bè mà bạn muốn mời tham gia Dichung.vn');
+		return false;
+	}
+	
+	$(obj).parent().html('<img src="../images/loading.gif"/>');
+	if($('#top_layer').size() == 0)
+	{
+		$('body').append('<div id="top_layer"></div>')
+	}
+	
+	$('#top_layer').css('display', 'block');
+	$('body').css('overflow', 'hidden');
+	
+	$.ajax({url: "/dev.php/home/fb_post", 
+					type: 'POST',
+					data: params, 
+					dataType: 'json',
+					success: function(data){ 
+							
+							$('#top_layer').css('display', 'none');
+							$('body').css('overflow', 'auto');
+							alert('Done');
+						},
+					complete: function(){
+						$.facebox.close();
+					}});
+	
+}
+
+function selectAllFbFriend()
+{
+	var k = '#facebox #wrap_fb .fb_friend';
+	if($('#select_all_fb_friend:checked').size() > 0)
+	{
+		$(k).addClass('active');
+	}
+	else
+	{
+		$(k).removeClass('active');
+	}
+}
+
+function supportUs()
+{
+	var name = $('#facebox').find('#name').val();
+	var phone = $('#facebox').find('#phone').val();
+	var email = $('#facebox').find('#email').val();
+	var address = $('#facebox').find('#address').val();
+	var info = $('#facebox').find('#info').val();
+	
+	if(name == '' || phone == '' || email == '' || address == '' || info == '')
+	{
+		alert('Bạn hãy nhập đầy đủ thông tin');
+		return false;
+	}
+	
+	$('#facebox').find('#submit_button').parent().html('<img src="../images/loading.gif">');
+	
+	$.ajax({
+    url: "/home/support_us", 
+    type: 'POST',
+    data: {name: name, phone: phone, email: email, address: address, info: info}, 
+    //dataType: 'json',
+    success: function(data){ 
+      alert('Cảm ơn bạn đã ủng hộ dichung.vn. Chúng tôi sẽ liên lạc với bạn trong thời gian sớm nhất');
+    },
+    complete: function() {
+      $.facebox.close();
+    }
+  });
+  return false;
+}
+
+

@@ -1,0 +1,6 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+dichungxe.vn	TRUE	/	FALSE	1999999999	zend_front	c5uab9p38fkodh7gpibu56l1e5
+.iconarchive.com	TRUE	/	FALSE	1999999999	__cfduid	d059a27cb10fe1d0d1354d3881f13cea01571143310
+.google.com	TRUE	/	FALSE	1999999999	NID	189=cN0ML9zjqWJ2JjJI9hegRDOJwWSzYXA0Ekz0L-Jr35mg-aCrTjoTtQV7tXiaMBp4ksngS4goheLEdd-x7CHSEkPVS-iJ-SVHhcFTn0-3jfqfhWlnSgHKqQKkxvl5yyN8mYjH3c2kacdKac7dSBQBoX635B_4PRBqgOAKb1xjubs
+

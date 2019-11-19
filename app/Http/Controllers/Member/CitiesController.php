@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Member;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -13,7 +13,7 @@ class CitiesController extends Controller
     }
 
   public function getAdd() {
-    	return view('city.add');
+    	return view('admin/city.add');
     }
      public function postAdd(Request $request)
     {
@@ -31,7 +31,7 @@ class CitiesController extends Controller
         $city->name= $request->name;
         $city->save();
 
-        return redirect('city/add')->with('thongbao','Thêm thành công');
+        return redirect('admin/city/add')->with('thongbao','Thêm thành công');
     }
     public function getEdit($id)
     {

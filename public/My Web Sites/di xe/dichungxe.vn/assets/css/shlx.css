@@ -1,0 +1,37 @@
+@charset "utf-8";
+/* CSS Document */
+
+a, a:hover				{text-decoration:none}
+.bg_sh					{background:url(../images/cdbvn.gif) repeat;}
+#shlt					{margin:0px auto; width:801px; color:#404040;height: 512px;}
+#shlt .top				{background:url(../images/box_top.jpg) top left no-repeat; height:46px; color:#fff; font-weight:bold; padding:6px 0px 0px 10px; font-size:11px !important}
+#shlt .crt				{background:url(../images/box_crt.jpg) top left repeat-y; width:773px; text-align:center; min-height:406px; padding:8px 14px}
+#shlt .crt .left		{width:287px; float:left}
+#shlt .crt .right		{width:466px; float:left; padding: 10px 8px 0px;}
+#shlt .btm				{background:url(../images/box_btm.jpg) top left no-repeat; height:20px; text-align:left; padding:7px 0px 0px 10px; width:791px; font-size:11px !important}
+#shlt .divider			{border-top: 1px solid #E1E6E7;font-family: Arial; font-size: 10px;line-height: 10px;margin:10px 0px;position: relative;text-align: center;}
+#shlt .divider span 	{background-color: white;color: #B6C0C6;padding: 0 7px;position: relative;text-transform: uppercase;top: -6px;}
+#shlt .input			{background: white url('../images/bg_input_text.gif') top repeat-x;border: 1px solid #C1D5E8;float: left;font-size: 16px;height: 24px;line-height: 1.3em;padding: 4px 3px 3px 3px;width: 378px;}
+.input_text_			{width:220px !important; background: white url('../images/bg_input_text.gif') top repeat-x;border: 1px solid #C1D5E8;float: left;font-size: 16px;padding: 4px 3px 3px 3px;}
+.cdbvn					{position:relative; width: 208px; bottom: 86px; right: -582px;}
+.red					{color:red}
+.bold					{font-weight:bold}
+.blue					{color:#0001f5}
+.result					{border-collapse:collapse; color:#3d3d3d}
+.result th				{background:#eaeaea; font-weight:bold; padding:4px; border:1px solid #c8c8c8; text-align:center !important}
+.result td				{text-align:center; padding:4px; vertical-align:middle; border:1px solid #c8c8c8}
+.b1						{border:1px solid #187e3e; background:#3acd71;  background:-webkit-linear-gradient(top, #3acd71, #2da058); background:-moz-linear-gradient(top, #3acd71, #2da058);background:border-linear-gradient(top, #3acd71, #2da058);}
+.b2						{border:1px solid #154e70; background:#3d8dbc; background:-webkit-linear-gradient(top, #3d8dbc, #2576a6); background:-moz-linear-gradient(top, #3acd71, #2da058);background:border-linear-gradient(top, #3acd71, #2da058)}
+.b						{text-shadow:0px 1px 0px #5E5E5E; color:#fff; font-weight:bold; cursor:pointer; padding:6px 20px; margin-right:4px}
+.time					{font-size:30px; margin:10px 0px}
+.b3						{text-align: center; width:30%;color: #404040; border: 1px solid #A7A7A7; cursor:pointer; -moz-border-radius: 3px;
+-webkit-border-radius: 3px;-o-border-radius: 3px;-ms-border-radius: 3px;-khtml-border-radius: 3px;border-radius: 3px;border-color: #AAA;
+background-color: #FFE58F;
+background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #FFEFB9), color-stop(100%, #FFDC63));
+background-image: -webkit-linear-gradient(#FFEFB9,#FFDC63);
+background-image: -moz-linear-gradient(#FFEFB9,#FFDC63);
+background-image: -o-linear-gradient(#FFEFB9,#FFDC63);
+background-image: -ms-linear-gradient(#FFEFB9,#FFDC63);
+background-image: linear-gradient(#FFEFB9,#FFDC63);height: 25px;
+line-height: 25px; margin:4px 0px; font-size:11px}
+.right_ans				{background:#e4ffee}

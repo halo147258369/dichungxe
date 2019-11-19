@@ -1,0 +1,96 @@
+var firstSelect = false;
+ function geocode(id, selectFirst) 
+ {
+	firstSelect = selectFirst;
+	
+	cid_search = id;
+	var suggest_id = suggest+ '_' + cid_search;
+	
+	var query = $('#'+id).val();
+  if(query && query.trim) query = query.trim(); // trim space if browser supports
+  if(query != geocoder.resultAddress && query.length > 1) 
+	{ // no useless request
+    clearTimeout(geocoder.waitingDelay);
+    geocoder.waitingDelay = setTimeout(function(){
+      geocoder.geocode({address: query}, geocodeResult);
+    }, 100);
+  }
+	else
+	{
+		clearListItems();
+  }
+  // callback function
+  function geocodeResult(response, status) {
+		
+    if (status == google.maps.GeocoderStatus.OK && response[0]) {
+			
+      geocoder.firstItem = response[0];
+			
+      clearListItems();
+			
+      var len = response.length;
+			if(!firstSelect){
+				
+				for(var i=0; i<len; i++){
+					addListItem(response[i], cid_search, i);
+					
+				}
+				
+				$('#'+suggest+'_'+cid_search).css('display', 'block');
+			}
+			else if(len > 0){
+				
+				firstSelect = false;
+				var loc = response[0];
+				var locat = loc.geometry.location;  
+				setMarker(cid_search, loc.formatted_address, locat.lat(), locat.lng())
+				
+			}
+			
+			
+    } else if(status == google.maps.GeocoderStatus.ZERO_RESULTS) {
+      $('#'+suggest+'_'+cid_search).html('?');
+      geocoder.resultAddress = "";
+      geocoder.resultBounds = null;
+    } else {
+       $('#'+suggest+'_'+cid_search).html('status');
+      geocoder.resultAddress = "";
+      geocoder.resultBounds = null;
+    }
+  }
+}
+
+
+
+function addListItem(resp, cid, index){
+  var loc = resp || {};
+  var row = document.createElement("li");
+  row.innerHTML = loc.formatted_address;
+	
+	var locat = loc.geometry.location; 
+	row.setAttribute('latlng', locat.lat()+','+locat.lng())
+		
+	if(index == 0)
+	{
+		row.className = suggest_class_current;	
+	}
+	else
+		row.className = "list_item";
+	
+  row.onclick = function(){
+		$('#'+cid).val(loc.formatted_address);
+		$('#'+cid+'_pos').val(locat.lat()+','+locat.lng());
+		clearListItems();
+  }
+	
+	var listContainer = document.getElementById(suggest+'_'+cid);
+  listContainer.appendChild(row);
+}
+// clear list
+function clearListItems(){
+
+	var suggest_id = suggest+ '_' + cid_search;
+	 $('#'+suggest_id).html('').hide();
+    geocoder.resultAddress = "";
+    geocoder.resultBounds = null;
+}

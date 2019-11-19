@@ -1,0 +1,37 @@
+.camera_next > span {
+	background: url(../../images/new/images/camera_skins.png) no-repeat -40px 0;
+	display: block;
+	height: 40px;
+	width: 40px;
+	
+}
+
+.camera_prev > span {
+background: url(../../images/new/images/camera_skins.png) no-repeat 0 0;
+display: block;
+height: 40px;
+width: 40px;
+}
+.camera_prev {
+left: 0;
+}
+
+.camera_prev, .camera_next, .camera_commands {
+opacity:0.4;
+filter:alpha(opacity=40); /* For IE8 and earlier */
+display: none;
+cursor: pointer;
+height: 40px;
+margin-top: -20px;
+position: absolute;
+top: 50%;
+width: 40px;
+z-index: 2;
+}
+.camera_next {
+right: 0;
+}
+.camera_prevThumbs, .camera_nextThumbs, .camera_prev, .camera_next, .camera_commands, .camera_thumbs_cont {
+background: #d8d8d8;
+background: rgba(216, 216, 216, 0.85);
+}

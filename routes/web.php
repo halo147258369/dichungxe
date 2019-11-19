@@ -10,7 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('test','TestController@test');
+Route::get('test1','TestController@test1');
+Route::get('test2','TestController@test2');
 Route::get('/', 'Guest\IndexController@getIndex')->name('guest.index.view.get');
 Route::post('search','Guest\SearchController@postSearch')->name('guest.index.search.post');
 Route::get('detail/{id}', 'Guest\TripsController@getView')->name('guest.trip.view.get');
@@ -52,15 +54,7 @@ Route::prefix('/member')->middleware('auth:member')->namespace('Member')->name('
 
   });
 
-  Route::prefix('/companies')->name('company.')->group(function() {
-    Route::get('/','CompaniesController@getList')->name('list.get');
-    Route::get('/add','CompaniesController@getAdd')->name('add.get');
-    Route::post('/add','CompaniesController@postAdd')->name('add.post');
-    Route::get('/edit/{id}','CompaniesController@getEdit')->name('edit.get');
-    Route::post('/edit/{id}','CompaniesController@postEdit')->name('edit.post');
-    Route::get('/delete/{id}','CompaniesController@getDelete')->name('delete.get');
-  });
-  
+ 
   Route::prefix('/places')->name('place.')->group(function() {
     Route::get('/','PlacesController@getList')->name('list.get');
     Route::get('/add','PlacesController@getAdd')->name('add.get');
@@ -117,8 +111,32 @@ Route::prefix('/admin')->middleware('auth:member')->namespace('Admin')->name('ad
     Route::post('/edit/{id}','BusroutesController@postEdit')->name('edit.post');
     Route::get('/delete/{id}','BusroutesController@getDelete')->name('delete.get');
   }); 
+
+  Route::prefix('/hours')->name('hour.')->group(function() {
+    Route::get('/','HoursController@getList')->name('list.get');
+    Route::get('/add','HoursController@getAdd')->name('add.get');
+    Route::post('/add','HoursController@postAdd')->name('add.post');
+    Route::get('/edit/{id}','HoursController@getEdit')->name('edit.get');
+    Route::post('/edit/{id}','HoursController@postEdit')->name('edit.post');
+    Route::get('/delete/{id}','HoursController@getDelete')->name('delete.get');
+  });
+  Route::prefix('/listMembers')->name('listMember.')->group(function() {
+    Route::get('/','ListMemberController@getList')->name('list.get');
+    Route::get('/edit/{id}','ListMemberController@getEdit')->name('edit.get');
+    Route::post('/edit/{id}','ListMemberController@postEdit')->name('edit.post');
+    Route::get('/delete/{id}','ListMemberController@getDelete')->name('delete.get');
 });
 
+   Route::prefix('/companies')->name('company.')->group(function() {
+    Route::get('/','CompaniesController@getList')->name('list.get');
+    Route::get('/add','CompaniesController@getAdd')->name('add.get');
+    Route::post('/add','CompaniesController@postAdd')->name('add.post');
+    Route::get('/edit/{id}','CompaniesController@getEdit')->name('edit.get');
+    Route::post('/edit/{id}','CompaniesController@postEdit')->name('edit.post');
+    Route::get('/delete/{id}','CompaniesController@getDelete')->name('delete.get');
+  });
+  
+});
 
 
 

@@ -15,6 +15,22 @@
 @stop
 @section('main')
 <!-- Content Wrapper. Contains page content -->
+
+
+<div class="col-lg-7">
+    @if(session('thongbao'))
+        <div class="alert alert-success">
+            {{session('thongbao')}}
+        </div>
+    @endif
+
+    @if(session('thongbao2'))
+        <div class="alert alert-danger">
+            {{session('thongbao2')}}
+        </div>
+    @endif
+
+    </div>
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -45,55 +61,55 @@
           <div class="card-body">
             <form action="{{route('admin.busroute.add.post')}}" method="POST" enctype="multipart/form-data" id="myform">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
-            <div class="form-group">
-              <label for="title">Tên Tuyến</label>
+            
+             <div class="form-group">
+              <label for="title">Tiêu đề</label>
               <input type="text" name="name" class="form-control" placeholder="Nhập Tiêu Đề" required="required">
             </div>
+            
             <div class="form-group">
-              <label for="">Điểm khởi hành</label>
-              <input type="text" name="" class="form-control" placeholder="Số nhà, tên đường" required="required">
-            </div>
-            <div class="form-group">
-              <select name="" id="" class="form-control"  onchange="getDistricts('', '')">
+              <select name="city_id[]" id="from_city" class="form-control"  onchange="getDistricts('from_city', 'from_district')">
                 <option value="0">Chọn tỉnh/thành phố</option>
-                
-                <option value=""></option>
-            
+                @foreach($cities as $city)
+                <option value="{{$city->id}}">{{$city->name}}</option>
+                @endforeach
               </select>
             </div>
             <div class="form-group">
-              <select name="" id="" class="form-control" onchange="getWards('', '')">
+              <select name="district_id[]" id="from_district" class="form-control" onchange="getWards('from_district', 'from_ward')">
               </select>
             </div>
             <div class="form-group">
-              <select name="" id="" class="form-control">
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="">Điểm đến</label>
-              <input type="text" name="" class="form-control" placeholder="Số nhà, tên đường" required="required">
-            </div>
-            <div class="form-group">
-              <select name="" id="" class="form-control"  onchange="getDistricts('', '')">
-                <option value="0">Chọn tỉnh/thành phố</option>
-            
-                <option value=""></option>
-            
-              </select>
-            </div>
-            <div class="form-group">
-              <select name="" id="" class="form-control" onchange="getWards('', '')">
-              </select>
-            </div>
-            <div class="form-group">
-              <select name="" id="" class="form-control">
+              <select name="ward_id[]" id="from_ward" class="form-control">
               </select>
             </div>
            
             <div class="form-group">
-              <label for="day_go">Thời gian đi</label>
-              <input type="date" name="day_go" class="form-control" placeholder="Nhập thời gian đi" required="required">
+              <select name="city_id[]" id="to_city" class="form-control"  onchange="getDistricts('to_city', 'to_district')">
+                <option value="0">Chọn tỉnh/thành phố</option>
+                @foreach($cities as $city)
+                <option value="{{$city->id}}">{{$city->name}}</option>
+                @endforeach
+              </select>
             </div>
+            <div class="form-group">
+              <select name="district_id[]" id="to_district" class="form-control" onchange="getWards('to_district', 'to_ward')">
+              </select>
+            </div>
+            <div class="form-group">
+              <select name="ward_id[]" id="to_ward" class="form-control">
+              </select>
+            </div>
+            <div class="form-group">
+                                <label>Hình ảnh (*)</label>
+                                <input type="file" name="image" class="form-control"/>
+             </div>
+           <!--  <div class="form-group">
+              <label for="day_go">Thời gian đi</label>
+              <input type="" name="day_go" class="form-control" placeholder="Nhập thời gian đi" required="required">
+            </div>
+            -->
+          
             <button type="submit" class="btn btn-primary">Lưu chuyến đi</button>
               </form>
           </div>

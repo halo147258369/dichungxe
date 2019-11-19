@@ -1,0 +1,93 @@
+$(document).ready(function(){
+	$('#sign_up').click(function(){
+		ga('send', 'event','virtual_click_dang_ky_account','virtual_click_dang_ky_account', 'Dang ky Account home', 1);
+	});
+	$('#log_in').click(function(){
+		ga('send', 'event','virtual_click_dang_nhap_account','virtual_click_dang_nhap_account', 'Dang nhap Account home', 1);
+	});
+	$('#click_sign_in').click(function(){
+		ga('send', 'event','vỉrtual_click_dang_nhap_account_in_register','vỉrtual_click_dang_nhap_account_in_register', 'Dang nhap Account trong Register', 1);
+	});
+	$('#tab_dichungtaxi').click(function(){
+		ga('send', 'event','vỉrtual_click_tab_dichungtaxi','vỉrtual_click_tab_dichungtaxi', 'Tab di chung taxi', 1);
+	});
+	 $("body").on("click", "#submit_booking_taxi", function(e) {
+		ga('send', 'event','vỉrtual_click_booking_dichungtaxi','vỉrtual_click_booking_dichungtaxi', 'Booking di chung taxi', 1);
+	});
+  	$("body").on("click", "#next_step1", function(e) {
+		ga('send', 'event','vỉrtual_click_dang_chuyen_di_next_b1','vỉrtual_click_dang_chuyen_di_next_b1', 'Next Buoc 1 dang chuyen di', 1);
+	});
+	$("body").on("click", "#next_step2", function(e) {
+		ga('send', 'event','vỉrtual_click_dang_chuyen_di_next_b2','vỉrtual_click_dang_chuyen_di_next_b2', 'Next Buoc 2 dang chuyen di', 1);
+	});
+	$("body").on("click", "#next_step3", function(e) {
+		ga('send', 'event','vỉrtual_click_dang_chuyen_di_next_b3','vỉrtual_click_dang_chuyen_di_next_b3', 'Next Buoc 3 dang chuyen di', 1);
+	});
+	$("body").on("click", "#next_step4", function(e) {
+		ga('send', 'event','vỉrtual_click_dang_chuyen_di_next_b4','vỉrtual_click_dang_chuyen_di_next_b4', 'Next Buoc 4 dang chuyen di', 1);
+	});
+	$("body").on("click", "#submit_add_ride", function(e) {
+		ga('send', 'event','vỉrtual_click_finish_dang_chuyen_di','vỉrtual_click_finish_dang_chuyen_di', 'Click Finish dang chuyen di', 1);
+	});
+	$("body").on("click", "#finish_submit_ride", function(e) {
+		ga('send', 'event','vỉrtual_click_finish_register_fast_in_ride','vỉrtual_click_finish_register_fast_in_ride', 'Click Finish dang ky nhanh trong dang chuyen di', 1);
+	});
+	$("body").on("click", "#submit_login_fast", function(e) {
+		ga('send', 'event','vỉrtual_click_finish_login_fast_in_ride','vỉrtual_click_finish_login_fast_in_ride', 'Click Finish dang nhap nhanh trong dang chuyen di', 1);
+	});
+	$("body").on("click", "#dangnhap_fb", function(e) {
+		ga('send', 'event','vỉrtual_click_finish_login_facebook_fast_in_ride','vỉrtual_click_finish_login_facebook_fast_in_ride', 'Click Finish dang nhap facebook nhanh trong dang chuyen di', 1);
+	});
+	$("body").on("click", "#tab_once", function(e) {
+		ga('send', 'event','vỉrtual_click_chon_di_mot_lan_trong_dang_chuyen_di','vỉrtual_click_chon_di_mot_lan_trong_dang_chuyen_di', 'Click chon di mot lan trong dang chuyen di', 1);
+	});
+	$("body").on("click", "#tab_daily", function(e) {
+		ga('send', 'event','vỉrtual_click_chon_di_hang_ngay_trong_dang_chuyen_di','vỉrtual_click_chon_di_hang_ngay_trong_dang_chuyen_di', 'Click chon di hang ngay trong dang chuyen di', 1);
+	});
+	$("body").on("click", "#tab_weekly", function(e) {
+		ga('send', 'event','vỉrtual_click_chon_di_hang_tuan_trong_dang_chuyen_di','vỉrtual_click_chon_di_hang_tuan_trong_dang_chuyen_di', 'Click chon di hang tuan trong dang chuyen di', 1);
+	});
+	$("body").on("click", "#tab_noTime", function(e) {
+		ga('send', 'event','vỉrtual_click_chon_di_luon_luon_co_trong_dang_chuyen_di','vỉrtual_click_chon_di_luon_luon_co_trong_dang_chuyen_di', 'Click chon di luon luon co trong dang chuyen di', 1);
+	});
+	$("body").on("click", "#email-signup-button", function(e) {
+		ga('send', 'event','vỉrtual_click_button_dang_ky_trong_register','vỉrtual_click_button_dang_ky_trong_register', 'Click chon dang ky trong register', 1);
+	});
+	$("body").on("click", "#social_icon_login", function(e) {
+		ga('send', 'event','vỉrtual_click_button_dang_nhap_facebook','vỉrtual_click_button_dang_nhap_facebook', 'Click button dang nhap facebook', 1);
+	}); 
+	$("body").on("change", "#search_date", function(e) {
+		ga('send', 'event','vỉrtual_change_date_in_ride_search','vỉrtual_change_date_in_ride_search', 'Chon ngay khoi hanh trong tim kiem chuyen di', 1);
+	}); 
+	$("body").on("change", "#select_vung_mien", function(e) {
+		ga('send', 'event','vỉrtual_change_vung_mien__in_ride_search','vỉrtual_change_vung_mien__in_ride_search', 'Chon vung mien trong tim kiem chuyen di', 1);
+	}); 
+	$("body").on("change", "#select_vaitro", function(e) {
+		ga('send', 'event','vỉrtual_change_vai_tro_in_ride_search','vỉrtual_change_vai_tro_in_ride_search', 'Chon vung mien trong tim kiem chuyen di', 1);
+	}); 
+	$("body").on("change", "#select_gioitinh", function(e) {
+		ga('send', 'event','vỉrtual_change_gioi_tinh_in_ride_search','vỉrtual_change_gioi_tinh_in_ride_search', 'Chon gioi tinh trong tim kiem chuyen di', 1);
+	}); 
+	$("body").on("change", "#select_phuongtien", function(e) {
+		ga('send', 'event','vỉrtual_change_phuong_tien_in_ride_search','vỉrtual_change_phuong_tien_in_ride_search', 'Chon phuong tien trong tim kiem chuyen di', 1);
+	}); 
+	$("body").on("change", "#select_mucdich", function(e) {
+		ga('send', 'event','vỉrtual_change_muc_dich_in_ride_search','vỉrtual_change_muc_dich_in_ride_search', 'Chon muc dich trong tim kiem chuyen di', 1);
+	}); 
+	$("body").on("change", "#select_tansuat", function(e) {
+		ga('send', 'event','vỉrtual_change_tan_suat_in_ride_search','vỉrtual_change_tan_suat_in_ride_search', 'Chon tan suat trong tim kiem chuyen di', 1);
+	}); 
+	$("body").on("change", "#select_diemden_thuong_xuyen_0", function(e) {
+		ga('send', 'event','vỉrtual_change_diem_den_sanbay_benxe_nhaga_in_ride_search','vỉrtual_change_diem_den_sanbay_benxe_nhaga_in_ride_search', 'Chon select san bay - ben xe - nha ga trong tim kiem chuyen di', 1);
+	}); 
+	$("body").on("change", "#select_diemden_thuong_xuyen_1", function(e) {
+		ga('send', 'event','vỉrtual_change_diem_den_dulich_phuot_in_ride_search','vỉrtual_change_diem_den_dulich_phuot_in_ride_search', 'Chon select du lich - phuot trong tim kiem chuyen di', 1);
+	}); 
+	$("body").on("change", "#select_diemden_thuong_xuyen_2", function(e) {
+		ga('send', 'event','vỉrtual_change_diem_den_sukien_lehoi_in_ride_search','vỉrtual_change_diem_den_sukien_lehoi_in_ride_search', 'Chon select su kien - le hoi trong tim kiem chuyen di', 1);
+	}); 
+	$("body").on("click", "#button_click_dat_taxi", function(e) {
+		ga('send', 'event','vỉrtual_click_dat_taxi_in_ride_search','vỉrtual_click_dat_taxi_in_ride_search', 'Click nut dat xe taxi trong tim kiem chuyen di', 1);
+	}); 
+
+});
