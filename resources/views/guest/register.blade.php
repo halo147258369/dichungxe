@@ -28,12 +28,21 @@
     <div class="card-body register-card-body">
       <p class="login-box-msg">Register a new membership</p>
 
-      <form action="../../index.html" method="post">
+      <form action="{{route('guest.register.post')}}" method="post">
+        @csrf
         <div class="input-group mb-3">
           <input name="name" type="text" class="form-control" placeholder="name">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" name="email" class="form-control" placeholder="email">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-inbox"></span>
             </div>
           </div>
         </div>
