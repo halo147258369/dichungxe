@@ -36,7 +36,9 @@ class BookingController extends Controller
 
     public function postAdd(Request $request)
     {
+        dd($request);
         $data = $request->only($this->model->fillable);
+        dd($data);
         $book = $this->model->create($data);
         return redirect()->route('member.booking.list.get');
     }

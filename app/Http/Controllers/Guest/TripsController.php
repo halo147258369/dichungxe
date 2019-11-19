@@ -18,17 +18,9 @@ class TripsController extends Controller
     }
     public function getView($id)
     {
-       
-        $vehicle = vehicle::all();
-        $member = Member::all();
-        $rate=Rate::all();
-        // $data['trip'] = $this->model->findOrFail($id)
-        $trip = DB::table('Trips')
-            ->join('vehicles', 'Trips.vehicle_id', '=', 'vehicles.id')
-            ->join('members', 'Trips.member_id', '=', 'members.id')
-            ->where('Trips.id',$id )->first();
-            // dd($trip);   
-        return view('guest.trip.view',['trip'=>$trip,'vehicle'=>$vehicle,'rate'=>$rate]);
+        $data['trip'] = $this->model->findOrFail($id);
+        // dd($data);
+        return view('guest.trip.view',$data);
     }
 }
 

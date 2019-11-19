@@ -35,9 +35,9 @@
     <!-- Magnific Gallery -->
     <link rel="stylesheet" href="source/css/magnific-popup.css">
     <style>
-    body {
-        font-family: "Roboto";
-    }
+        body {
+            font-family: "Roboto";
+        }
     </style>
 </head>
 
@@ -86,7 +86,7 @@
                             <li><span style="color: #fff">Xin chào {{Auth::guard('member')->user()->name}}, </span><a href="{{route('member.logout.get')}}"><span><i class="fa fa-lock"></i></span>Đăng xuất</a></li>
                             @else
                             <li><a href="{{route('guest.login.get')}}"><span><i class="fa fa-lock"></i></span>Đăng Nhập</a></li>
-                            <li><a href="#"><span><i class="fa fa-plus"></i></span>Đăng Ký</a></li>
+                            <li><a href="{{route('guest.register.get')}}"><span><i class="fa fa-plus"></i></span>Đăng Ký</a></li>
                             @endif
                         </ul>
                     </div><!-- end links -->
@@ -95,7 +95,7 @@
         </div><!-- end container -->
     </div><!-- end top-bar -->
 
-     <nav class="navbar navbar-default main-navbar navbar-custom navbar-white" id="mynavbar-1">
+    <nav class="navbar navbar-default main-navbar navbar-custom navbar-white" id="mynavbar-1">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" id="menu-button">
@@ -115,8 +115,8 @@
                         <ul class="dropdown-menu">
                             <li class="active"><a href="test1">Cách Thức Hoạt Động</a></li>
                             <li><a href="test2">Hướng Dẫn Sử Dụng</a></li>
-                                <li><a href="test">Hướng Dẫn An Toàn</a></li>
-                               <!--  <li><a href="tour-homepage.html">Tour Homepage</a></li>
+                            <li><a href="test">Hướng Dẫn An Toàn</a></li>
+                            <!--  <li><a href="tour-homepage.html">Tour Homepage</a></li>
                                 <li><a href="cruise-homepage.html">Cruise Homepage</a></li>
                                 <li><a href="car-homepage.html">Car Homepage</a></li>
                                 <li><a href="landing-page.html">Landing Page</a></li> -->
@@ -133,10 +133,10 @@
                                 <li><a href="flight-detail-right-sidebar.html">Detail Right Sidebar</a></li> -->
                         </ul>
                     </li>
-              <!--       <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Tours<span><i class="fa fa-angle-down"></i></span></a>
+                    <!--       <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Tours<span><i class="fa fa-angle-down"></i></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="tour-homepage.html">Tour Homepage</a></li> -->
-                            <!-- <li><a href="tour-listing-left-sidebar.html">List View Left Sidebar</a></li>
+                    <!-- <li><a href="tour-listing-left-sidebar.html">List View Left Sidebar</a></li>
                                 <li><a href="tour-listing-right-sidebar.html">List View Right Sidebar</a></li>
                                 <li><a href="tour-grid-left-sidebar.html">Grid View Left Sidebar</a></li>
                                 <li><a href="tour-grid-right-sidebar.html">Grid View Right Sidebar</a></li>
@@ -144,7 +144,7 @@
                                 <li><a href="tour-detail-right-sidebar.html">Detail Right Sidebar</a></li> -->
                     <!--     </ul>
                     </li> -->
-                   <!--  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Cruise<span><i class="fa fa-angle-down"></i></span></a>
+                    <!--  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Cruise<span><i class="fa fa-angle-down"></i></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="cruise-homepage.html">Cruise Homepage</a></li>
                             <li><a href="cruise-listing-left-sidebar.html">List View Left Sidebar</a></li>
@@ -155,7 +155,7 @@
                                 <li><a href="cruise-detail-right-sidebar.html">Detail Right Sidebar</a></li>
                         </ul>
                     </li> -->
-                   <!--  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Cars<span><i class="fa fa-angle-down"></i></span></a>
+                    <!--  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Cars<span><i class="fa fa-angle-down"></i></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="car-homepage.html">Car Homepage</a></li>
                             <li><a href="car-listing-left-sidebar.html">List View Left Sidebar</a></li>
@@ -546,11 +546,11 @@
                                                 <p>Từ {{$trip->from->city->name}} đến {{$trip->to->city->name}}</p>
                                                 <div class="rating">
                                                     @for($i=0;$i<$trip->member->rate;$i++)
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    @endfor
-                                                    @for($i=0;$i<5-$trip->member->rate;$i++)
-                                                    <span><i class="fa fa-star grey"></i></span>
-                                                    @endfor
+                                                        <span><i class="fa fa-star orange"></i></span>
+                                                        @endfor
+                                                        @for($i=0;$i<5-$trip->member->rate;$i++)
+                                                            <span><i class="fa fa-star grey"></i></span>
+                                                            @endfor
                                                 </div><!-- end rating -->
                                                 <span class="cruise-price">{{$trip->price}}</span>
                                             </div><!-- end cruise-title -->
@@ -569,91 +569,97 @@
             </div><!-- end row -->
         </div><!-- end container -->
     </section><!-- end cruise-offers -->
-        <!--=============== TOUR OFFERS ===============-->
-  <section id="flight-offers" class="section-padding">
-            <div class="container">
+    <!--=============== TOUR OFFERS ===============-->
+    <section id="flight-offers" class="section-padding">
+        <div class="container">
 
-                <div class="row">
+            <div class="row">
 
-                    <div class="col-sm-12">
-                        <div class="page-heading">
-                            <h2>Tuyến Bus</h2>
-                            <hr class="heading-line" />
-                        </div><!-- end page-heading -->
-                   
-                        
-                        <div class="row">
-                             @foreach($hour as $h)
+                <div class="col-sm-12">
+                    <div class="page-heading">
+                        <h2>Tuyến Bus</h2>
+                        <hr class="heading-line" />
+                    </div><!-- end page-heading -->
 
-                            <div class="col-sm-6 col-md-4">
-                                <div class="main-block flight-block">
-                                    
-                                    <a href="#">
-                                       
-                                        <div class="flight-img">
 
-  @foreach($busroute as $b)
-                                            @if($h->busroute_id == $b->id)
-                                                <img src="/public/upload/Vehicle/{{
-                                                $b->image}}"  />
-                                            @endif
-                                  
-                                         
-                                       @endforeach     
-                                        </div><!-- end flight-img -->
-                                      
-                                        <div class="flight-info">
-                                            <div class="flight-title">
-                                                <h4><span class="flight-destination">@foreach($busroute as $b)
-                                            @if($h->busroute_id == $b->id)
-                                                {{$b->name}}
-                                            @endif
-                                        @endforeach</span>|<span class="flight-type">@foreach($company as $c)
-                                            @if($h->company_id == $c->id)
-                                                {{$c->name}}
-                                            @endif
-                                        @endforeach</span></h4>
-                                            </div><!-- end flight-title -->
-                                            
-                                            <div class=" flight-timing">
-                                                <ul class="list-unstyled">
-                                                    <li><span><i class="fa fa-bus"></i></span><span class="date"><h3>@foreach($day as $d)
-                                            @if($h->day_id == $d->id)
-                                                {{$d->name}}
-                                            @endif
-                                        @endforeach</h3> </span>{{$h->time}}</li>
-                                                    <li><span><i class=""></i></span> <h3>{{$h->time}}</h3>khởi hành<span class="date"> </span></li>
-                                                </ul>
-                                            </div><!-- end flight-timing -->
-                                            
-                                            <ul class="list-unstyled list-inline offer-price-1">
-                                                <li class="price"><h5>Cách 30p có chuyến</h5><span class="pkg"></span></li>
-                                                <li class="rating">
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star orange"></i></span>
-                                                    <span><i class="fa fa-star lightgrey"></i></span>
+                    <div class="row">
+                        @foreach($hour as $h)
+
+                        <div class="col-sm-6 col-md-4">
+                            <div class="main-block flight-block">
+
+                                <a href="#">
+
+                                    <div class="flight-img">
+
+                                        @foreach($busroute as $b)
+                                        @if($h->busroute_id == $b->id)
+                                        <img src="/public/upload/Vehicle/{{
+                                                $b->image}}" />
+                                        @endif
+
+
+                                        @endforeach
+                                    </div><!-- end flight-img -->
+
+                                    <div class="flight-info">
+                                        <div class="flight-title">
+                                            <h4><span class="flight-destination">@foreach($busroute as $b)
+                                                    @if($h->busroute_id == $b->id)
+                                                    {{$b->name}}
+                                                    @endif
+                                                    @endforeach</span>|<span class="flight-type">@foreach($company as $c)
+                                                    @if($h->company_id == $c->id)
+                                                    {{$c->name}}
+                                                    @endif
+                                                    @endforeach</span></h4>
+                                        </div><!-- end flight-title -->
+
+                                        <div class=" flight-timing">
+                                            <ul class="list-unstyled">
+                                                <li><span><i class="fa fa-bus"></i></span><span class="date">
+                                                        <h3>@foreach($day as $d)
+                                                            @if($h->day_id == $d->id)
+                                                            {{$d->name}}
+                                                            @endif
+                                                            @endforeach</h3>
+                                                    </span>{{$h->time}}</li>
+                                                <li><span><i class=""></i></span>
+                                                    <h3>{{$h->time}}</h3>khởi hành<span class="date"> </span>
                                                 </li>
                                             </ul>
-                                        </div><!-- end flight-info -->
-                                    </a>
-                                </div><!-- end flight-block -->
-                            </div><!-- end columns -->
-                             @endforeach
-                        </div><!-- end row -->
-                  
-                        <div class="view-all text-center">
-                            <a href="#" class="btn btn-orange">View All</a>
-                        </div><!-- end view-all -->
-                    </div><!-- end columns -->
-                </div><!-- end row -->  
-            </div><!-- end container -->
-        </section><!-- end flight-offers -->
-     <!--======================================-->                          
-      
+                                        </div><!-- end flight-timing -->
+
+                                        <ul class="list-unstyled list-inline offer-price-1">
+                                            <li class="price">
+                                                <h5>Cách 30p có chuyến</h5><span class="pkg"></span>
+                                            </li>
+                                            <li class="rating">
+                                                <span><i class="fa fa-star orange"></i></span>
+                                                <span><i class="fa fa-star orange"></i></span>
+                                                <span><i class="fa fa-star orange"></i></span>
+                                                <span><i class="fa fa-star orange"></i></span>
+                                                <span><i class="fa fa-star lightgrey"></i></span>
+                                            </li>
+                                        </ul>
+                                    </div><!-- end flight-info -->
+                                </a>
+                            </div><!-- end flight-block -->
+                        </div><!-- end columns -->
+                        @endforeach
+                    </div><!-- end row -->
+
+                    <div class="view-all text-center">
+                        <a href="#" class="btn btn-orange">View All</a>
+                    </div><!-- end view-all -->
+                </div><!-- end columns -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </section><!-- end flight-offers -->
+    <!--======================================-->
+
     <!--======================= FOOTER =======================-->
-   <section id="footer" class="ftr-heading-o ftr-heading-mgn-1">
+    <section id="footer" class="ftr-heading-o ftr-heading-mgn-1">
 
         <div id="footer-top" class="banner-padding ftr-top-grey ftr-text-white">
             <div class="container">
@@ -675,7 +681,7 @@
                             <li><a href="#">Lộc Phát</a></li>
                             <li><a href="#">Mai Linh</a></li>
                             <li><a href="#">Đại Thăng</a></li>
-                            
+
                         </ul>
                     </div><!-- end columns -->
 
@@ -686,7 +692,7 @@
                             <li><a href="test2">Hướng Dẫn Sử Dụng</a></li>
                             <li><a href="test">Hướng Dẫn An Toàn</a></li>
                             <li><a href="#">Đăng ký</a></li>
-                           
+
                         </ul>
                     </div><!-- end columns -->
 
@@ -706,14 +712,14 @@
 
                 </div><!-- end row -->
             </div><!-- end container -->
-        </section><!-- end best-features -->
-                
-        
-        <!--=============== TOUR OFFERS ===============-->
-       
-        
-        <!--=============== CRUISE OFFERS ===============-->
-       
+    </section><!-- end best-features -->
+
+
+    <!--=============== TOUR OFFERS ===============-->
+
+
+    <!--=============== CRUISE OFFERS ===============-->
+
 
 
     <!-- Page Scripts Starts -->
