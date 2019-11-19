@@ -120,6 +120,7 @@ Route::prefix('/admin')->middleware('auth:member')->namespace('Admin')->name('ad
     Route::post('/edit/{id}','HoursController@postEdit')->name('edit.post');
     Route::get('/delete/{id}','HoursController@getDelete')->name('delete.get');
   });
+  
   Route::prefix('/listMembers')->name('listMember.')->group(function() {
     Route::get('/','ListMemberController@getList')->name('list.get');
     Route::get('/edit/{id}','ListMemberController@getEdit')->name('edit.get');

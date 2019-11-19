@@ -19,6 +19,7 @@ public function hour()
     {
         return $this->belongsTo('App\Model\hour','busroute_id','id');
     }
+<<<<<<< HEAD
  public function places()
     {
         return $this->hasmany('App\Model\place');
@@ -27,6 +28,8 @@ public function hour()
     {
         return $this->hasOne('App\Model\Place', 'id', 'from_id');
     }
+=======
+>>>>>>> dd10daabcb6305bd4bafee8caaeebc033bbc22d9
 
     public function to()
     {

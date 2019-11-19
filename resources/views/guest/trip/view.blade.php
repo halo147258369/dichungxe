@@ -375,7 +375,7 @@
                                             <div class="col-sm-8 col-md-8 tab-text">
                                                 
                                         		<h3>Thông Tin xe</h3>
-                                           
+                                        
                                                 <p>{{$trip->seat}} :ghế </p>
                                             
                                                 @foreach($vehicle as $v)

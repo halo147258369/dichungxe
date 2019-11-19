@@ -16,8 +16,6 @@ use Auth;
 
 class BusroutesController extends Controller
 {
-    
-
      protected $model;
     public function __construct(Busroute $model)
     {
@@ -41,7 +39,6 @@ class BusroutesController extends Controller
     }
      public function postAdd(Request $req)
     {
-
         $busroute = new Busroute;
         $busroute->name=$req->name;
         $busroute->from_id=$req->ward_id[0];

@@ -16,9 +16,6 @@
 @stop
 @section('main')
 <!-- Content Wrapper. Contains page content -->
-
-
-
 <div class="col-lg-7">
     @if(session('thongbao'))
         <div class="alert alert-success">

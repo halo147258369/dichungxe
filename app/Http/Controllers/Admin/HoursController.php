@@ -52,6 +52,7 @@ class HoursController extends Controller
         $hour->day_id=$request->days;
         $hour->time=$request->time;
        $hour->save();
+<<<<<<< HEAD
         return redirect()->route('admin.hour.add.get')->with('status', 'Thêm tuyến bus thành công!');
      //  return view('admin.hour.add');
 }
@@ -65,4 +66,8 @@ class HoursController extends Controller
     return view('admin.hour.list',$data);
     }
 
+=======
+       return view('admin.hour.add');
+}
+>>>>>>> dd10daabcb6305bd4bafee8caaeebc033bbc22d9
 }

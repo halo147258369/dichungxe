@@ -583,7 +583,6 @@
                    
                         
                         <div class="row">
-
                              @foreach($hour as $h)
 
                             <div class="col-sm-6 col-md-4">
@@ -641,8 +640,6 @@
                                     </a>
                                 </div><!-- end flight-block -->
                             </div><!-- end columns -->
-                        
-                           
                              @endforeach
                         </div><!-- end row -->
                   
