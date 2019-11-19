@@ -40,8 +40,6 @@ class Member extends Authenticatable
         $bookings = Booking::whereIn('trip_id', $trip_ids)->get();
         $booking_ids = array_column($bookings->all(), 'id');
         $rates = Rate::whereIn('booking_id', $booking_ids)->get();
-        // dd($rates);
         return $rates;
-        // return $this->hasMany('App\Model\Rate')->hasMany('App\Model\Booking')->hasMany('App\Model\Rate');
     }
 }

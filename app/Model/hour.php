@@ -4,11 +4,8 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class hour extends Model
+class Hour extends Model
 {
-    //
-    protected $table = 'hours';
-    protected $primaryKey = 'id';
     protected $fillable = [
         'id',
         'busroute_id','company_id', 'day_id'

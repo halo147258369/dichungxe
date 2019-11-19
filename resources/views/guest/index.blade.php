@@ -583,7 +583,7 @@
 
 
                     <div class="row">
-                        @foreach($hour as $h)
+                        @foreach($hours as $h)
 
                         <div class="col-sm-6 col-md-4">
                             <div class="main-block flight-block">

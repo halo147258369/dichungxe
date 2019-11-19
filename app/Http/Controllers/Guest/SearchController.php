@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Model\city;
 use App\Model\Trip;
 use App\Model\Ward;
+use App\Model\Hour;
+use App\Model\Day;
 
 
 class SearchController extends Controller
@@ -20,6 +22,11 @@ class SearchController extends Controller
     $to_ids = array_column($to_place->all(), 'id');
     $data['trips'] = Trip::whereIn('from_id', $from_ids)->whereIn('to_id', $to_ids)->get();
     $data['cities'] = city::all();
+
+    $data['hours'] = Hour::all();
+    $data['days'] = Day::all();
     return view('guest.index', $data);
+
+
   }
 }
