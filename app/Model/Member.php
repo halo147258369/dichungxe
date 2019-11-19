@@ -30,7 +30,7 @@ class Member extends Authenticatable
 
     public function trips()
     {
-        return $this->hasMany('App\Model\Rate');
+        return $this->hasMany('App\Model\Trip');
     }
 
     public function reviews()

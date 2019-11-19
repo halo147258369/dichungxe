@@ -20,6 +20,7 @@ class TripsController extends Controller
     {
         $data['trip'] = $this->model->findOrFail($id);
         // dd($data);
+        // dd($data['trip']->member->reviews());
         return view('guest.trip.view',$data);
     }
 }
