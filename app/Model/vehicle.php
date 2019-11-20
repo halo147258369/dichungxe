@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vehicle extends Model
 {
-    public $fillable = ['name', 'seat', 'description', 'vehicle_type_id', 'number'];
+    public $fillable = ['name', 'seat', 'description', 'vehicle_type_id', 'number','image'];
     
      public function rates()
     {

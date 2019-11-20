@@ -45,7 +45,7 @@
             <table id="example1" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <td><b>ID</td>
+                 <!--  <td><b>STT</td> -->
                   <td><b>phương tiện</td>
                   <td><b>Điểm đi</td>
                   <td><b>Điểm đến</td>
@@ -60,7 +60,7 @@
               <tbody>
                 @foreach($trips as $trip)
                 <tr>
-                  <td>{{$trip->id}}</td>
+                  <!-- <td>{{$trip->id}}</td> -->
                   <td>{{$trip->vehicle->name}}</td>
                   <td>{{$trip->from->name}}, {{$trip->from->city->name}}</td>
                   <td>{{$trip->to->name}}, {{$trip->to->city->name}}</td>

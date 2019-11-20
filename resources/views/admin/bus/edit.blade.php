@@ -32,7 +32,7 @@
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-           <form action="{{route('admin.bus.edit.post',['id' => $busroute->id])}}" method="POST">
+           <form action="{{route('admin.busroute.edit.post',['id' => $busroute->id])}}" method="POST">
                             <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                             <div class="form-group">
                                 <label>Tên </label>

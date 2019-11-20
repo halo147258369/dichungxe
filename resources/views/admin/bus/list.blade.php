@@ -47,8 +47,8 @@
                 <tr>
                   <td><b>STT</td>
                   <td><b>Tuyến xe</td>
-                  <!-- <td><b>Điểm đi</td>
-                  <td><b>Điểm đến</td>
+                  <td><b></td>
+                 <!--  <td><b>Điểm đến</td>
                   <td><b>Ảnh</td> -->
                 </tr>
               </thead>
@@ -61,8 +61,9 @@
                   <!-- <td>{{$busroute->to_id}}</td>
                   <td>{{$busroute->from_id}}</td>
                   <td>{{$busroute->image}}</td> -->
-                </tr>
+
                   <td>
+
                     <div class="btn-group">
                       <a href="{{ route('admin.busroute.edit.get', ['id' => $busroute->id]) }} " class="btn btn-primary">Xem</a>
                       <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
@@ -70,7 +71,7 @@
                         <span class="sr-only">Toggle Dropdown</span>
                       </button>
                       <div class="dropdown-menu" role="menu">
-                        <a class="dropdown-item" href="">Sửa</a>
+                        <a class="dropdown-item" href="{{ route('admin.busroute.edit.get', ['id' => $busroute->id]) }} ">Sửa</a>
                         <a class="dropdown-item" href="">Xoá</a>
                       </div>
                     </div>

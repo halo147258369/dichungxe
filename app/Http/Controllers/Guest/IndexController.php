@@ -9,6 +9,7 @@ use App\Model\city;
 use App\Model\district;
 use App\Model\ward;
 use App\Model\hour;
+use App\Model\vehicle;
 use App\Model\busroute;
 use App\Model\Company;
 use App\Model\day;
@@ -23,7 +24,8 @@ class IndexController extends Controller
         $data['district'] = district::all();
         $data['ward'] = district::all();
         $data['busroute'] = busroute::all();
-        $data['hour'] = hour::all();
+        $data['hours'] = hour::all();
+        $data['vehicle'] = vehicle::all();
         $data['company'] = Company::all();
         $data['day'] = Day::all();
         return view('guest.index', $data);

@@ -32,23 +32,20 @@
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-           <form action="{{route('admin.listMember.edit.post',['id' => $members->id])}}" method="POST">
+           <form action="{{route('admin.hour.edit.post',['id' => $hours->id])}}" method="POST">
                             <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                             <div class="form-group">
                                 <label>Tên </label>
-                                <input class="form-control" name="name" placeholder="Nhập tên" value ="{{$members->name}}" />
+                                <input class="form-control" name="name" placeholder="Nhập tên" value ="" />
                             </div>
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input class="form-control" name="email" placeholder="Nhập tên " value ="{{$members->email}}" />
-                            </div>
+                           
                              <div class="form-group">
                                 <label>Phone</label>
-                                <input class="form-control" name="phone" placeholder="Nhập tên" value ="{{$members->phone}}" />
+                                <input class="form-control" name="phone" placeholder="Nhập tên" value ="" />
                             </div>
                              <div class="form-group">
                                 <label>Address</label>
-                                <input class="form-control" name="address" placeholder="Nhập tên " value ="{{$members->address}}" />
+                                <input class="form-control" name="address" placeholder="Nhập tên " value ="" />
                             </div>
                            <button class="btn btn-sm btn-info " onclick="history.go(-1);"> <i class="glyphicon glyphicon-circle-arrow-left"></i> Quay lại</button>
                             

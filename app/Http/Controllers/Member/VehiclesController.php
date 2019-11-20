@@ -34,9 +34,44 @@ class VehiclesController extends Controller
 
     public function postAdd(Request $req)
     {
+        // $vehicle = new vehicle;
+        // $vehicle->name=$req->name;
+        // $vehicle->number=$req->number;
+        //  $vehicle->seat=$req->seat;
+        // $vehicle->description=$req->description;
+        //  $vehicle->vehicle_type_id=$req->vehicle_types;
+        $vehicle = $req->only($this->model->fillable);
+        $vehicle['member_id'] = Auth::guard('member')->user()->id;
+      
+
+          if($req->hasFile('image'))
+        {
+           
+            $file = $req->file('image');
+            $duoi = $file->getClientOriginalExtension();
+
+            if ($duoi !='jpg' && $duoi != 'png' && $duoi != 'gif')
+            {
+                return redirect('member/vehicle/add')->with('loi','Không phải file hình');
+            }
+
+            $name = $file->getClientOriginalName();
+
+            $image = str_random(4)."_".$name;
+           while (file_exists("upload/Vehicle/".$image)) {
+               # code...
+                 $image = str_random(4)."_".$name;
+           }
+           $file->move("upload/Vehicle",$image);
+    
+        }
+        else
+        {
+            $vehicle->image="";
+        }
+         $vehicle = $this->model->insert($vehicle);
+
         
-        $data = $req->only($this->model->fillable);
-        $vehicle = $this->model->insert($data);
         return redirect()->route('member.vehicle.list.get')->with('status', 'Thêm phương tiện thành công!');
     }
 

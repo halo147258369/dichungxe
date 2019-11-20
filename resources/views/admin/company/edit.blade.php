@@ -45,7 +45,7 @@
                             <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                             <div class="form-group">
                                 <label>Tên công ty</label>
-                                <input class="form-control" name="ten" placeholder="Nhập tên công ty" value ="{{$company->name}}" />
+                                <input class="form-control" name="name" placeholder="Nhập tên công ty" value ="{{$company->name}}" />
                             </div>
                            <a class="btn btn-sm btn-info " href="{{ URL::to('company/list') }}"> <i class="glyphicon glyphicon-circle-arrow-left"></i> Quay lại</a>
                             

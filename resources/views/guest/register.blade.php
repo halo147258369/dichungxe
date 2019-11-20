@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 3 | Registration Page</title>
+  <title>Đăng Ký | Registration Page</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -23,7 +23,7 @@
 <body class="hold-transition register-page">
   <div class="register-box">
     <div class="register-logo">
-      <a href="../../index2.html"><b>Admin</b>LTE</a>
+      <a href="../../index2.html"><b>Đichung</b>Xe</a>
     </div>
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -36,7 +36,7 @@
     @endif
     <div class="card">
       <div class="card-body register-card-body">
-        <p class="login-box-msg">Register a new membership</p>
+        <p class="login-box-msg">Đăng ký tài khoản</p>
 
         <form action="{{route('guest.register.post')}}" method="post">
           @csrf
@@ -101,20 +101,20 @@
               <div class="icheck-primary">
                 <input type="checkbox" id="agreeTerms" name="terms" value="agree">
                 <label for="agreeTerms">
-                  I agree to the <a href="#">terms</a>
+                  Tôi đồng ý với điều khoản <a href="#">khoản</a>
                 </label>
               </div>
             </div>
             <!-- /.col -->
             <div class="col-4">
-              <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+              <button type="submit" class="btn btn-primary btn-block btn-flat">Đăng ký</button>
             </div>
             <!-- /.col -->
           </div>
         </form>
 
 
-        <a href="login.html" class="text-center">I already have a membership</a>
+        <a href="login.html" class="text-center">Tôi đã sẳn sàng làm thành viên</a>
       </div>
       <!-- /.form-box -->
     </div><!-- /.card -->

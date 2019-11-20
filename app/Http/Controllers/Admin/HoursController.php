@@ -22,12 +22,17 @@ class HoursController extends Controller
     public function __construct(hour $model)
     {
         $this->model = $model;
-    }
-    // public function getList() {
-    //  $data['place']=Place::all();
+         $this->view_prefix = 'admin.hour.';
 
-    //     return view('admin.hour.add',$data);
-    // }
+    }
+
+     public function getList() {
+        $data['busroutes']=Busroute::all();
+        $data['companies']=Company::all();
+        $data['days']=Day::all();
+        $data['hours']=hour::all();
+    return view('admin.hour.list',$data);
+    }
 
     public function getAdd() {
         $companies = Company::all();
@@ -52,22 +57,25 @@ class HoursController extends Controller
         $hour->day_id=$request->days;
         $hour->time=$request->time;
        $hour->save();
-<<<<<<< HEAD
+
         return redirect()->route('admin.hour.add.get')->with('status', 'Thêm tuyến bus thành công!');
-     //  return view('admin.hour.add');
+   
 }
 
 
- public function getList() {
-    $data['busroutes']=Busroute::all();
-    $data['companies']=Company::all();
-    $data['days']=Day::all();
-     $data['hours']=hour::all();
-    return view('admin.hour.list',$data);
+
+
+   public function getEdit($id)
+    {
+        $data['hours'] = $this->model->findOrFail($id);
+        
+        return view($this->view_prefix.'edit',$data);
     }
-
-=======
-       return view('admin.hour.add');
-}
->>>>>>> dd10daabcb6305bd4bafee8caaeebc033bbc22d9
+     public function postEdit($id, Request $req)
+    {
+        $hour = $this->model->findOrFail($id);
+        $data = $req->only($this->model->fillable);
+        $hour->update($data);
+        return redirect()->route('admin.hour.list.get')->with('status', 'Lưu thay đỔi thành công!');
+    }
 }

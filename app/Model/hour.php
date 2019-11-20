@@ -19,7 +19,7 @@ class Hour extends Model
     }
     public function busroutes()
     {
-        return $this->hasMany('App\Model\Busroute','busroute_id','id');
+        return $this->belongsTo('App\Model\Busroute','busroute_id','id');
     }
  public function companies()
     {

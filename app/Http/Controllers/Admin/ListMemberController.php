@@ -18,8 +18,10 @@ class ListMemberController extends Controller
    
     public function getList()
     {
+        // $members = $this->model->all()->count();
+        $members=member::all()->count();
         $data['members'] = $this->model->all();
-        return view($this->view_prefix.'list', $data);
+        return view($this->view_prefix.'list',$data,['members'=>$members]);
     }
 
 
@@ -32,6 +34,7 @@ class ListMemberController extends Controller
   public function postEdit($id, Request $req)
     {
         $member = $this->model->findOrFail($id);
+        
         $data = $req->only($this->model->fillable);
         $member->update($data);
         return redirect()->route('admin.listMember.list.get')->with('status', 'Lưu thay đỔi thành công!');

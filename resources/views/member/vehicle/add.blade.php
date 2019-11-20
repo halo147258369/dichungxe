@@ -59,11 +59,10 @@
                             <label>Số chỗ <span class="error">(*) </span></label>
                             <input class="form-control" name="seat" placeholder="Nhập sỗ chỗ" required="requrired"/>
                         </div>
-                        <!--  <div class="form-group form-group-sm">
-                                <label>Thông báo:</label>
-                                <input class="form-control" name="thongbao" placeholder="Nhập tiêu tên thông báo" />
-                            </div> -->
-
+ <div class="form-group">
+                                <label>Hình ảnh (*)</label>
+                                <input type="file" name="image" class="form-control"/>
+             </div>
                         <button class="btn btn-sm btn-info " onclick="history.go(-1);"> <i class="glyphicon glyphicon-circle-arrow-left"></i> Quay lại</button>
                         <button type="reset" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-refresh"></i>Làm mới</button>
                         <button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-floppy-save"></span>Thêm </button>

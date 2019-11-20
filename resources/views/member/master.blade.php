@@ -38,7 +38,7 @@
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">CatoTek System</span>
+      <span class="brand-text font-weight-light">Chào mừng</span>
     </a>
 
     <!-- Sidebar -->

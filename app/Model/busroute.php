@@ -17,7 +17,7 @@ class busroute extends Model
     public $timestamps = false;
     public function hour()
     {
-        return $this->belongsTo('App\Model\hour', 'busroute_id', 'id');
+        return $this->hasmany('App\Model\hour', 'busroute_id', 'id');
     }
     public function places()
     {

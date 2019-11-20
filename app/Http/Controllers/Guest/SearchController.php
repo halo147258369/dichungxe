@@ -9,7 +9,8 @@ use App\Model\Trip;
 use App\Model\Ward;
 use App\Model\Hour;
 use App\Model\Day;
-
+use App\Model\busroute;
+use App\Model\company;
 
 class SearchController extends Controller
 {
@@ -22,9 +23,10 @@ class SearchController extends Controller
     $to_ids = array_column($to_place->all(), 'id');
     $data['trips'] = Trip::whereIn('from_id', $from_ids)->whereIn('to_id', $to_ids)->get();
     $data['cities'] = city::all();
-
+    $data['busroute'] = busroute::all();
     $data['hours'] = Hour::all();
-    $data['days'] = Day::all();
+    $data['day'] = Day::all();
+    $data['company'] = company::all();
     return view('guest.index', $data);
 
 
