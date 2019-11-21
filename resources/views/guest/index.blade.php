@@ -531,19 +531,10 @@
                                     <div class="col-sm-12 col-md-6 col-md-push-6 no-pd-l">
                                         <div class="main-img cruise-img">
                                             <a href="{{route('guest.trip.view.get', ['id' => $trip->id])}}">
-                                                
-                                                 @foreach($vehicle as $v)
-                                        @if($trip->vehicle_id == $v->id)
-                                        <img src="../public/upload/Vehicle/{{
-                                                $v->image}}"class="img-responsive" alt="cruise-img"  />
-                                        @endif
-
-
-                                     
+                                                <img src="{{asset('upload/Vehicle/'.$trip->vehicle->image)}}" class="img-responsive" alt="cruise-img" />
                                                 <div class="cruise-mask">
                                                     <p>7 Nights, 6 Days</p>
                                                 </div><!-- end cruise-mask -->
-                                                   @endforeach
                                             </a>
                                         </div><!-- end cruise-img -->
                                     </div><!-- end columns -->

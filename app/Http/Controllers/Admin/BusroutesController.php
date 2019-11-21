@@ -16,83 +16,75 @@ use Auth;
 
 class BusroutesController extends Controller
 {
-     protected $model;
+    protected $model;
     public function __construct(Busroute $model)
     {
         $this->model = $model;
     }
-    public function getList() {
-      //$busroute=busroute::all();
-       $data['place']=Place::all();
-      // $ward=ward::all();
-        //return view('admin.bus.list',$data,['busroute'=>$busroute,'ward'=>$ward]);
-    $data['wards']=ward::with('district', 'district.city')->get();
-    return view('admin.ward.list',$data);
+    public function getList()
+    {
+        $data['busroutes'] = $this->model->all();
+        return view('admin.bus.list', $data);
     }
 
-    public function getAdd() {
+    public function getAdd()
+    {
         $data['cities'] = city::all();
-        
+
         $data['wards'] = ward::all();
-        
-        return view('admin.bus.add',$data);
+
+        return view('admin.bus.add', $data);
     }
-     public function postAdd(Request $req)
+    public function postAdd(Request $req)
     {
         $busroute = new Busroute;
-        $busroute->name=$req->name;
-        $busroute->from_id=$req->ward_id[0];
-        $busroute->to_id=$req->ward_id[1];
+        $busroute->name = $req->name;
+        $busroute->from_id = $req->ward_id[0];
+        $busroute->to_id = $req->ward_id[1];
         // $data['name']= $req->name;
         // $data['from_id'] = $req->ward_id[0];
         // $data['to_id'] = $req->ward_id[1];
 
 
-        if($req->hasFile('image'))
-        {
-           
+        if ($req->hasFile('image')) {
+
             $file = $req->file('image');
             $duoi = $file->getClientOriginalExtension();
 
-            if ($duoi !='jpg' && $duoi != 'png' && $duoi != 'gif')
-            {
-                return redirect('admin/busroutes/add')->with('loi','Không phải file hình');
+            if ($duoi != 'jpg' && $duoi != 'png' && $duoi != 'gif') {
+                return redirect('admin/busroutes/add')->with('loi', 'Không phải file hình');
             }
 
             $name = $file->getClientOriginalName();
 
-            $image = str_random(4)."_".$name;
-           while (file_exists("upload/Vehicle/".$image)) {
-               # code...
-                 $image = str_random(4)."_".$name;
-           }
-           $file->move("upload/Vehicle",$image);
-        $busroute->image = $image;
+            $image = str_random(4) . "_" . $name;
+            while (file_exists("upload/Vehicle/" . $image)) {
+                $image = str_random(4) . "_" . $name;
+            }
+            $file->move("upload/Vehicle", $image);
+            $busroute->image = $image;
+        } else {
+            $busroute->image = $image;
         }
-        else
-        {
-            $busroute->image="";
-        }
-         $busroute->save();
+        $busroute->save();
 
         return redirect()->route('admin.busroute.list.get')->with('status', 'Thêm tuyến bus thành công!');
     }
-  
+
     public function getEdit($id)
     {
         $busroute = busroute::find($id);
-        return view('admin.bus.edit',['busroute'=>$busroute]);
+        return view('admin.bus.edit', ['busroute' => $busroute]);
     }
-     public function postEdit(Request $req,$id)
+    public function postEdit(Request $req, $id)
     {
-    //      $busroute = new Busroute;
-    
-    // //      $busroute->save();
- $busroute = $this->model->findOrFail($id);
-        
+        //      $busroute = new Busroute;
+
+        // //      $busroute->save();
+        $busroute = $this->model->findOrFail($id);
+
         $data = $req->only($this->model->fillable);
         $busroute->update($data);
         return redirect()->route('admin.busroute.list.get')->with('status', 'Lưu thay đỔi thành công!');
-  
-    
-        }}
+    }
+}

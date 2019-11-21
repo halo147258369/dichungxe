@@ -53,7 +53,7 @@
                 </tr>
               </thead>
               <tbody>
-              @foreach($busroute as $busroute)
+              @foreach($busroutes as $busroute)
                 <tr>
                   <td>{{$busroute->id}}</td>
                   <td>{{$busroute->name}}</td>

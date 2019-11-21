@@ -18,7 +18,7 @@ use Auth;
 class HoursController extends Controller
 {
    
-     protected $model;
+    protected $model;
     public function __construct(hour $model)
     {
         $this->model = $model;
@@ -40,23 +40,25 @@ class HoursController extends Controller
         $days=Day::all();
         return view('admin.hour.add', ['companies'=>$companies,'busroutes'=>$busroutes,'days'=>$days]);
     }
-     public function postAdd(Request $request)
+    
+    public function postAdd(Request $request)
     {
         // $data['name']= $req->name;
-      $this->validate($request,
+        $this->validate($request,
             [
                
             ],
             [
+                 
                 
-                
-            ]);
+            ]
+        );
         $hour = new hour;
         $hour->company_id = $request->companies;
         $hour->busroute_id=$request->busroutes;
         $hour->day_id=$request->days;
         $hour->time=$request->time;
-       $hour->save();
+        $hour->save();
 
         return redirect()->route('admin.hour.add.get')->with('status', 'Thêm tuyến bus thành công!');
    
