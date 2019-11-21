@@ -284,7 +284,7 @@
                             <h2 class="selected-price">ĐẶT XE</h2>
 
                             <div class="booking-form">
-
+                                @if(Auth::guard('member')->check())
                                 Bạn đã đăng nhập với tên {{ Auth::guard('member')->user()->name }}
                                 <form action="{{route('member.booking.add.post')}}" method="POST" enctype="multipart/form-data" id="myform">
                                     <input type="hidden" name="trip_id" value="{{ $trip->id }}" />
@@ -296,7 +296,12 @@
 
                                     <button class="btn btn-block btn-orange">Đặt xe</button>
                                 </form>
-
+                                @else
+                                Bạn chưa đăng nhập!
+                                    <a href="{{route('guest.login.get')}}"class="btn btn-block btn-orange">Đăng nhập</a>
+                                    <a href="{{route('guest.register.get')}}"class="btn btn-block btn-orange">Đăng ký</a>
+                                </form>
+                                @endif
                             </div><!-- end booking-form -->
                         </div><!-- end side-bar-block -->
 
@@ -324,9 +329,7 @@
                                     <p></p>
                                     <div class="support-contact">
                                         <span><i class="fa fa-phone"></i></span>
-                                        <p> {{$trip->phone}} </p>
-
-
+                                        <p> {{$trip->member->phone}} </p>
                                     </div><!-- end support-contact -->
                                 </div><!-- end side-bar-block -->
                             </div><!-- end columns -->
@@ -338,21 +341,9 @@
                     <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 content-side">
                         <div class="detail-slider">
                             <div class="feature-slider">
-                                <div><img src="source/images/car-feature-1.jpg" class="img-responsive" alt="feature-img" /></div>
-                                <div><img src="source/images/car-feature-2.jpg" class="img-responsive" alt="feature-img" /></div>
-                                <div><img src="source/images/car-feature-3.jpg" class="img-responsive" alt="feature-img" /></div>
-                                <div><img src="source/images/car-feature-4.jpg" class="img-responsive" alt="feature-img" /></div>
-                                <div><img src="source/images/car-feature-5.jpg" class="img-responsive" alt="feature-img" /></div>
+                                <div><img src="{{asset('upload/Vehicle/'.$trip->vehicle->image)}}" class="img-responsive" alt="feature-img" /></div>
                             </div><!-- end feature-slider -->
 
-                            <!-- div class="feature-slider-nav">
-                                    <div><img src="source/images/car-feature-thumb-1.jpg" class="img-responsive" alt="feature-thumb"/></div>
-                                    <div><img src="source/images/car-feature-thumb-2.jpg" class="img-responsive" alt="feature-thumb"/></div>
-                                    <div><img src="source/images/car-feature-thumb-3.jpg" class="img-responsive" alt="feature-thumb"/></div>
-                                    <div><img src="source/images/car-feature-thumb-4.jpg" class="img-responsive" alt="feature-thumb"/></div>
-                                    <div><img src="source/images/car-feature-thumb-5.jpg" class="img-responsive" alt="feature-thumb"/></div>
-                                </div> -->
-                            <!-- end feature-slider-nav -->
 
                             <ul class="list-unstyled features tour-features">
                                 <li>
@@ -383,7 +374,7 @@
                                 <div id="car-information" class="tab-pane in active">
                                     <div class="row">
                                         <div class="col-sm-4 col-md-4 tab-img">
-                                            <img src="source/images/car-detail-tab-1.jpg" class="img-responsive" alt="flight-detail-img" />
+                                            <img src="{{asset('upload/Vehicle/'.$trip->vehicle->image)}}" class="img-responsive" alt="flight-detail-img" />
                                         </div><!-- end columns -->
 
                                         <div class="col-sm-8 col-md-8 tab-text">
