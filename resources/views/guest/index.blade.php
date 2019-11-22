@@ -583,7 +583,7 @@
 
 
                     <div class="row">
-                        @foreach($hours as $h)
+                        @foreach($busroutes as $b)
 
                         <div class="col-sm-6 col-md-4">
                             <div class="main-block flight-block">
@@ -591,28 +591,15 @@
                                 <a href="#">
 
                                     <div class="flight-img">
-
-                                        @foreach($busroute as $b)
-                                        @if($h->busroute_id == $b->id)
-                                        <img src="/public/upload/Vehicle/{{
+                                        <img src="/upload/Vehicle/{{
                                                 $b->image}}" />
-                                        @endif
-
-
-                                        @endforeach
                                     </div><!-- end flight-img -->
 
                                     <div class="flight-info">
                                         <div class="flight-title">
-                                            <h4><span class="flight-destination">@foreach($busroute as $b)
-                                                    @if($h->busroute_id == $b->id)
-                                                    {{$b->name}}
-                                                    @endif
-                                                    @endforeach</span>|<span class="flight-type">@foreach($company as $c)
-                                                    @if($h->company_id == $c->id)
-                                                    {{$c->name}}
-                                                    @endif
-                                                    @endforeach</span></h4>
+                                            <h4><span class="flight-destination">{{$b->name}}
+                                                    </span>|<span class="flight-type">
+                                                    {{$b->hour->->name}}</span></h4>
                                         </div><!-- end flight-title -->
 
                                         <div class=" flight-timing">

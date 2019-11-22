@@ -23,7 +23,7 @@ class SearchController extends Controller
     $to_ids = array_column($to_place->all(), 'id');
     $data['trips'] = Trip::whereIn('from_id', $from_ids)->whereIn('to_id', $to_ids)->get();
     $data['cities'] = city::all();
-    $data['busroute'] = busroute::all();
+    $data['busroutes'] = busroute::whereIn('from_id', $from_ids)->whereIn('to_id', $to_ids)->get();
     $data['hours'] = Hour::all();
     $data['day'] = Day::all();
     $data['company'] = company::all();
