@@ -24,8 +24,8 @@ class RegisterController extends Controller
 		$validatedData = $req->validate([
 			'name' => ['required', 'string', 'max:255'],
 			'email' => ['required', 'string', 'email', 'max:255', 'unique:members'],
-			'phone' => ['required', 'string', 'email', 'max:255', 'unique:members'],
-			'password' => ['required', 'string', 'min:8', 'confirmed'],
+			'phone' => ['required', 'string', 'max:255', 'unique:members'],
+			'password' => ['required', 'string', 'min:8'],
 		]);
 
 		$data = $req->only($this->model->fillable);
