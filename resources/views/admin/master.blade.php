@@ -242,6 +242,29 @@
                 </li>
               </ul>
             </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-map-marker"></i>
+                <p>
+                  Tin tức
+                  <i class="right fa fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{asset('admin/news')}}" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Danh sách</p>
+                  </a>
+                </li>
+                 <li class="nav-item">
+                  <a href="{{asset('admin/news/add')}}" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Thêm</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

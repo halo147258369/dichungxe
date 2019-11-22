@@ -13,6 +13,8 @@
 Route::get('test','TestController@test');
 Route::get('test1','TestController@test1');
 Route::get('test2','TestController@test2');
+Route::get('news','TestController@news');
+Route::get('news_type/{id}','TestController@news_type');
 Route::get('/', 'Guest\IndexController@getIndex')->name('guest.index.view.get');
 Route::post('search','Guest\SearchController@postSearch')->name('guest.index.search.post');
 Route::get('detail/{id}', 'Guest\TripsController@getView')->name('guest.trip.view.get');
@@ -136,6 +138,14 @@ Route::prefix('/admin')->middleware('auth:member')->namespace('Admin')->name('ad
     Route::post('/edit/{id}','CompaniesController@postEdit')->name('edit.post');
     Route::get('/delete/{id}','CompaniesController@getDelete')->name('delete.get');
   });
+  Route::prefix('/news')->name('news.')->group(function() {
+    Route::get('/','NewsController@getList')->name('list.get');
+    Route::get('/add','NewsController@getAdd')->name('add.get');
+    Route::post('/add','NewsController@postAdd')->name('add.post');
+    Route::get('/edit/{id}','NewsController@getEdit')->name('edit.get');
+    Route::post('/edit/{id}','NewsController@postEdit')->name('edit.post');
+    Route::get('/delete/{id}','NewsController@getDelete')->name('delete.get');
+});
   
 });
 
