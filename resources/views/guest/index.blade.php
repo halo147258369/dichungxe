@@ -598,7 +598,7 @@
                                     <div class="flight-info">
                                         <div class="flight-title">
                                             <h4>
-                                                <span class="flight-destination">{{$b->name}}</span> |
+                                                <span class="flight-destination">{{$b->name}} | {{$b->company->name}}</span> 
                                                 
                                         </div><!-- end flight-title -->
 
