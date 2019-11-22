@@ -40,6 +40,7 @@ class BusroutesController extends Controller
     {
         $busroute = new Busroute;
         $busroute->name = $req->name;
+        $busroute->company_id = $req->company_id;
         $busroute->from_id = $req->ward_id[0];
         $busroute->to_id = $req->ward_id[1];
 
