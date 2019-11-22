@@ -17,19 +17,19 @@
 @section('main')
 <!-- Content Wrapper. Contains page content -->
 <div class="col-lg-7">
-    @if(session('thongbao'))
-        <div class="alert alert-success">
-            {{session('thongbao')}}
-        </div>
-    @endif
+  @if(session('thongbao'))
+  <div class="alert alert-success">
+    {{session('thongbao')}}
+  </div>
+  @endif
 
-    @if(session('thongbao2'))
-        <div class="alert alert-danger">
-            {{session('thongbao2')}}
-        </div>
-    @endif
+  @if(session('thongbao2'))
+  <div class="alert alert-danger">
+    {{session('thongbao2')}}
+  </div>
+  @endif
 
-    </div>
+</div>
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -59,46 +59,38 @@
           <!-- /.card-header -->
           <div class="card-body">
             <form action="{{route('admin.hour.add.post')}}" method="POST" enctype="multipart/form-data" id="myform">
-                <input type="hidden" name="_token" value="{{csrf_token()}}">
-            
-              <div class="form-group">
-               <label>Chọn Tuyến Bus</label>
-               <select class="form-control" name="busroutes">
-                @foreach($busroutes as $busroute)
-                <option value="{{$busroute->id}}">{{$busroute->name}}</option>
-                @endforeach
-              </select>
-            </div>
-<div class="form-group">
-               <label>Chọn Công Ty</label>
-               <select class="form-control" name="companies">
-                @foreach($companies as $company)
-                <option value="{{$company->id}}">{{$company->name}}</option>
-                @endforeach
-              </select>
-            </div>
-            
-            <div class="form-group">
-               <label>Chọn Thứ</label>
-               <select class="form-control" name="days">
-               @foreach($days as $day)
-                <option value="{{$day->id}}">{{$day->name}}</option>
-                @endforeach 
-          
-              </select>
-            </div>
-            
+              <input type="hidden" name="_token" value="{{csrf_token()}}">
 
-           
-   
-            <div class="form-group">
-              <label>Thời gian đi</label>
-              <input type="time" name="time" class="form-control" placeholder="Nhập thời gian đi" required="required">
-            </div>
-           
-          
-            <button type="submit" class="btn btn-primary">Lưu chuyến đi</button>
-              </form>
+              <div class="form-group">
+                <label>Chọn Tuyến Bus</label>
+                <select class="form-control" name="busroutes">
+                  @foreach($busroutes as $busroute)
+                  <option value="{{$busroute->id}}">{{$busroute->name}}</option>
+                  @endforeach
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Chọn Thứ</label>
+                <select class="form-control" name="days">
+                  @foreach($days as $day)
+                  <option value="{{$day->id}}">{{$day->name}}</option>
+                  @endforeach
+
+                </select>
+              </div>
+
+
+
+
+              <div class="form-group">
+                <label>Thời gian đi</label>
+                <input type="time" name="time" class="form-control" placeholder="Nhập thời gian đi" required="required">
+              </div>
+
+
+              <button type="submit" class="btn btn-primary">Lưu chuyến đi</button>
+            </form>
           </div>
         </div>
         <!-- /.card-body -->
@@ -119,28 +111,28 @@
 <script src="{{secure_asset('plugins/datatables/dataTables.bootstrap4.js')}}"></script>
 <script src="{{secure_asset('plugins/select2/select2.full.min.js')}}"></script>
 <script>
-      function getDistricts(id_form, id_to) {
-        var matp = $("#"+id_form).val();
-        $.ajax({
-          url: '/api/getdistricts/' + matp
-        }).done(function(data) {
-          $("#"+id_to).html('<option value="0">Chọn quận/huyện</option>');
-          data.forEach(function(element) {
-            $("#"+id_to).append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
-          });
-        });;
-      }
+  function getDistricts(id_form, id_to) {
+    var matp = $("#" + id_form).val();
+    $.ajax({
+      url: '/api/getdistricts/' + matp
+    }).done(function(data) {
+      $("#" + id_to).html('<option value="0">Chọn quận/huyện</option>');
+      data.forEach(function(element) {
+        $("#" + id_to).append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
+      });
+    });;
+  }
 
-      function getWards(id_form, id_to) {
-        var maqh = $("#"+id_form).val();
-        $.ajax({
-          url: '/api/getwards/' + maqh
-        }).done(function(data) {
-          $("#"+id_to).html('<option value="0">Chọn xã/phường/thị trấn</option>');
-          data.forEach(function(element) {
-            $("#"+id_to).append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
-          });
-        });;
-      }
+  function getWards(id_form, id_to) {
+    var maqh = $("#" + id_form).val();
+    $.ajax({
+      url: '/api/getwards/' + maqh
+    }).done(function(data) {
+      $("#" + id_to).html('<option value="0">Chọn xã/phường/thị trấn</option>');
+      data.forEach(function(element) {
+        $("#" + id_to).append('<option value="' + element['id'] + '">' + element['name'] + '</option>');
+      });
+    });;
+  }
 </script>
 @stop

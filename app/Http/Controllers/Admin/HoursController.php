@@ -54,7 +54,6 @@ class HoursController extends Controller
             ]
         );
         $hour = new hour;
-        $hour->company_id = $request->companies;
         $hour->busroute_id=$request->busroutes;
         $hour->day_id=$request->days;
         $hour->time=$request->time;
