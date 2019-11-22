@@ -23,7 +23,7 @@ class IndexController extends Controller
         $data['cities'] = city::all();
         $data['district'] = district::all();
         $data['ward'] = district::all();
-        $data['busroute'] = busroute::all();
+        $data['busroutes'] = busroute::all();
         $data['hours'] = hour::all();
         $data['vehicle'] = vehicle::all();
         $data['company'] = Company::all();

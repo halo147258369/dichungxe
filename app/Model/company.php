@@ -15,9 +15,9 @@ class Company extends Model
     public $timestamps = false;
 
 
-    public function hour()
+    public function busroutes()
     {
-        return $this->hasMany('App\Model\hour','company_id','id');
+        return $this->hasMany('App\Model\Busroute');
     }
  
 }

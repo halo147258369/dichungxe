@@ -66,7 +66,14 @@
               <label for="title">Tiêu đề</label>
               <input type="text" name="name" class="form-control" placeholder="Nhập Tiêu Đề" required="required">
             </div>
-            
+            <div class="form-group">
+              <select name="company_id" id="company_id" class="form-control" >
+                <option value="0">Chọn công ty</option>
+                @foreach($companies as $company)
+                <option value="{{$company->id}}">{{$company->name}}</option>
+                @endforeach
+              </select>
+            </div>
             <div class="form-group">
               <select name="city_id[]" id="from_city" class="form-control"  onchange="getDistricts('from_city', 'from_district')">
                 <option value="0">Chọn tỉnh/thành phố</option>

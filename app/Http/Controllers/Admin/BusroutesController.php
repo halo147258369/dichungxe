@@ -30,6 +30,7 @@ class BusroutesController extends Controller
     public function getAdd()
     {
         $data['cities'] = city::all();
+        $data['companies'] = Company::all();
 
         $data['wards'] = ward::all();
 
@@ -41,9 +42,6 @@ class BusroutesController extends Controller
         $busroute->name = $req->name;
         $busroute->from_id = $req->ward_id[0];
         $busroute->to_id = $req->ward_id[1];
-        // $data['name']= $req->name;
-        // $data['from_id'] = $req->ward_id[0];
-        // $data['to_id'] = $req->ward_id[1];
 
 
         if ($req->hasFile('image')) {

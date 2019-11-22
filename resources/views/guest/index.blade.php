@@ -597,22 +597,21 @@
 
                                     <div class="flight-info">
                                         <div class="flight-title">
-                                            <h4><span class="flight-destination">{{$b->name}}
-                                                    </span>|<span class="flight-type">
-                                                    {{$b->hour->->name}}</span></h4>
+                                            <h4>
+                                                <span class="flight-destination">{{$b->name}}</span> |
+                                                
                                         </div><!-- end flight-title -->
 
                                         <div class=" flight-timing">
                                             <ul class="list-unstyled">
                                                 <li><span><i class="fa fa-bus"></i></span><span class="date">
-                                                        <h3>@foreach($day as $d)
-                                                            @if($h->day_id == $d->id)
-                                                            {{$d->name}}
-                                                            @endif
-                                                            @endforeach</h3>
-                                                    </span>{{$h->time}}</li>
+                                                    </span></li>
                                                 <li><span><i class=""></i></span>
-                                                    <h3>{{$h->time}}</h3>khởi hành<span class="date"> </span>
+                                                @foreach($b->hours as $h)
+                                                        <h3>{{$h->day->name}}</h3>
+                                                <h3>{{$h->time}}</h3>khởi hành<span class="date"> </span>
+                                                @endforeach
+                                                    
                                                 </li>
                                             </ul>
                                         </div><!-- end flight-timing -->

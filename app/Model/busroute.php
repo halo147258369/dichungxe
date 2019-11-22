@@ -12,10 +12,11 @@ class busroute extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'id',
-        'name', 'to_id', 'from_id', 'image'
+        'name', 'to_id', 'from_id', 'image', 'company_id'
     ];
     public $timestamps = false;
-    public function hour()
+
+    public function hours()
     {
         return $this->hasmany('App\Model\hour', 'busroute_id', 'id');
     }
@@ -31,5 +32,10 @@ class busroute extends Model
     public function to()
     {
         return $this->hasOne('App\Model\Place', 'id', 'to_id');
+    }
+
+    public function company()
+    {
+        return $this->belongsTo('App\Model\Company');
     }
 }
