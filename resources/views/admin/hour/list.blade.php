@@ -45,9 +45,8 @@
                 <thead>
                 <tr>
                   <th>Tên Tuyến</th>
-                  <th>Công Ty</th>
+                 
                   <th>Lịch chạy</th>
-                  <!-- <th>Địa chỉ</th> -->
                   <th></th>
                   <th></th>
                 </tr>
@@ -65,10 +64,12 @@
                    @endforeach
                    <!-- cong ty-->
                     @foreach($companies as $c)
-                  @if($hour->company_id == $c->id)
-                  <td>{{$c->name}}</td>
-                  @endif
+                      @if($hour->company_id == $c->id)
+                        <td>{{$c->name}}</td>
+                      @endif
                    @endforeach
+               
+                 
                    <!-- cong ty-->
 @foreach($days as $d)
                   @if($hour->day_id == $d->id)

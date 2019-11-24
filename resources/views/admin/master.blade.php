@@ -203,7 +203,7 @@
             </li>
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
-                <i class="nav-icon fa fa-map-marker"></i>
+                <i class="nav-icon fa fa-user"></i>
                 <p>
                   Người Dùng
                   <i class="right fa fa-angle-left"></i>
@@ -221,7 +221,7 @@
             </li>
              <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
-                <i class="nav-icon fa fa-map-marker"></i>
+                <i class="nav-icon fa fa-building"></i>
                 <p>
                   Công Ty
                   <i class="right fa fa-angle-left"></i>
@@ -263,6 +263,29 @@
                     <p>Thêm</p>
                   </a>
                 </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-map-marker"></i>
+                <p>
+                  Thống Kê
+                  <i class="right fa fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{asset('admin/statisticals/')}}" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Danh sách</p>
+                  </a>
+                </li>
+                 <!-- <li class="nav-item">
+                  <a href="{{asset('admin/news/add')}}" class="nav-link">
+                    <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Thêm</p>
+                  </a>
+                </li> -->
               </ul>
             </li>
         </ul>

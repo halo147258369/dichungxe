@@ -68,12 +68,15 @@ class HoursController extends Controller
 
    public function getEdit($id)
     {
+        $data['busroutes']=Busroute::all();
+        $data['days']=day::all();
         $data['hours'] = $this->model->findOrFail($id);
         
         return view($this->view_prefix.'edit',$data);
     }
      public function postEdit($id, Request $req)
     {
+    
         $hour = $this->model->findOrFail($id);
         $data = $req->only($this->model->fillable);
         $hour->update($data);

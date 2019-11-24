@@ -35,18 +35,23 @@
            <form action="{{route('admin.hour.edit.post',['id' => $hours->id])}}" method="POST">
                             <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                             <div class="form-group">
-                                <label>Tên </label>
-                                <input class="form-control" name="name" placeholder="Nhập tên" value ="" />
-                            </div>
+                                <label>Chọn Tên tuyến</label>
+                                <select class="form-control" name="busroutes">
+                                  @foreach($busroutes as $busroute)
+                              <option value="{{$busroute->id}}">{{$busroute->name}}</option>
+                                  @endforeach
+                              </select>
+                             </div>
                            
                              <div class="form-group">
-                                <label>Phone</label>
-                                <input class="form-control" name="phone" placeholder="Nhập tên" value ="" />
-                            </div>
-                             <div class="form-group">
-                                <label>Address</label>
-                                <input class="form-control" name="address" placeholder="Nhập tên " value ="" />
-                            </div>
+                                <label>Chọn Thứ</label>
+                                <select class="form-control" name="days">
+                                  @foreach($days as $day)
+                              <option value="{{$day->id}}">{{$day->name}}</option>
+                                  @endforeach
+                              </select>
+                             </div>
+
                            <button class="btn btn-sm btn-info " onclick="history.go(-1);"> <i class="glyphicon glyphicon-circle-arrow-left"></i> Quay lại</button>
                             
                             <button type="submit" class="btn btn-primary btn-sm">

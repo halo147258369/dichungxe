@@ -146,7 +146,10 @@ Route::prefix('/admin')->middleware('auth:member')->namespace('Admin')->name('ad
     Route::post('/edit/{id}','NewsController@postEdit')->name('edit.post');
     Route::get('/delete/{id}','NewsController@getDelete')->name('delete.get');
 });
-  
+  Route::prefix('/statisticals')->name('statistical.')->group(function() {
+    Route::get('/','NewsController@getList1')->name('list.get');
+    
+});
 });
 
 
