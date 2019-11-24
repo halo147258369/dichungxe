@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
 
 class Admin
 {
@@ -15,9 +16,9 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if(auth()->user()->level >= 3){
+        if(Auth::guard('member')->user()->level >= 3){
             return $next($request);
-        } else {
+    } else {
             return redirect()->back()->with('error',"You don't have admin access");
         }
     }
