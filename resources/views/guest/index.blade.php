@@ -543,7 +543,7 @@
                                         <div class=" main-info cruise-info">
                                             <div class="main-title cruise-title">
                                                 <a href="{{route('guest.trip.view.get', ['id' => $trip->id])}}">{{$trip->title}}</a>
-                                                <p>Từ {{$trip->from->city->name}} đến {{$trip->to->city->name}}</p>
+                                                <p>Từ {{$trip->from->name}} đến {{$trip->to->name}}</p>
                                                 <div class="rating">
                                                     @for($i=0;$i<$trip->member->rate;$i++)
                                                         <span><i class="fa fa-star orange"></i></span>
