@@ -80,7 +80,7 @@ Route::prefix('/member')->middleware('auth:member')->namespace('Member')->name('
 
 });
 
-Route::prefix('/admin')->middleware('auth:member')->namespace('Admin')->name('admin.')->group(function() {
+Route::prefix('/admin')->middleware('auth:member')->namespace('Admin')->name('admin.')->middleware('admin')->group(function() {
   Route::prefix('/cities')->name('city.')->group(function() {
     Route::get('/','CitiesController@getList')->name('list.get');
     Route::get('/add','CitiesController@getAdd')->name('add.get');
