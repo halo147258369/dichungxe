@@ -122,9 +122,9 @@
                                 <li><a href="landing-page.html">Landing Page</a></li> -->
                         </ul>
                     </li>
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Tin Tức<span><i class="fa fa-angle-down"></i></span></a>
+                    <li class="dropdown"><a href="news" class="dropdown-toggle" data-toggle="dropdown">Tin Tức<span><i class="fa fa-angle-down"></i></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="flight-homepage.html">Flight Homepage</a></li>
+                            <li><a href="news">Tin</a></li>
                             <!-- <li><a href="flight-listing-left-sidebar.html">List View Left Sidebar</a></li>
                                 <li><a href="flight-listing-right-sidebar.html">List View Right Sidebar</a></li>
                                 <li><a href="flight-grid-left-sidebar.html">Grid View Left Sidebar</a></li>
@@ -533,7 +533,7 @@
                                             <a href="{{route('guest.trip.view.get', ['id' => $trip->id])}}">
                                                 <img src="{{asset('upload/Vehicle/'.$trip->vehicle->image)}}" class="img-responsive" alt="cruise-img" />
                                                 <div class="cruise-mask">
-                                                    <p>7 Nights, 6 Days</p>
+                                                    <p></p>
                                                 </div><!-- end cruise-mask -->
                                             </a>
                                         </div><!-- end cruise-img -->
