@@ -29,7 +29,8 @@ class RegisterController extends Controller
 		]);
 
 		$data = $req->only($this->model->fillable);
-		$this->model->create($data);
+		$data['password'] = Hash::make($req->password);
+ 		$this->model->create($data);
 		return redirect()->route('guest.login.get')->with('status', 'Đăng ký thành công!');
 	}
 }
