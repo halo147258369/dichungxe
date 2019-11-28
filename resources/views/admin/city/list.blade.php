@@ -41,7 +41,7 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+              <table class="table table-striped table-bordered table-hover" id="dataTables-example"id="example1"class="table table-bordered table-striped">
                         <thead>
 
                             <tr align="center">

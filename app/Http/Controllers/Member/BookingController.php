@@ -36,9 +36,7 @@ class BookingController extends Controller
 
     public function postAdd(Request $request)
     {
-        // dd($request);
         $data = $request->only($this->model->fillable);
-        // dd($data);
         $book = $this->model->create($data);
         return redirect()->route('member.booking.list.get');
     }
@@ -68,9 +66,12 @@ class BookingController extends Controller
 
     public function getDelete($id)
     {
-        $city = city::find($id);
-        $city->delete();
-        return redirect('city/list')->with('thongbao','Bạn đã xóa thành công');
+        $booking = $this->model->findOrFail($id);
+        $trip = $booking->trip;
+        $trip->remain_seat = $trip->remain_seat-$booking->seat;
+        $trip->save();
+        $booking->delete();
+        return redirect()->route('member.booking.list.get')->with('thongbao','Bạn đã xóa thành công');
     }
 
     

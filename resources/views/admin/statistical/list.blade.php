@@ -110,76 +110,67 @@
       </div><!--/. container-fluid -->
     </section>
 <!--haak -->
-         <!-- Main content -->
-   <!--  <section class="content">
-      <div class="container-fluid"> -->
-        <!-- Info boxes -->
-        <div class="row">
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon bg-info elevation-1"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTfr_NBq8gfdUA3EilvbMxAYUr-hBzYx8osRkABMM98AtLXN1mj"   /></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text"><h4><b>số chuyến đi tháng:{{$month}}</b></h4></span>
-                <span class="info-box-number">
-                  <font color="blue"><h4><b>{{$baidang_hstd}}</b></h4></font>
-                 
-                  <small></small>
-                </span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-           <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon bg-info elevation-1"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTfr_NBq8gfdUA3EilvbMxAYUr-hBzYx8osRkABMM98AtLXN1mj"   /></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text"><h4><b>số chuyến đi tháng:{{$month-1}}</b></h4></span>
-                <span class="info-box-number">
-                  <font color="blue"><h4><b>{{$hstdthangtruoc}}</b></h4></font>
-                 
-                  <small></small>
-                </span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
- <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon bg-info elevation-1"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTfr_NBq8gfdUA3EilvbMxAYUr-hBzYx8osRkABMM98AtLXN1mj"   /></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text"><h4><b>số chuyến đi năm:{{$year}}</b></h4></span>
-                <span class="info-box-number">
-                  <font color="blue"><h4><b>{{ $tonghstdtrongnam}}</b></h4></font>
-                 
-                  <small></small>
-                </span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          
-          <!-- /.col -->
-      
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
+    
 
        
 
- 
 <!--haak -->
 
     <!-- BAR CHART -->
          
-  
+  <div class="box-footer">
+  <div class="col-md-12">
+    <h2 >Biểu Đồ Thống Kê Số Lượng Chuyến Đi Theo Tháng</h2>
+    <canvas id="myChart" width="400" height="100"></canvas>
+  </div>
+</div>
+<!-- Modal -->
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="{{ asset ('theme/admin/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset ('theme/admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+<canvas id="myChart" width="400" height="100"></canvas>
+<script>
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: <?php echo ("$labels"); ?>,
+      datasets: [{
+        label: <?php echo ("$labels"); ?>,
+        data: <?php echo ("$values"); ?>,
+        backgroundColor: [
+
+        'rgba(255, 215 , 0)',
+        'rgba(106, 90, 205)',
+        'rgba(141, 238, 238)',
+        'rgba(255, 99, 132)',
+        'rgba(255, 140, 0)',
+        'rgba(54, 162, 235)',
+        'rgba(255, 206, 86)',
+        'rgba(75, 192, 192)',
+        'rgba(153, 102, 255)',
+        'rgba(255, 159, 64)',
+        'rgba(255, 105, 180)'
+                // ]
+                ]
+              }]
+            },
+            options: {
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    beginAtZero: true
+                  }
+                }]
+              }
+            }
+          });
+        </script>
+
+          <!-- BAR CHART -->
+
             <!-- /.card -->
         
             </div>

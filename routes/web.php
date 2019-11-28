@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Route::get('thongke_chuyendi_theothang','Controller@thongke_chuyendi_theothang')->name('thongke_chuyendi_theothang');
 Route::get('test','TestController@test');
 Route::get('test1','TestController@test1');
 Route::get('test2','TestController@test2');
@@ -150,6 +151,9 @@ Route::prefix('/admin')->middleware('auth:member')->namespace('Admin')->name('ad
     Route::get('/','NewsController@getList1')->name('list.get');
     
 });
+
+
+
 });
 
 

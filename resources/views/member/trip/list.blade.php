@@ -67,7 +67,7 @@
                   <td>{{$trip->title}}</td>
                   <td>{{date('d-m-Y', strtotime($trip->day_go))}}</td>
                   <td>{{date('d-m-Y', strtotime($trip->day_to))}}</td>
-                  <td>{{$trip->seat}}</td>
+                  <td>{{$trip->seat - $trip->remain_seat}}</td>
                   <td>{{$trip->price}}</td>
                   <td>
                     <div class="btn-group">

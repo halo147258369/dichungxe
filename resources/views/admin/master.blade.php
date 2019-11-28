@@ -156,7 +156,7 @@
             </li>
              <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
-                <i class="nav-icon fa fa-map-marker"></i>
+                <i class="nav-icon fa fa-bus"></i>
                 <p>
                   Tuyến Bus
                   <i class="right fa fa-angle-left"></i>
@@ -180,7 +180,7 @@
 
              <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
-                <i class="nav-icon fa fa-map-marker"></i>
+                <i class="nav-icon fa fa-clock-o"></i>
                 <p>
                   Giờ chạy
                   <i class="right fa fa-angle-left"></i>
@@ -203,7 +203,9 @@
             </li>
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
-                <i class="nav-icon fa fa-user"></i>
+
+                <i class="nav-icon fa fa-users"></i>
+
                 <p>
                   Người Dùng
                   <i class="right fa fa-angle-left"></i>
@@ -221,7 +223,9 @@
             </li>
              <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
-                <i class="nav-icon fa fa-building"></i>
+
+                <i class="nav-icon fa fa-th"></i>
+
                 <p>
                   Công Ty
                   <i class="right fa fa-angle-left"></i>
@@ -244,7 +248,7 @@
             </li>
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
-                <i class="nav-icon fa fa-map-marker"></i>
+                <i class="nav-icon fa fa-newspaper-o"></i>
                 <p>
                   Tin tức
                   <i class="right fa fa-angle-left"></i>
