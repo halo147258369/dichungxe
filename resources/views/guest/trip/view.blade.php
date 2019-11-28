@@ -347,13 +347,21 @@
 
                             <ul class="list-unstyled features tour-features">
                                 <li>
-                                    <div class="f-icon"><i class="fa fa-wheelchair"></i></div>
+                                    <div class="f-icon"><i class="fa fa-car"></i></div>
                                     <div class="f-text">
                                         <p class="f-heading">chỗ</p>
-                                        <p class="f-data"></p>
+                                        <p class="f-data">{{$trip->seat}}</p>
                                     </div>
                                 </li>
                                 <!-- <li><div class="f-icon"><i class="fa fa-calendar"></i></div><div class="f-text"><p class="f-heading">Duration</p><p class="f-data">1 ngày </p></div></li> -->
+
+                                  <li>
+                                    <div class="f-icon"><i class="fa fa-clock-o"></i></div>
+                                    <div class="f-text">
+                                        <p class="f-heading">Số chỗ đã có người đặt</p>
+                                        <p class="f-data">{{$trip->remain_seat}}</p>
+                                    </div>
+                                </li>
                                 <li>
                                     <div class="f-icon"><i class="fa fa-clock-o"></i></div>
                                     <div class="f-text">
@@ -361,12 +369,13 @@
                                         <p class="f-data">50% </p>
                                     </div>
                                 </li>
+
                             </ul>
 
                         </div><!-- end detail-slider -->
                         <div class="detail-tabs">
                             <ul class="nav nav-tabs nav-justified">
-                                <li class="active"><a href="#car-information" data-toggle="tab">Thông tin về xe</a></li>
+                                <li class="active"><a href="#car-information" data-toggle="tab"></a></li>
                             </ul>
 
                             <div class="tab-content">
@@ -380,10 +389,12 @@
                                         <div class="col-sm-8 col-md-8 tab-text">
 
                                             <h3>Thông Tin xe</h3>
+                                       <h3> <p><font color=" blue"  >Số Chỗ:</font><b>    {{$trip->seat}}   </b>  </p></h3>
+                                          
+                                        <h3>  <p>  <font color=" blue"  .>Biển số xe:</font><h4><b>{{$trip->vehicle->number}}</b><h4></p></h3>
+                                            
 
-                                            <p>{{$trip->seat}} :ghế </p>
-
-                                            <p> {{$trip->vehicle->description}} </p>
+                                         <h3>   <p> {{$trip->vehicle->description}} </p></h3>
 
 
                                         </div><!-- end columns -->
