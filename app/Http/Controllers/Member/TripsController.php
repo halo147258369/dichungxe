@@ -26,7 +26,7 @@ class TripsController extends Controller
    
     public function getList()
     {
-        $data['trips'] = $this->model->where('member_id', Auth::guard('member')->user()->id)->with('vehicle', 'from.city', 'to.city')->paginate(10);
+        $data['trips'] = Auth::guard('member')->user()->vehicles;
         return view($this->view_prefix.'list', $data);
     }
 
@@ -40,7 +40,7 @@ class TripsController extends Controller
     public function getAdd()
     {
         $data['cities'] = City::all();
-        $data['vehicles'] = $this->vehicle->all();
+        $data['vehicles'] = Auth::guard('member')->user()->vehicles;
         return view($this->view_prefix.'add', $data);
     }
 
