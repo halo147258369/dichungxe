@@ -88,10 +88,6 @@
             </table>
           </div>
           <!-- /.card-body -->
-
-          <div class="dataTables_paginate paging_simple_numbers">
-            {{ $trips->links() }}
-          </div>
         </div>
         <!-- /.card -->
       </div>
