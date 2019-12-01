@@ -78,10 +78,18 @@ class BookingController extends Controller
     public function getVerify($id)
     {
         $booking = $this->model->findOrFail($id);
-        $booking->verify = true;
+        $booking->verify = 1;
         $booking->save();
         $booking->trip->remain_seat = $booking->trip->remain_seat + $booking->seat;
         $booking->trip->save();
         return redirect()->route('member.trip.view.get', ['id'=>$booking->trip->id])->with('status', 'Xác thực thành công');
+    }
+    
+    public function getNotVerify($id)
+    {
+        $booking = $this->model->findOrFail($id);
+        $booking->verify = -1;
+        $booking->save();
+        return redirect()->route('member.trip.view.get', ['id'=>$booking->trip->id])->with('status', 'Đã từ chối đặt xe');
     }
 }

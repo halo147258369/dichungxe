@@ -57,10 +57,28 @@
                   <td>{{$booking->member->name}}</td>
                   <td>{{$booking->member->phone}}</td>
 
-                  <td>@if($booking->verify) <span class="badge bg-success">ĐÃ DUYỆT</span> @else <span class="badge bg-danger">CHƯA DUYỆT</span> @endif</td>
+                  @if($booking->verify == 0)
                   <td>
-                    <a href="{{route('member.booking.verify.get', ['id'=>$booking->id])}}" class="btn btn-primary @if($booking->verify) disabled @endif" >@if($booking->verify) Đã @endif Duyệt</a>
+                    <span class="badge bg-warning">CHƯA DUYỆT</span> </td>
+                  <td>
+                    <a href="{{route('member.booking.verify.get', ['id'=>$booking->id])}}" class="btn btn-primary"> Chấp nhận</a>
+                    <a href="{{route('member.booking.notverify.get', ['id'=>$booking->id])}}" class="btn btn-default">Từ chối</a>
                   </td>
+                  @else
+                  @if($booking->verify == 1)
+                  <td>
+                    <span class="badge bg-success">ĐÃ DUYỆT</span></td>
+                  <td>
+                    <a class="btn btn-primary disabled">Đã Duyệt</a>
+                  </td>
+                  @else
+                  <td>
+                    <span class="badge bg-danger">ĐÃ TỪ CHỐI</span></td>
+                  <td>
+                    <a class="btn btn-primary disabled">Đã Từ chối</a>
+                  </td>
+                  @endif
+                  @endif
                 </tr>
                 @endforeach
               </tbody>

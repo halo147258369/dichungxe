@@ -75,6 +75,7 @@ Route::prefix('/member')->middleware('auth:member')->namespace('Member')->name('
     Route::post('/edit/{id}','BookingController@postEdit')->name('edit.post');
     Route::get('/delete/{id}','BookingController@getDelete')->name('delete.get');
     Route::get('/verify/{id}','BookingController@getVerify')->name('verify.get');
+    Route::get('/notverify/{id}','BookingController@getNotVerify')->name('notverify.get');
     Route::get('/rate/{id}','RateController@getRateBooking')->name('rate.get');
     Route::post('/rate/{id}','RateController@postRateBooking')->name('rate.post');
   });
