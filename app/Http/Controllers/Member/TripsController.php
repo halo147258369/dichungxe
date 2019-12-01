@@ -26,7 +26,7 @@ class TripsController extends Controller
    
     public function getList()
     {
-        $data['trips'] = Auth::guard('member')->user()->vehicles;
+        $data['trips'] = Auth::guard('member')->user()->trips;
         return view($this->view_prefix.'list', $data);
     }
 
