@@ -60,7 +60,7 @@
                   <td>{{$booking->seat}}</td>
                   @if($booking->verify == 0)
                   <td>
-                    <span class="badge bg-warning">CHƯA DUYỆT</span> 
+                    <span class="badge bg-warning">CHƯA DUYỆT</span>
                   </td>
                   @else
                   @if($booking->verify == 1)
@@ -74,23 +74,10 @@
                   @endif
                   @endif
                   <td>
-                    @if($booking->verify != 0)
-                    <a class="btn btn-primary" href="{{ route('member.booking.delete.get', ['id' => $booking->id]) }}">Huỷ chuyến</a>
-                    @if($booking->verify == 1)
+                    @if($booking->verify != 0 && $booking->verify == 1)
                     <a class="btn btn-warning" href="{{ route('member.booking.rate.get', ['id' => $booking->id]) }}">Đánh giá</a>
                     @endif
-                    @else
-                    <div class="btn-group">
-                      <a href="{{ route('member.booking.edit.get', ['id' => $booking->id]) }}" class="btn btn-primary">Sửa</a>
-                      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
-                      </button>
-                      <div class="dropdown-menu" role="menu">
-                        <a class="dropdown-item" href="{{ route('member.booking.delete.get', ['id' => $booking->id]) }}" target="_blank">Huỷ chuyến</a>
-                      </div>
-                    </div>
-                    @endif
+                    <a class="btn btn-primary" href="{{ route('member.booking.delete.get', ['id' => $booking->id]) }}">Huỷ chuyến</a>
                   </td>
                 </tr>
                 @endforeach

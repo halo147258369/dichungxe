@@ -35,9 +35,15 @@ class LoginController extends Controller
         //
         //Login ... If Authentication passed redirect to dashboard
         if(Auth::guard('member')->attempt($request->only('email','password'),$request->filled('remember'))){
+            if(Auth::guard('member')->user()->level >= 3) {
+                return redirect()
+                ->intended(route('admin.statistical.list.get'))
+                ->with('status','You are Logged in as Admin!');
+            }
             return redirect()
                 ->intended(route('member.dashboard.view.get'))
                 ->with('status','You are Logged in as Member!');
+            
         }
 
         //Authentication failed...
