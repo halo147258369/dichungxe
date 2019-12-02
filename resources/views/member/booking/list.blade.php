@@ -45,20 +45,34 @@
             <table id="example1" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                        <td><b>Ngày đi</td>
-                        <td><b>Tên chuyến đi</td>
-                        <td><b>Sỗ chỗ đặt</td>
-                        <td><b>Trạng thái duyệt</td>
+                  <td><b>Ngày đi</td>
+                  <td><b>Tên chuyến đi</td>
+                  <td><b>Sỗ chỗ đặt</td>
+                  <td><b>Trạng thái duyệt</td>
                   <td></td>
                 </tr>
               </thead>
               <tbody>
                 @foreach($bookings as $booking)
                 <tr>
-                        <td>{{$booking->trip->day_go}}</td>
-                        <td>{{$booking->trip->title}}</td>
-                        <td>{{$booking->seat}}</td>
-                        <td>@if($booking->verify) <span class="badge bg-success">ĐÃ DUYỆT</span> @else <span class="badge bg-danger">CHƯA DUYỆT</span> @endif</td>
+                  <td>{{$booking->trip->day_go}}</td>
+                  <td>{{$booking->trip->title}}</td>
+                  <td>{{$booking->seat}}</td>
+                  @if($booking->verify == 0)
+                  <td>
+                    <span class="badge bg-warning">CHƯA DUYỆT</span> 
+                  </td>
+                  @else
+                  @if($booking->verify == 1)
+                  <td>
+                    <span class="badge bg-success">ĐÃ DUYỆT</span>
+                  </td>
+                  @else
+                  <td>
+                    <span class="badge bg-danger">ĐÃ TỪ CHỐI</span>
+                  </td>
+                  @endif
+                  @endif
                   <td>
                     @if($booking->verify)
                     <a class="btn btn-primary" href="{{ route('member.booking.delete.get', ['id' => $booking->id]) }}">Huỷ chuyến</a>
